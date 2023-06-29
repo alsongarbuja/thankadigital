@@ -72,7 +72,7 @@ export default function Home() {
           <div className="flex justify-between items-end mt-10">
             <div>
               <span className="flex items-center gap-2 mb-4">
-                <Image src="/TD_logo.svg" alt="Thanka Digital logo" className="w-14 h-14" width={50} height={50} />
+                <Image src="/thanka_digital_logo.svg" alt="Thanka Digital logo" className="w-14 h-14" width={50} height={50} />
                 <h2>Thanka Digital</h2>
               </span>
               <Social />
