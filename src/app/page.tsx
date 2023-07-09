@@ -1,9 +1,11 @@
 import ServiceCard from '../components/services/ServiceCard'
 import Header from '../components/Header'
 import Image from 'next/image'
-import { ChevronsRight, Monitor, Smartphone, TrendingUp } from 'react-feather'
+import { ChevronsRight, Code, Globe, Hexagon, TrendingUp } from 'react-feather'
 import Social from '../components/Social'
 import Link from 'next/link'
+import ServiceSection from '../components/services/ServiceSection'
+import HeroSection from '../components/HeroSection'
 
 export default function Home() {
   return (
@@ -13,46 +15,37 @@ export default function Home() {
         <Header />
 
         {/* Hero Section */}
-        <section className="text-center mt-14">
-          <h1>Let's Take <br /> Your Business To Next Level</h1>
-          <p className="mt-2">We provide you services to help you build your dream system come true with ease</p>
+        <HeroSection />
+
+        {/* Services Section */}
+        <ServiceSection>
+          <div className="flex justify-between my-10">
+            <ServiceCard icon={<TrendingUp className="w-12 h-12" />} title="Digital Marketing & SEO" />
+            <ServiceCard icon={<Globe className="w-12 h-12" />} title="Web application development" bgColor="bg-green" />
+            <ServiceCard icon={<Code className="w-12 h-12" />} title="Mobile app development" bgColor="bg-red" />
+            <ServiceCard icon={<Hexagon className="w-12 h-12" />} title="UI/UX & Graphics Design" bgColor="bg-purple" />
+          </div>
+        </ServiceSection>
+        
+        {/* Projects Section */}
+        <section className="mt-40 py-10">
+          <div className="border-b-2 border-black">
+          </div>
+        </section>
+
+        {/* About Section */}
+        <section className="mt-5 py-5">
+          <div className="flex gap-4">
+            <div className="w-1/2">
+              <h2>About US</h2>
+              <p className="text-lg text-justify mt-5">
+                We are a team of dedicated professionals with a passion for cutting-edge technology. We specialize in providing customized solutions that cater to your unique business needs. Our expertise ranges from web development and mobile app design to digital marketing. Trust us to transform your ideas into reality and propel your business forward in the digital age.
+              </p>
+            </div>
+            <Image src="/TD_logo.svg" alt="thanka digital logo" className="rounded-lg w-1/2 h-80" width={300} height={600} />
+          </div>
         </section>
       </div>
-
-      {/* Services Section */}
-      <section className="mt-40 pt-72 pb-20 relative bg-primary_blue">
-        <div className="absolute -top-24 bg-primary_red w-1/2 h-80 left-[52%] -translate-x-[52%]"></div>
-        <Image priority src="/TD_logo.svg" alt="td logo svg" className="w-1/2 h-80 bg-blue-700 absolute -top-28 left-1/2 -translate-x-1/2 shadow-sm" width={400} height={200} />
-        <div className="max-w-[85%] mx-auto text-white">
-          <h2 className="text-center">Our Services</h2>
-          <div className="flex justify-between items-center w-full mt-12">
-            <ServiceCard icon={<Monitor className="w-24 h-24" />} title="Web Apps" description="We build scalable and robust web applications using latest web technologies" />
-            <hr className="rotate-90 bg-white w-36" />
-            <ServiceCard icon={<TrendingUp className="w-24 h-24" />} title="Digital Marketing" description="We will handle your digital presence across multiple platform to grow you digitally" />
-            <hr className="rotate-90 bg-white w-36" />
-            <ServiceCard icon={<Smartphone className="w-24 h-24" />} title="Mobile Apps" description="We will create cross platform mobile applications" />
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section className="mt-40 py-10">
-        <div className="max-w-[85%] mx-auto border-b-2 border-black">
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section className="mt-5 py-5">
-        <div className="max-w-[85%] mx-auto flex gap-4">
-          <div className="w-1/2">
-            <h2>About US</h2>
-            <p className="text-lg text-justify mt-5">
-              We are a team of dedicated professionals with a passion for cutting-edge technology. We specialize in providing customized solutions that cater to your unique business needs. Our expertise ranges from web development and mobile app design to digital marketing. Trust us to transform your ideas into reality and propel your business forward in the digital age.
-            </p>
-          </div>
-          <Image src="/TD_logo.svg" alt="thanka digital logo" className="rounded-lg w-1/2 h-80" width={300} height={600} />
-        </div>
-      </section>
 
       {/* Footer Section */}
       <section className="mt-20 pt-20 pb-10 bg-primary_blue">

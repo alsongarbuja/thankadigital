@@ -1,16 +1,15 @@
 
 interface IServiceCardProps {
-    icon: React.ReactNode;
-    title: string;
-    description: string;
+  icon: React.ReactNode;
+  title: string;
+  bgColor?: "bg-light" | "bg-purple" | "bg-red" | "bg-green",
 }
 
-const ServiceCard = ({ icon, title, description }: IServiceCardProps) => {
+const ServiceCard = ({ icon, title, bgColor="bg-light" }: IServiceCardProps) => {
   return (
-    <div className="flex flex-col items-center gap-4 text-center w-1/2">
-        {icon}
-        <h3>{title}</h3>
-        <p>{description}</p>
+    <div className={`flex flex-col items-center justify-center gap-4 text-center p-4 w-[300px] h-[250px] rounded-md ${bgColor}`}>
+      {icon}
+      <h4>{title}</h4>
     </div>
   )
 }
