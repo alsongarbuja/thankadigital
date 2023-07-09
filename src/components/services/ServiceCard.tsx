@@ -7,7 +7,7 @@ interface IServiceCardProps {
 
 const ServiceCard = ({ icon, title, bgColor="bg-light" }: IServiceCardProps) => {
   return (
-    <div className={`flex flex-col items-center justify-center gap-4 text-center p-4 w-[300px] h-[250px] rounded-md ${bgColor}`}>
+    <div className={`flex flex-col items-center justify-center gap-4 text-center p-4 w-full h-[250px] rounded-md ${bgColor}`}>
       {icon}
       <h4>{title}</h4>
     </div>

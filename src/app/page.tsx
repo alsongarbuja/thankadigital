@@ -9,8 +9,8 @@ import HeroSection from '../components/HeroSection'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
-      <div className="max-w-[85%] mx-auto">
+    <main>
+      <section className="max-w-[85%] mx-auto">
         {/* Header */}
         <Header />
 
@@ -19,7 +19,7 @@ export default function Home() {
 
         {/* Services Section */}
         <ServiceSection>
-          <div className="flex justify-between my-10">
+          <div className="flex flex-col md:flex-row gap-5 items-center justify-center my-10">
             <ServiceCard icon={<TrendingUp className="w-12 h-12" />} title="Digital Marketing & SEO" />
             <ServiceCard icon={<Globe className="w-12 h-12" />} title="Web application development" bgColor="bg-green" />
             <ServiceCard icon={<Code className="w-12 h-12" />} title="Mobile app development" bgColor="bg-red" />
@@ -45,7 +45,7 @@ export default function Home() {
             <Image src="/TD_logo.svg" alt="thanka digital logo" className="rounded-lg w-1/2 h-80" width={300} height={600} />
           </div>
         </section>
-      </div>
+      </section>
 
       {/* Footer Section */}
       <section className="mt-20 pt-20 pb-10 bg-primary_blue">
