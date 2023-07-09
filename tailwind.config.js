@@ -15,8 +15,8 @@ module.exports = {
         light_green: '#EBF9F9',
       },
       fontFamily: {
-        koho: ['KoHo', 'sans-serif'],
-        dm: ['DM Sans', 'sans-serif'],
+        koho: ['var(--font-koho)', 'sans-serif'],
+        dm: ['var(--font-dm-sans)', 'sans-serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

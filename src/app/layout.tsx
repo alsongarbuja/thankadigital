@@ -1,11 +1,23 @@
+import { Metadata } from 'next';
 import './globals.css'
-import { DM_Sans } from 'next/font/google'
+import { KoHo, DM_Sans } from 'next/font/google';
 
-const dmsans = DM_Sans({ subsets: ['latin-ext'], weight: "400" })
+const koho = KoHo({
+  subsets: ['latin'],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-koho",
+})
 
-export const metadata = {
+const dm_sans = DM_Sans({
+  subsets: ['latin'],
+  weight: ["400", "500", "700"],
+  variable: "--font-dm-sans",
+})
+
+export const metadata: Metadata = {
   title: 'Thanka Digital',
   description: 'Bring your business to next level with Thanka Digital',
+  
 }
 
 export default function RootLayout({
@@ -14,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={dmsans.className}>{children}</body>
+    <html className={`${koho.variable} ${dm_sans.variable}`} lang="en">
+      <body>{children}</body>
     </html>
   )
 }
