@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+
 import './globals.css'
 import { KoHo, DM_Sans } from 'next/font/google';
 
@@ -17,7 +18,7 @@ const dm_sans = DM_Sans({
 export const metadata: Metadata = {
   title: 'Thanka Digital',
   description: 'Bring your business to next level with Thanka Digital',
-  
+  icons: { icon: "/icons/favicon.ico" }
 }
 
 export default function RootLayout({

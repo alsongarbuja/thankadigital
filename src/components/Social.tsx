@@ -6,13 +6,13 @@ const Social = () => {
   return (
     <nav className="flex items-center gap-10">
       <Link href="https://www.linkedin.com/company/thanka-digital/" target="_blank" rel="noreferrer">
-        <Linkedin />
+        <Linkedin className="text-blue-500" />
       </Link>
       <Link href="https://www.instagram.com/thanka.digital/" target="_blank" rel="noreferrer">
-        <Instagram />
+        <Instagram className="text-orange-500" />
       </Link>
       <Link href="https://www.facebook.com/thankadigital1/" target="_blank" rel="noreferrer">
-        <Facebook />
+        <Facebook className="text-blue-500" />
       </Link>
     </nav>
   )
