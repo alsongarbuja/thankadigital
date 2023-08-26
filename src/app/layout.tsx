@@ -1,13 +1,7 @@
 import { Metadata } from 'next';
 
 import './globals.css'
-import { KoHo, DM_Sans } from 'next/font/google';
-
-const koho = KoHo({
-  subsets: ['latin'],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-koho",
-})
+import { DM_Sans } from 'next/font/google';
 
 const dm_sans = DM_Sans({
   subsets: ['latin'],
@@ -27,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html className={`${koho.variable} ${dm_sans.variable}`} lang="en">
+    <html className={`${dm_sans.variable}`} lang="en">
       <body>{children}</body>
     </html>
   )
