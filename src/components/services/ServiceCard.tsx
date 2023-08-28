@@ -2,7 +2,7 @@
 interface IServiceCardProps {
   icon: React.ReactNode;
   title: string;
-  bgColor?: "bg-inherit" | "bg-light_purple" | "bg-light_red" | "bg-light_green",
+  bgColor?: "bg-inherit" | "bg-purple-50" | "bg-red-50" | "bg-green-50" | "bg-blue-50",
 }
 
 const ServiceCard = ({ icon, title, bgColor="bg-inherit" }: IServiceCardProps) => {

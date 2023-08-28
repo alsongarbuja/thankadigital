@@ -10,9 +10,6 @@ module.exports = {
       colors: {
         primary_red: '#E8343E',
         primary_blue: '#333D79',
-        light_purple: '#EFEBF9',
-        light_red: '#F9EBEB',
-        light_green: '#EBF9F9',
       },
       fontFamily: {
         koho: ['var(--font-koho)', 'sans-serif'],

@@ -22,10 +22,10 @@ export default function Home() {
         {/* Services Section */}
         <ServiceSection>
           <div className="flex flex-col items-center justify-center gap-5 my-10 lg:flex-row">
-            <ServiceCard icon={<TrendingUp className="w-12 h-12" />} title="Digital Marketing & SEO" />
-            <ServiceCard icon={<Globe className="w-12 h-12" />} title="Web application development" bgColor="bg-light_green" />
-            <ServiceCard icon={<Code className="w-12 h-12" />} title="Mobile app development" bgColor="bg-light_red" />
-            <ServiceCard icon={<Hexagon className="w-12 h-12" />} title="UI/UX & Graphics Design" bgColor="bg-light_purple" />
+            <ServiceCard icon={<Globe className="w-12 h-12" />} title="Web application development" bgColor="bg-green-50" />
+            <ServiceCard icon={<Code className="w-12 h-12" />} title="Mobile app development" bgColor="bg-red-50" />
+            <ServiceCard icon={<Hexagon className="w-12 h-12" />} title="UI/UX & Graphics Design" bgColor="bg-purple-50" />
+            <ServiceCard icon={<TrendingUp className="w-12 h-12" />} title="Digital Marketing & SEO" bgColor="bg-blue-50" />
           </div>
         </ServiceSection>
         
