@@ -69,8 +69,8 @@ const WebDevCourseRegisterPage = () => {
 
   useEffect(() => {
     const data = localStorage.getItem("thankadigital-web-course-registration");
-    if(data) {
-      setHasResponse(true);
+    if(!data) {
+      setHasResponse(false);
     }
     const restrictInspect = (e: KeyboardEvent) => {
       if(e.shiftKey && e.ctrlKey && e.key === 'I') {
