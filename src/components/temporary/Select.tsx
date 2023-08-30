@@ -7,14 +7,15 @@ interface SelectProps {
   name: string;
   handleChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   options: string[];
+  crrField: string;
   error: dynamicObject;
 }
 
 const Select = (props: SelectProps) => {
-  const { label, name, options, isRequired=true, value, handleChange, error } = props;
+  const { label, name, options, isRequired=true, value, handleChange, error, crrField } = props;
 
   return (
-    <div className="w-full">
+    <div className={`w-full ${crrField===name?"block":"hidden"}`}>
       <label className="capitalize">{label} <span className="text-red-500">*</span></label>
       <select 
         name={name} 

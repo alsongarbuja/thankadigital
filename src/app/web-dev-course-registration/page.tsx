@@ -3,6 +3,7 @@
 import Select from '../../components/temporary/Select';
 import Input from '../../components/temporary/Input';
 import React, { useEffect, useState } from 'react'
+import { Loader } from 'react-feather';
 
 interface userData {
   "entry.668855873": string;
@@ -19,35 +20,132 @@ export type dynamicObject = {
 
 const WebDevCourseRegisterPage = () => {
   
+  const [isFirstOpen, setIsFirstOpen] = useState(true);
+  const [hasResponse] = useState(localStorage.getItem("thankadigital-web-course-registration") !== null);
   const [data, setData] = useState<userData>({
     "entry.668855873": '',
     "entry.2093799469": '',
     "entry.64164442": '',
-    "entry.148672612": '',
-    "entry.331549010": '',
+    "entry.148672612": 'No Idea',
+    "entry.331549010": 'Afternoon (12:30 PM to 1:30 PM)',
     "entry.703362708": '',
   })
   const [currentStep, setCurrentStep] = useState(0);
+  const [currentField, setCurrentField] = useState('entry.668855873' as keyof userData);
   const [error, setError] = useState<dynamicObject>({});
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    if(e.target.name === "entry.2093799469") {
-      setCurrentStep(1);
-    }
-    if(currentStep === 1 && e.target.name === "entry.148672612") {
-      setCurrentStep(2);
-    }
-    if(currentStep === 2 && e.target.name === "entry.331549010") {
-      setCurrentStep(3);
-    }
     setData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  const handleContinue = () => {
+    if(data["entry.668855873"] === "" || data["entry.2093799469"] === "" || data["entry.148672612"] === "" || data["entry.331549010"] === "") {
+      setError(prev => ({ ...prev, [currentField]: "This field is required" }))
+    }
+    if(currentField === "entry.668855873" && data["entry.668855873"] !== "") {
+      setCurrentField("entry.2093799469");
+    } 
+    if(currentField === "entry.2093799469" && data["entry.2093799469"] !== "") {
+      setCurrentField("entry.64164442");
+    }
+    if(currentField === "entry.64164442") {
+      setCurrentField("entry.148672612");
+      setCurrentStep(1);
+    }
+    if(currentField === "entry.148672612" && data["entry.148672612"] !== "") {
+      setCurrentField("entry.331549010");
+      setCurrentStep(2);
+    }
+    if(currentField === "entry.331549010" && data["entry.331549010"] !== "") {
+      setCurrentField("entry.703362708");
+    }
+    if(currentField === "entry.703362708") {
+      setCurrentStep(3);
+      localStorage.setItem("thankadigital-web-course-registration", JSON.stringify(data));
+    }
+    if(currentStep === 3) {
+      setCurrentStep(4);
+    }
+  }
+
+  useEffect(() => {
+    const restrictInspect = (e: KeyboardEvent) => {
+      if(e.shiftKey && e.ctrlKey && e.key === 'I') {
+        e.preventDefault();
+      }
+      if(e.ctrlKey && e.key === 'r') {
+        localStorage.removeItem("thankadigital-web-course-registration");
+      }
+    }
+    const restrictInspectFromContextMenu = (e: MouseEvent) => {
+      e.preventDefault();
+    }
+    window.addEventListener('keydown', restrictInspect);
+    window.addEventListener('contextmenu', restrictInspectFromContextMenu);
+    return () => {
+      window.removeEventListener('keydown', restrictInspect);
+      window.removeEventListener('contextmenu', restrictInspectFromContextMenu);
+    }
+  }, [])
+
   return (
-    <main className="flex flex-col-reverse lg:flex-row">
-      <section className="flex flex-col items-center gap-10 justify-center w-full lg:min-h-screen lg:w-[80%] lg:border-r lg:border-gray-100">
+    <>
+      {
+        isFirstOpen && (
+          <div className="fixed top-0 left-0 z-20 flex items-center justify-center w-full h-screen bg-black/50">
+            <div className="w-1/2 px-6 py-10 bg-white rounded-md">
+              <h3>Welcome to Thanka digital web development crash course</h3>
+              <p className="italic font-bold text-red-500">Note: Read all of this before continue</p>
+              <p className="my-2">
+                Discover the comprehensive web development crash course offered by Thanka Digital at the convenient Fulbari 11 location. Designed to empower your skills, this 40-day program focuses on the dynamic MERN stack technology. MERN stack is one of the tech stack used in the web development community with its dynamic nature and easy to configure and use.
+                <br />
+                Topics you will learn:
+              </p>
+              <ol className="pl-8 list-decimal">
+                <li>HTML and CSS refreshment</li>
+                <li>JS refreshment</li>
+                <li>React Basic (components, JSX, Virtual DOM, props, etc)</li>
+                <li>React indepth (hooks, state management, HOC, Routing, custom hooks, forms, etc)</li>
+                <li>Node Basic (CommonJS syntax, fs, backend development)</li>
+                <li>Express (server using express, middlewears, error handling, API creation, etc)</li>
+                <li>MongoDB (NOSQL concepts, Document and collections, moongose, database connections, etc)</li>
+              </ol>
+              <div className="mt-4">
+                <b>Location:</b> Fulbari 11 <br />
+                <b>Time Slots:</b> <br />
+                <ul className='pl-8 list-disc'>
+                  <li>Afternoon: 12:30 PM to 1:30 PM</li>
+                  <li>Evening: 3:30 PM to 4:30 PM</li>
+                </ul>
+              </div>
+              <p className='my-4'>
+                Join us on this journey of learning and growth for a nominal fee of NPRS 14000, and unlock the potential to create impactful web solutions.
+              </p>
+
+              <button onClick={()=>setIsFirstOpen(false)} className="p-2 text-green-500 bg-green-200 rounded-md">Continue</button>
+            </div>
+          </div>
+        )
+      }
+      {
+        !isFirstOpen && hasResponse && (
+          <div className="fixed top-0 left-0 z-20 flex items-center justify-center w-full h-screen bg-black/50">
+            <div className="w-1/2 px-6 py-10 bg-white rounded-md">
+              <h3>You have already registered for the course</h3>
+              <p className="my-2">
+                If you want to update your register, please contact us at <a href="mailto:thankadigital@gmail.com" className="font-bold underline text-primary_blue">thankadigital@gmail.com</a>
+              </p>
+            </div>
+          </div>
+        )
+      }
+      <main className="flex flex-col items-center justify-center w-full min-h-screen gap-8 p-10">
         <h1><span className="text-primary_red">Thanka</span> <span className="text-primary_blue">Digital</span></h1>
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSem27B9cJzDg_kDEX81Z-UXMx6fgN1Aok8wcA2VZ_bgd3I17w/formResponse" className="w-1/2">
+        
+        <h4>Register for the web development crash course</h4>
+        <Stepper currentStep={currentStep} />
+
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSem27B9cJzDg_kDEX81Z-UXMx6fgN1Aok8wcA2VZ_bgd3I17w/formResponse" className='w-[80%]'>
           <Input 
             label="Full Name"
             type="text"
@@ -56,6 +154,7 @@ const WebDevCourseRegisterPage = () => {
             value={data["entry.668855873"]}
             handleChange={handleChange}
             error={error}
+            crrField={currentField}
           />
           <Input 
             label="Email"
@@ -65,6 +164,7 @@ const WebDevCourseRegisterPage = () => {
             value={data["entry.2093799469"]}
             handleChange={handleChange}
             error={error}
+            crrField={currentField}
           />
           <Input 
             label="Phone Number"
@@ -75,6 +175,7 @@ const WebDevCourseRegisterPage = () => {
             value={data["entry.64164442"] || ''}
             handleChange={handleChange}
             error={error}
+            crrField={currentField}
           />
           <Select 
             label="Experience"
@@ -82,7 +183,8 @@ const WebDevCourseRegisterPage = () => {
             value={data["entry.148672612"]}
             handleChange={handleChange}
             error={error}
-            options={['No Idea', 'Basic knowledge', 'Basic React', 'Basic React + Node']}
+            crrField={currentField}
+            options={['No Idea', 'Basic Knowledge', 'Basic React', 'Basic React + Node']}
           />
           <Select 
             label="Time prefrence"
@@ -90,6 +192,7 @@ const WebDevCourseRegisterPage = () => {
             value={data["entry.331549010"]}
             handleChange={handleChange}
             error={error}
+            crrField={currentField}
             options={['Afternoon (12:30 PM to 1:30 PM)', 'Evening (3:30 PM to 4:30 PM)']}
           />
           <Input 
@@ -99,17 +202,21 @@ const WebDevCourseRegisterPage = () => {
             placeholder="Enter your queries"
             value={data["entry.703362708"]}
             isRequired={false}
+            crrField={currentField}
             handleChange={handleChange}
             error={error}
           />
-          <button disabled={currentStep < 3} type="submit" className="p-4 text-white rounded-md bg-primary_blue/95 hover:bg-primary_blue disabled:bg-gray-400 disabled:cursor-not-allowed">Submit</button>
+          <button 
+            type={currentStep <= 3 ? "button": "submit"} 
+            className="p-4 text-white rounded-md bg-primary_blue/95 hover:bg-primary_blue disabled:bg-gray-400 disabled:cursor-not-allowed"
+            onClick={currentStep <= 3 ? handleContinue : ()=>{}}
+            disabled={currentStep > 4}
+          >
+            {currentStep < 3 ? 'Continue' : 'Submit'}
+          </button>
         </form>
-      </section>
-      <section className="flex flex-col items-center justify-center gap-4 p-8 border-b border-gray- 00 bg-gradient-to-tr from-primary_red/60 to-primary_blue/60 lg:border-0">
-        <h4>Register for the web development crash course</h4>
-        <Stepper currentStep={currentStep} />
-      </section>
-    </main>
+      </main>
+    </>
   )
 }
 
@@ -136,15 +243,15 @@ const Stepper = ({ currentStep } : { currentStep: number }) => {
   ];
 
   return (
-    <div className="flex flex-col justify-center mt-4 lg:flex-col">
+    <div className="flex justify-center">
       {steps.map((step) => (
-        <div key={step.stepIndex} className={`flex flex-col mb-4 border-l ${currentStep >= step.stepIndex  ? 'border-green-600' : 'border-black'} min-h-[100px] relative`}>
-          <div className={`absolute top-0 flex items-center justify-center w-10 h-10 text-white ${currentStep >= step.stepIndex ? 'bg-green-600' : 'bg-black'} rounded-full -left-5`}>
+        <div key={step.stepIndex} className={`flex flex-col justify-center mb-4 border-t ${currentStep >= step.stepIndex  ? 'border-green-600' : 'border-black'} min-h-[100px] relative`}>
+          <div className={`absolute -top-5 flex items-center justify-center w-10 h-10 text-white ${currentStep >= step.stepIndex ? 'bg-green-600' : 'bg-black'} rounded-full left-1/2 -translate-x-1/2`}>
             <span>{currentStep >= step.stepIndex ? "✓" : step.stepIndex}</span>
           </div>
-          <div className="pl-10">
+          <div className="pl-10 text-center">
             <h5>{step.title}</h5>
-            <p className="text-sm text-white">{step.description}</p>
+            <p className="text-sm text-gray-500">{step.description}</p>
           </div>
         </div>
       ))}
