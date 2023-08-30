@@ -21,7 +21,7 @@ export type dynamicObject = {
 const WebDevCourseRegisterPage = () => {
   
   const [isFirstOpen, setIsFirstOpen] = useState(true);
-  const [hasResponse] = useState(localStorage.getItem("thankadigital-web-course-registration") !== null);
+  const [hasResponse, setHasResponse] = useState(true);
   const [data, setData] = useState<userData>({
     "entry.668855873": '',
     "entry.2093799469": '',
@@ -61,7 +61,6 @@ const WebDevCourseRegisterPage = () => {
     }
     if(currentField === "entry.703362708") {
       setCurrentStep(3);
-      localStorage.setItem("thankadigital-web-course-registration", JSON.stringify(data));
     }
     if(currentStep === 3) {
       setCurrentStep(4);
@@ -69,6 +68,10 @@ const WebDevCourseRegisterPage = () => {
   }
 
   useEffect(() => {
+    const data = localStorage.getItem("thankadigital-web-course-registration");
+    if(data) {
+      setHasResponse(true);
+    }
     const restrictInspect = (e: KeyboardEvent) => {
       if(e.shiftKey && e.ctrlKey && e.key === 'I') {
         e.preventDefault();
@@ -87,6 +90,12 @@ const WebDevCourseRegisterPage = () => {
       window.removeEventListener('contextmenu', restrictInspectFromContextMenu);
     }
   }, [])
+
+  useEffect(() => {
+    if(currentField === "entry.703362708") {
+      localStorage.setItem("thankadigital-web-course-registration", JSON.stringify(data));
+    }
+  }, [currentField])
 
   return (
     <>
