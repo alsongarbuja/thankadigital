@@ -3,7 +3,6 @@
 import Select from '../../components/temporary/Select';
 import Input from '../../components/temporary/Input';
 import React, { useEffect, useState } from 'react'
-import { Loader } from 'react-feather';
 
 interface userData {
   "entry.668855873": string;
@@ -76,7 +75,7 @@ const WebDevCourseRegisterPage = () => {
       if(e.shiftKey && e.ctrlKey && e.key === 'I') {
         e.preventDefault();
       }
-      if(e.ctrlKey && e.key === 'r') {
+      if(e.ctrlKey && e.shiftKey && e.key === 'R') {
         localStorage.removeItem("thankadigital-web-course-registration");
       }
     }
@@ -102,7 +101,7 @@ const WebDevCourseRegisterPage = () => {
       {
         isFirstOpen && (
           <div className="fixed top-0 left-0 z-20 flex items-center justify-center w-full h-screen bg-black/50">
-            <div className="w-1/2 px-6 py-10 bg-white rounded-md">
+            <div className="w-[90%] lg:w-1/2 h-[80%] overflow-y-scroll px-6 py-10 bg-white rounded-md">
               <h3>Welcome to Thanka digital web development crash course</h3>
               <p className="italic font-bold text-red-500">Note: Read all of this before continue</p>
               <p className="my-2">
@@ -139,7 +138,7 @@ const WebDevCourseRegisterPage = () => {
       {
         !isFirstOpen && hasResponse && (
           <div className="fixed top-0 left-0 z-20 flex items-center justify-center w-full h-screen bg-black/50">
-            <div className="w-1/2 px-6 py-10 bg-white rounded-md">
+            <div className="w-[90%] lg:w-1/2 px-6 py-10 bg-white rounded-md">
               <h3>You have already registered for the course</h3>
               <p className="my-2">
                 If you want to update your register, please contact us at <a href="mailto:thankadigital@gmail.com" className="font-bold underline text-primary_blue">thankadigital@gmail.com</a>
@@ -239,7 +238,7 @@ const Stepper = ({ currentStep } : { currentStep: number }) => {
     },
     {
       stepIndex: 2,
-      title: 'Web Development Experience',
+      title: 'Web Dev Experience',
       description: 'Select according to your experience',
       isCompleted: false,
     },
@@ -258,9 +257,9 @@ const Stepper = ({ currentStep } : { currentStep: number }) => {
           <div className={`absolute -top-5 flex items-center justify-center w-10 h-10 text-white ${currentStep >= step.stepIndex ? 'bg-green-600' : 'bg-black'} rounded-full left-1/2 -translate-x-1/2`}>
             <span>{currentStep >= step.stepIndex ? "✓" : step.stepIndex}</span>
           </div>
-          <div className="pl-10 text-center">
-            <h5>{step.title}</h5>
-            <p className="text-sm text-gray-500">{step.description}</p>
+          <div className="px-2 pt-10 text-center lg:px-10">
+            <h6>{step.title}</h6>
+            {/* <p className="text-sm text-gray-500">{step.description}</p> */}
           </div>
         </div>
       ))}
