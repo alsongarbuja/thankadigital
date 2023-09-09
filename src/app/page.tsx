@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Code, Globe, Hexagon, TrendingUp } from 'react-feather'
+import { Code, GitHub, Globe, Hexagon, Linkedin, TrendingUp } from 'react-feather'
 
 import Social from '../components/Social'
 import Header from '../components/Header'
@@ -41,12 +41,22 @@ export default function Home() {
           <p className="mt-5 text-lg text-justify">
             We are a team of dedicated professionals with a passion for cutting-edge technology. We specialize in providing customized solutions that cater to your unique business needs. Our expertise ranges from web development and mobile app design to digital marketing. Trust us to transform your ideas into reality and propel your business forward in the digital age.
           </p>
-          <div className="flex flex-col items-center justify-center py-8 lg:flex-row">
-            <Image src="/website_development_hero.jpg" alt="a laptop displaying a hand pointing in text which reads web development" className="w-auto h-auto rounded-lg" width={300} height={600} />
-            <Image src="/website_development_hero.jpg" alt="a laptop displaying a hand pointing in text which reads web development" className="w-auto h-auto rounded-lg" width={300} height={600} />
-            <Image src="/website_development_hero.jpg" alt="a laptop displaying a hand pointing in text which reads web development" className="w-auto h-auto rounded-lg" width={300} height={600} />
-            <Image src="/website_development_hero.jpg" alt="a laptop displaying a hand pointing in text which reads web development" className="w-auto h-auto rounded-lg" width={300} height={600} />
-            <Image src="/website_development_hero.jpg" alt="a laptop displaying a hand pointing in text which reads web development" className="w-auto h-auto rounded-lg" width={300} height={600} />
+          <div className="flex flex-col items-center justify-between py-8 lg:flex-row">
+            {
+              team.map((member, index) => (
+                <figure className="relative w-[20%] h-[500px] group cursor-pointer" key={index}>
+                  <Image src={member.imageUrl} alt={member.name} className="object-cover w-full h-full" width={300} height={600} />
+                  <figcaption className="absolute bottom-0 left-0 w-full transition-all h-1/3 bg-gradient-to-t from-black to-transparent group-hover:h-full"></figcaption>
+                  <div className="absolute bottom-0 left-0 flex flex-col items-center justify-center w-full h-full text-white transition-all opacity-0 group-hover:opacity-100">
+                    <h5 className="text-xl font-semibold">{member.name}</h5>
+                    <div className="flex gap-6 mt-4">
+                      <Link href={member.linkedinUrl} target='_blank'><Linkedin /></Link>
+                      <Link href={member.githubUrl} target='_blank'><GitHub /></Link>
+                    </div>
+                  </div>
+                </figure>
+              ))
+            }
           </div>
         </section>
       </div>
@@ -69,7 +79,7 @@ export default function Home() {
                     <h6>{footerLink.title}</h6>
                     {
                       footerLink.links.map((link, index) => (
-                        <p>
+                        <p key={index}>
                           {
                             link.href ? (
                               <Link href={link.href} key={index}>{link.text}</Link>
@@ -159,4 +169,37 @@ const footerLinks = [
       },
     ],
   }
+];
+
+const team = [
+  {
+    name: "Alson Garbuja",
+    imageUrl: "/team/alson.jpg",
+    linkedinUrl: "https://linkedin.com/in/alsongarbuja",
+    githubUrl: "https://github.com/alsongarbuja",
+  },
+  {
+    name: "Sunil Paudel",
+    imageUrl: "/team/sunil.jpg",
+    linkedinUrl: "https://linkedin.com/in/alsongarbuja",
+    githubUrl: "https://github.com/alsongarbuja",
+  },
+  {
+    name: "Susant Basnet",
+    imageUrl: "/team/susant.jpg",
+    linkedinUrl: "https://linkedin.com/in/alsongarbuja",
+    githubUrl: "https://github.com/alsongarbuja",
+  },
+  {
+    name: "Utsab gurung",
+    imageUrl: "/team/utsab.jpg",
+    linkedinUrl: "https://linkedin.com/in/alsongarbuja",
+    githubUrl: "https://github.com/alsongarbuja",
+  },
+  {
+    name: "Bipin Adhikari",
+    imageUrl: "/team/bipin.jpg",
+    linkedinUrl: "https://linkedin.com/in/alsongarbuja",
+    githubUrl: "https://github.com/alsongarbuja",
+  },
 ];
