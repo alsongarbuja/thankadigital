@@ -44,7 +44,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-between py-8 lg:flex-row">
             {
               team.map((member, index) => (
-                <figure className="relative md:w-[20%] w-[90%] h-[500px] group cursor-pointer" key={index}>
+                <figure className="relative lg:w-[20%] w-[90%] h-[500px] group cursor-pointer" key={index}>
                   <Image src={member.imageUrl} alt={member.name} className="object-cover w-full h-full" width={300} height={600} />
                   <figcaption className="absolute bottom-0 left-0 w-full h-full transition-all md:h-1/3 bg-gradient-to-t from-black to-transparent group-hover:h-full"></figcaption>
                   <div className="absolute bottom-0 left-0 flex flex-col items-center justify-center w-full h-full text-white transition-all opacity-100 md:opacity-0 group-hover:opacity-100">
