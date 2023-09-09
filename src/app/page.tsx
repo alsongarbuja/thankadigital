@@ -37,7 +37,7 @@ export default function Home() {
 
         {/* About Section */}
         <section className="py-5 mt-5">
-          <h2>About US</h2>
+          <h3>About US</h3>
           <p className="mt-5 text-lg text-justify">
             We are a team of dedicated professionals with a passion for cutting-edge technology. We specialize in providing customized solutions that cater to your unique business needs. Our expertise ranges from web development and mobile app design to digital marketing. Trust us to transform your ideas into reality and propel your business forward in the digital age.
           </p>
@@ -58,7 +58,7 @@ export default function Home() {
             <div>
               <span className="flex items-center gap-2 mb-8">
                 <Image src="/thanka_digital_logo.svg" alt="Thanka Digital logo" className="w-14 h-14" width={50} height={50} />
-                <h2>Thanka Digital</h2>
+                <h5>Thanka Digital</h5>
               </span>
               <Social />
             </div>
@@ -66,7 +66,7 @@ export default function Home() {
               {
                 footerLinks.map((footerLink, index) => (
                   <div className="flex flex-col gap-2" key={index}>
-                    <h5>{footerLink.title}</h5>
+                    <h6>{footerLink.title}</h6>
                     {
                       footerLink.links.map((link, index) => (
                         <p>

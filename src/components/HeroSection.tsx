@@ -6,7 +6,7 @@ const HeroSection = () => {
     <section className="relative flex items-center justify-between">
       <div>
         <h1 className="text-primary_red">Thanka <span className="text-primary_blue">Digital</span></h1>
-        <h4 className="mt-2 text-primary_red">CODE CRAFTED FOR QUALITY</h4>
+        <h5 className="mt-2 text-primary_red">CODE CRAFTED FOR QUALITY</h5>
         <p className="w-full mb-4 md:w-3/4">Leverage our expertise to elevate your business. Our meticulously crafted code and state-of-the-art technologies, backed by our dedicated teams, ensure the delivery of top-tier quality solutions.</p>
         <button className="p-4 mr-4 text-white rounded-md bg-primary_red">Connect with us</button>
         <Link href="#" className="font-medium text-primary_blue">View our portfolio</Link>

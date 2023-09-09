@@ -5,7 +5,7 @@ interface IServiceSectionProps {}
 const ServiceSection = ({ children }: PropsWithChildren<IServiceSectionProps>) => {
   return (
     <section className="my-10">
-      <h2>Our Services</h2>
+      <h3>Our Services</h3>
       <p>Services we provide to grow your business in all fields</p>
       {children}
     </section>

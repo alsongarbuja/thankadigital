@@ -27,7 +27,7 @@ const Header = () => {
         <span className="text-base font-bold md:text-xl">Thanka Digital</span>
       </span>
       <Menu className="cursor-pointer md:hidden" onClick={() => setIsNavbarOpen(prev => !prev)} />
-      <nav className={`fixed transition-[top] text-white md:text-black md:relative md:flex-row md:h-auto md:w-fit md:bg-inherit flex-col bg-primary_blue z-10 w-full h-screen ${isNavbarOpen ? 'top-0' : '-top-full'} left-0 font-semibold flex gap-8 items-center justify-center`}>
+      <nav className={`fixed transition-[top] text-white md:text-black md:relative md:flex-row md:h-auto md:w-fit md:bg-inherit flex-col bg-primary_blue z-10 w-full h-screen ${isNavbarOpen ? 'top-0' : '-top-[150%]'} left-0 font-semibold flex gap-8 items-center justify-center`}>
         <Link href="#">HOME</Link>
         <Link href="#">BLOGS</Link>
         <Link href="#">WORKS</Link>
