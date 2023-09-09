@@ -15,7 +15,7 @@ const HeroSection = () => {
         src="/hero_section_img.svg" 
         alt="illustration of young man waving while sitting at the computer" 
         width={250}
-        height={650} 
+        height={450} 
         className="w-[45rem] hidden md:block"
       />
     </section>
