@@ -14,7 +14,7 @@ export default function Home() {
     <main>
       {/* Header */}
       <Header />
-      <div className="max-w-[85%] mx-auto">
+      <div className="max-w-[90%] mx-auto">
 
         {/* Hero Section */}
         <HeroSection />
@@ -22,7 +22,7 @@ export default function Home() {
         {/* Services Section */}
         <ServiceSection>
           <div className="flex flex-col items-center justify-center gap-5 my-10 lg:flex-row">
-            <ServiceCard icon={<Globe className="w-12 h-12" />} title="Web application development" bgColor="bg-green-50" />
+            <ServiceCard icon={<Globe className="w-12 h-12 text-primary_red" />} title="Web application development" />
             <ServiceCard icon={<Code className="w-12 h-12" />} title="Mobile app development" bgColor="bg-red-50" />
             <ServiceCard icon={<Hexagon className="w-12 h-12" />} title="UI/UX & Graphics Design" bgColor="bg-purple-50" />
             <ServiceCard icon={<TrendingUp className="w-12 h-12" />} title="Digital Marketing & SEO" bgColor="bg-blue-50" />
@@ -38,18 +38,22 @@ export default function Home() {
         {/* About Section */}
         <section className="py-5 mt-5">
           <h2>About US</h2>
-          <div className="flex flex-col items-center justify-center gap-4 py-8 lg:flex-row">
+          <p className="mt-5 text-lg text-justify">
+            We are a team of dedicated professionals with a passion for cutting-edge technology. We specialize in providing customized solutions that cater to your unique business needs. Our expertise ranges from web development and mobile app design to digital marketing. Trust us to transform your ideas into reality and propel your business forward in the digital age.
+          </p>
+          <div className="flex flex-col items-center justify-center py-8 lg:flex-row">
             <Image src="/website_development_hero.jpg" alt="a laptop displaying a hand pointing in text which reads web development" className="w-auto h-auto rounded-lg" width={300} height={600} />
-            <p className="mt-5 text-lg text-justify">
-              We are a team of dedicated professionals with a passion for cutting-edge technology. We specialize in providing customized solutions that cater to your unique business needs. Our expertise ranges from web development and mobile app design to digital marketing. Trust us to transform your ideas into reality and propel your business forward in the digital age.
-            </p>
+            <Image src="/website_development_hero.jpg" alt="a laptop displaying a hand pointing in text which reads web development" className="w-auto h-auto rounded-lg" width={300} height={600} />
+            <Image src="/website_development_hero.jpg" alt="a laptop displaying a hand pointing in text which reads web development" className="w-auto h-auto rounded-lg" width={300} height={600} />
+            <Image src="/website_development_hero.jpg" alt="a laptop displaying a hand pointing in text which reads web development" className="w-auto h-auto rounded-lg" width={300} height={600} />
+            <Image src="/website_development_hero.jpg" alt="a laptop displaying a hand pointing in text which reads web development" className="w-auto h-auto rounded-lg" width={300} height={600} />
           </div>
         </section>
       </div>
 
       {/* Footer Section */}
       <footer className="py-16 mt-20">
-        <div className="max-w-[85%] mx-auto ">
+        <div className="max-w-[90%] mx-auto ">
           <div className="flex flex-col items-start justify-between gap-12 lg:flex-row">
             <div>
               <span className="flex items-center gap-2 mb-8">
@@ -142,4 +146,17 @@ const footerLinks = [
       },
     ],
   },
+  {
+    title: 'IMPORTANT LINKS',
+    links: [
+      {
+        text: 'Blogs',
+        href: '/',
+      },
+      {
+        text: 'Career',
+        href: '/',
+      },
+    ],
+  }
 ];
