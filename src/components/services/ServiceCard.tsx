@@ -9,7 +9,7 @@ const ServiceCard = ({ icon, title, bgColor="bg-inherit" }: IServiceCardProps) =
   return (
     <div className={`flex flex-col items-center justify-center gap-4 text-center p-4 w-full min-h-[200px] md:min-h-[350px] rounded-md ${bgColor}`}>
       {icon}
-      <h5 className={`${bgColor === "bg-inherit" && "text-primary_blue"}`}>{title}</h5>
+      <h6 className={`${bgColor === "bg-inherit" && "text-primary_blue"}`}>{title}</h6>
     </div>
   )
 }

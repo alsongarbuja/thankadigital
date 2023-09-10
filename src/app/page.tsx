@@ -50,8 +50,8 @@ export default function Home() {
                   <div className="absolute bottom-0 left-0 flex flex-col items-center justify-center w-full h-full text-white transition-all opacity-100 md:opacity-0 group-hover:opacity-100">
                     <h5 className="text-xl font-semibold">{member.name}</h5>
                     <div className="flex gap-6 mt-4">
-                      <Link href={member.linkedinUrl} target='_blank'><Linkedin /></Link>
-                      <Link href={member.githubUrl} target='_blank'><GitHub /></Link>
+                      <Link href={member.linkedinUrl} target='_blank' rel="noreferrer" aria-label={`link to linkedin of ${member.name}`} as={member.linkedinUrl}><Linkedin /></Link>
+                      <Link href={member.githubUrl} target='_blank' rel="noreferrer" aria-label={`link to github of ${member.name}`} as={member.githubUrl}><GitHub /></Link>
                     </div>
                   </div>
                 </figure>
