@@ -30,8 +30,8 @@ const Header = () => {
       </span>
       <Menu className="cursor-pointer md:hidden" onClick={() => setIsNavbarOpen(prev => !prev)} />
       <nav className={`fixed transition-[top] text-white md:text-black md:relative md:flex-row md:h-auto md:w-fit md:bg-inherit flex-col bg-primary_blue z-10 w-full h-screen ${isNavbarOpen ? 'top-0' : '-top-[150%]'} left-0 font-semibold flex gap-8 items-center justify-center`}>
-        <Link href="#" className={`px-4 py-1 rounded-md ${pathname==="/" && "text-white bg-primary_red"}`}>HOME</Link>
-        <Link href="#" className={`px-4 py-1 rounded-md ${pathname==="/blogs" && "text-white bg-primary_red"}`}>BLOGS</Link>
+        <Link href="/" className={`px-4 py-1 rounded-md ${pathname==="/" && "text-white bg-primary_red"}`}>HOME</Link>
+        <Link href="/blogs" className={`px-4 py-1 rounded-md ${pathname==="/blogs" && "text-white bg-primary_red"}`}>BLOGS</Link>
         <Link href="#" className={`px-4 py-1 rounded-md ${pathname==="/portfolio" && "text-white bg-primary_red"}`}>WORKS</Link>
         <Link href="#" className={`px-4 py-1 rounded-md ${pathname==="/about" && "text-white bg-primary_red"}`}>ABOUT</Link>
         <Link href="#" className={`px-4 py-1 rounded-md ${pathname==="/careers" && "text-white bg-primary_red"}`}>CAREERS</Link>
