@@ -1,4 +1,4 @@
-import { careerList } from '../../utils/careers'
+import { careerList } from '../../../utils/careers'
 import React from 'react'
 
 const CareerPage = () => {
@@ -11,26 +11,26 @@ const CareerPage = () => {
           <>
             {
               careerList.map(career => (
-                <div className="mt-8 bg-white shadow-md p-4 rounded-md" key={career.id}>
+                <div className="p-4 mt-8 bg-white rounded-md shadow-md" key={career.id}>
                   <h4 className="font-semibold">{career.title}</h4>
                   <p className="text-gray-500">{career.description}</p>
-                  <p className="font-medium mt-4">
+                  <p className="mt-4 font-medium">
                     Location: {career.location} | Type: {career.type} | Salary: {career.salary}
                   </p>
-                  <div className="mt-2 mb-4 flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2 mt-2 mb-4">
                     {
                       career.skills.map((skill, index) => (
-                        <span className="text-primary_blue bg-primary_blue bg-opacity-10 px-2 py-1 rounded-md mr-2" key={index}>{skill}</span>
+                        <span className="px-2 py-1 mr-2 rounded-md text-primary_blue bg-primary_blue bg-opacity-10" key={index}>{skill}</span>
                       ))
                     }
                   </div>
-                  <a href={"#"} className="text-primary_blue underline">Apply</a>
+                  <a href={"#"} className="underline text-primary_blue">Apply</a>
                 </div>
               ))
             }
           </>
         ) : (
-          <p className="text-gray-500 text-center mt-12">No career opportunities available at this moment</p>
+          <p className="mt-12 text-center text-gray-500">No career opportunities available at this moment</p>
         )
       }
     </main>
