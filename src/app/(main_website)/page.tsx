@@ -30,13 +30,13 @@ export default function Home() {
         <p className="mt-5 text-lg text-justify">
           We are a team of dedicated professionals with a passion for cutting-edge technology. We specialize in providing customized solutions that cater to your unique business needs. Our expertise ranges from web development and mobile app design to digital marketing. Trust us to transform your ideas into reality and propel your business forward in the digital age.
         </p>
-        <div className="flex flex-col items-center justify-between py-8 lg:flex-row">
+        <div className="about-images">
           {
             team.map((member, index) => (
-              <figure className="relative lg:w-[20%] w-[90%] h-[500px] group cursor-pointer" key={index}>
+              <figure className={`about-single-image single-image-${index} group`} key={index}>
                 <Image src={member.imageUrl} alt={member.name} className="object-cover w-full h-full" width={300} height={600} />
-                <figcaption className="absolute bottom-0 left-0 w-full h-full transition-all md:h-1/3 bg-gradient-to-t from-black to-transparent group-hover:h-full"></figcaption>
-                <div className="absolute bottom-0 left-0 flex flex-col items-center justify-center w-full h-full text-white transition-all opacity-100 md:opacity-0 group-hover:opacity-100">
+                <figcaption className="absolute bottom-0 left-0 w-full h-full transition-all ease-in-out md:h-1/3 bg-gradient-to-t from-black to-transparent group-hover:h-full"></figcaption>
+                <div className="absolute bottom-0 left-0 flex flex-col items-center justify-center w-full h-full text-white transition-all ease-in-out delay-100 opacity-100 lg:-bottom-full md:opacity-0 group-hover:opacity-100 lg:group-hover:bottom-0">
                   <h5 className="text-xl font-semibold">{member.name}</h5>
                   <div className="flex gap-6 mt-4">
                     <Link href={member.linkedinUrl} target='_blank' rel="noreferrer" aria-label={`link to linkedin of ${member.name}`} as={member.linkedinUrl}><Linkedin /></Link>
