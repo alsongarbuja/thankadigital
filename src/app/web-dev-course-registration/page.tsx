@@ -13,10 +13,6 @@ interface userData {
   "entry.703362708": string;
 }
 
-export type dynamicObject = {
-  [key: string]: string;
-}
-
 const WebDevCourseRegisterPage = () => {
   
   const [isFirstOpen, setIsFirstOpen] = useState(true);

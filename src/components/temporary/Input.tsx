@@ -1,5 +1,3 @@
-import { dynamicObject } from "../../app/web-dev-course-registration/page";
-
 interface InputProps {
   label: string;
   type: string;
