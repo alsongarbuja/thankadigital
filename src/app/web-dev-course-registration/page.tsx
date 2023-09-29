@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react'
 interface userData {
   "entry.668855873": string;
   "entry.2093799469": string;
-  "entry.64164442"?: string;
+  "entry.64164442": string;
   "entry.148672612": string;
   "entry.331549010": string;
   "entry.703362708": string;
@@ -34,7 +34,7 @@ const WebDevCourseRegisterPage = () => {
   }
 
   const handleContinue = () => {
-    if(data["entry.668855873"] === "" || data["entry.2093799469"] === "" || data["entry.148672612"] === "" || data["entry.331549010"] === "") {
+    if(data["entry.668855873"] === "" || data["entry.2093799469"] === "" || data["entry.148672612"] === "" || data["entry.331549010"] === "" || data["entry.64164442"] === "") {
       setError(prev => ({ ...prev, [currentField]: "This field is required" }))
     }
     if(currentField === "entry.668855873" && data["entry.668855873"] !== "") {
@@ -43,7 +43,7 @@ const WebDevCourseRegisterPage = () => {
     if(currentField === "entry.2093799469" && data["entry.2093799469"] !== "") {
       setCurrentField("entry.64164442");
     }
-    if(currentField === "entry.64164442") {
+    if(currentField === "entry.64164442" && data["entry.64164442"] !== "") {
       setCurrentField("entry.148672612");
       setCurrentStep(1);
     }
@@ -57,9 +57,9 @@ const WebDevCourseRegisterPage = () => {
     if(currentField === "entry.703362708") {
       setCurrentStep(3);
     }
-    if(currentStep === 3) {
-      setCurrentStep(4);
-    }
+    // if(currentStep === 3) {
+    //   setCurrentStep(4);
+    // }
   }
 
   useEffect(() => {
@@ -175,8 +175,7 @@ const WebDevCourseRegisterPage = () => {
             type="text"
             name='entry.64164442'
             placeholder="Enter your phonenumber"
-            isRequired={false}
-            value={data["entry.64164442"] || ''}
+            value={data["entry.64164442"]}
             handleChange={handleChange}
             error={error}
             crrField={currentField}
@@ -211,12 +210,12 @@ const WebDevCourseRegisterPage = () => {
             error={error}
           />
           <button 
-            type={currentStep <= 3 ? "button": "submit"} 
+            type={currentStep < 3 ? "button": "submit"} 
             className="p-4 text-white rounded-md bg-primary_blue/95 hover:bg-primary_blue disabled:bg-gray-400 disabled:cursor-not-allowed"
-            onClick={currentStep <= 3 ? handleContinue : ()=>{}}
-            disabled={currentStep > 4}
+            onClick={currentStep < 3 ? handleContinue : ()=>{}}
+            disabled={currentStep > 3}
           >
-            {currentStep < 3 ? 'Continue' : 'Submit'}
+            {currentStep < 2 ? 'Continue' : 'Submit'}
           </button>
         </form>
       </main>
