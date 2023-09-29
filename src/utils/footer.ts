@@ -55,11 +55,11 @@ export const footerLinks = [
     links: [
       {
         text: 'Blogs',
-        href: '/',
+        href: '/blogs',
       },
       {
         text: 'Career',
-        href: '/',
+        href: '/careers',
       },
     ],
   }

@@ -1,4 +1,4 @@
-export const projectsList = [
+export const projectsList: ProjectModel[] = [
   {
     id: '1',
     name: 'Talewears',

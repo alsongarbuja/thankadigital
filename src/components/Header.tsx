@@ -34,7 +34,7 @@ const Header = () => {
         <Link href="/blogs" className={`px-4 py-1 rounded-md ${pathname==="/blogs" && "text-white bg-primary_red"}`}>BLOGS</Link>
         <Link href="#" className={`px-4 py-1 rounded-md ${pathname==="/portfolio" && "text-white bg-primary_red"}`}>WORKS</Link>
         <Link href="#" className={`px-4 py-1 rounded-md ${pathname==="/about" && "text-white bg-primary_red"}`}>ABOUT</Link>
-        <Link href="#" className={`px-4 py-1 rounded-md ${pathname==="/careers" && "text-white bg-primary_red"}`}>CAREERS</Link>
+        <Link href="/careers" className={`px-4 py-1 rounded-md ${pathname==="/careers" && "text-white bg-primary_red"}`}>CAREERS</Link>
 
         <X className={`fixed text-white cursor-pointer ${isNavbarOpen ? 'top-5' : '-top-full'} right-5 md:hidden`} onClick={() => setIsNavbarOpen(prev => !prev)} />
       </nav>
