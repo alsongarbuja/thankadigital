@@ -22,3 +22,13 @@ type ProjectModel = {
   detailLink: string;
   caseStudy: dynamicObject;
 };
+
+type BlogModel = {
+  id: string;
+  title: string;
+  summary: string;
+  author: string;
+  date: string;
+  description: string;
+  tags: string[];
+};
