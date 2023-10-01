@@ -11,6 +11,7 @@ type CareerModel = {
   type: 'Full Time' | 'Part Time';
   experience: string;
   skills: string[];
+  time: string;
 };
 
 type ProjectModel = {

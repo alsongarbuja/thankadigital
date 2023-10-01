@@ -1,7 +1,8 @@
-import { careerList } from '../../../utils/careers'
-import React from 'react'
+import { getCareerList } from "../../../utils/careers";
 
-const CareerPage = () => {
+const CareerPage = async () => {
+  const careerList = await getCareerList();
+
   return (
     <main className="max-w-[90%] min-h-[50vh] mx-auto">
       <h3>Career opportunities</h3>
@@ -14,9 +15,10 @@ const CareerPage = () => {
                 <div className="p-4 mt-8 bg-white rounded-md shadow-md" key={career.id}>
                   <h4 className="font-semibold">{career.title}</h4>
                   <p className="text-gray-500">{career.description}</p>
-                  <p className="mt-4 font-medium">
-                    Location: {career.location} | Type: {career.type} | Salary: {career.salary}
-                  </p>
+                  <p className="mt-4 font-medium">Location: {career.location}</p>
+                  <p className="font-medium">Type: {career.type}</p>
+                  {career.salary !== "-" && <p className="font-medium">Salary: {career.salary}</p>}
+                  {career.time !== "-" && <p className="font-medium">Time Period: {career.time}</p>}
                   <div className="flex flex-wrap gap-2 mt-2 mb-4">
                     {
                       career.skills.map((skill, index) => (
