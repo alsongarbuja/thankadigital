@@ -10,46 +10,13 @@ const CareerList = ({ careerList }: ICareerListProps) => {
   const [isApplyOpen, setIsApplyOpen] = useState(false);
   const [selectedCareer, setSelectedCareer] = useState<CareerModel | null>(null);
   const nameRef = useRef<HTMLInputElement>(null);
-  const emailRef = useRef<HTMLInputElement>(null);
   const phoneRef = useRef<HTMLInputElement>(null);
   const linkRef = useRef<HTMLInputElement>(null);
-  const cvRef = useRef<HTMLInputElement>(null);
   const queryRef = useRef<HTMLInputElement>(null);
 
   const handleApplyModel = (career: CareerModel) => {
     setSelectedCareer(career);
     setIsApplyOpen(true);
-  }
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = {
-      careerId: selectedCareer?.identifier,
-      name: nameRef.current?.value,
-      email: emailRef.current?.value,
-      phone: phoneRef.current?.value,
-      link: linkRef.current?.value,
-      query: queryRef.current?.value,
-      cv: cvRef.current?.files?.[0]
-    }
-    const res = await fetch("https://api.sheety.co/2c6a673dad5828c32980a768a9560ca3/careerApplications/applications", {
-      method: "POST",
-      body: JSON.stringify({
-        "application": data
-      }),
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${process.env.NEXT_PUBLIC_SHEETY_API_APPLY_AUTHORIZATION}`
-      }
-    })
-    const response = await res.json();
-    if(res.status === 200) {
-      alert("Successfully applied for the job");
-      setIsApplyOpen(false);
-    } else {
-      console.error(response);
-      alert("Something went wrong. Please try again later");
-    }
   }
   
   return (
@@ -73,7 +40,7 @@ const CareerList = ({ careerList }: ICareerListProps) => {
                       ))
                     }
                   </div>
-                  <span onClick={()=>handleApplyModel(career)} className="cursor-pointer underline text-primary_blue">Apply</span>
+                  <span onClick={()=>handleApplyModel(career)} className="underline cursor-pointer text-primary_blue">Apply</span>
                 </div>
               ))
             }
@@ -84,22 +51,23 @@ const CareerList = ({ careerList }: ICareerListProps) => {
       }
       {
         isApplyOpen && (
-          <div className="fixed z-10 w-screen h-screen bg-black/70 top-0 left-0" onClick={()=>setIsApplyOpen(false)}>
-            <div className="fixed bg-white rounded-md w-1/2 p-4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" onClick={(e) => e.stopPropagation()}>
+          <div className="fixed top-0 left-0 z-10 w-screen h-screen bg-black/70" onClick={()=>setIsApplyOpen(false)}>
+            <div className="fixed w-1/2 p-4 -translate-x-1/2 -translate-y-1/2 bg-white rounded-md top-1/2 left-1/2" onClick={(e) => e.stopPropagation()}>
               <h4>Apply For {selectedCareer?.title}</h4>
-              <p className="mb-4">{selectedCareer?.description}</p>
-              <form className="flex flex-col gap-4" onSubmit={handleSubmit} encType="multipart/form-data">
+              <p>{selectedCareer?.description}</p>
+              <p className="mb-4 font-semibold text-primary_red">Note: Please Attach your CV in the mail and any other details you want to add.</p>
+              <div className="flex flex-col gap-4">
                 <input ref={nameRef} className="p-2 border border-gray-200 rounded-md" required type="text" placeholder="Full name" />
-                <input ref={emailRef} className="p-2 border border-gray-200 rounded-md" required type="email" placeholder="Email" />
                 <input ref={phoneRef} className="p-2 border border-gray-200 rounded-md" required type="number" placeholder="Phone number" />
                 <input ref={linkRef} className="p-2 border border-gray-200 rounded-md" required type="text" placeholder="Porfolio Website / Github Link / Dribbble Link" />
                 <input ref={queryRef} className="p-2 border border-gray-200 rounded-md" type="text" placeholder="Any queries" />
-                <div className="flex gap-2">
-                  <label htmlFor="">CV: *</label>
-                  <input ref={cvRef} className="p-2 border border-gray-200 rounded-md" required type="file" placeholder="CV" />
-                </div>
-                <button type="submit" className="bg-primary_blue p-4 text-white rounded-sm">Apply</button>
-              </form>
+                <a 
+                  href={"mailto:thankadigital@gmail.com?subject=Career Application For "+selectedCareer?.title+" At Thanka Digtial&body=Name: " + nameRef.current?.value + "%0D%0APhone: " + phoneRef.current?.value + "%0D%0APortfolio: " + linkRef.current?.value + "%0D%0AQuery: " + queryRef.current?.value + "%0D%0A"} 
+                  className="p-4 text-center text-white rounded-sm bg-primary_blue"
+                >
+                  Send Mail
+                </a>
+              </div>
             </div>
           </div>
         )
