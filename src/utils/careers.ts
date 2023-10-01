@@ -4,6 +4,9 @@ export const getCareerList = async (): Promise<CareerModel[]> => {
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Basic ${process.env.SHEETY_API_AUTHORIZATION}`
+    },
+    next: {
+      revalidate: 7200,
     }
   })
   const careersJson = await careers.json();
