@@ -3,7 +3,7 @@ type dynamicObject = {
 }
 
 type CareerModel = {
-  id: string;
+  identifier: string;
   title: string;
   description: string;
   salary: string;
@@ -19,6 +19,7 @@ type ProjectModel = {
   name: string;
   description: string;
   thumbnail: string;
+  logo: string;
   liveLink: string;
   detailLink: string;
   caseStudy: dynamicObject;

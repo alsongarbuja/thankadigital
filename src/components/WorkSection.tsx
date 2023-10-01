@@ -20,18 +20,18 @@ const WorkSection = () => {
                   alt={project.name} 
                   width={400} 
                   height={350} 
-                  className="w-full min-h-[300px] object-cover"
+                  className="w-full min-h-[300px] object-cover brightness-50"
                 />
-                <div className="text-white p-4 flex flex-col gap-12 absolute group-hover:top-0 transition-all ease-in-out top-[60%] left-0 w-full h-full bg-gradient-to-t from-primary_blue to-transparent">
+                <div className="text-white p-4 flex flex-col justify-between absolute group-hover:top-0 transition-all ease-in-out top-[60%] left-0 w-full h-full bg-gradient-to-t from-primary_blue to-transparent">
                   <div>
                     <h4>{project.name}</h4>
                     <p>{project.description}</p>
                   </div>
 
                   <Image 
-                    src="/thanka_digital_logo.svg" 
-                    alt="Thanka Digital logo" 
-                    className="w-10 h-10 md:w-14 md:h-14" 
+                    src={project.logo} 
+                    alt={project.name} 
+                    className="w-10 h-auto md:w-14" 
                     width={50} 
                     height={50}
                   />
