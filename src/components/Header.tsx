@@ -25,7 +25,7 @@ const Header = () => {
           <Link
             key={navLink.id} 
             href={navLink.path}
-            className={`px-4 py-1 rounded-md ${pathname===navLink.path && "text-white bg-primary_red"}`}
+            className={`px-4 py-1 rounded-md uppercase ${pathname===navLink.path && "text-white bg-primary_red"}`}
           >{navLink.name}</Link>
         ))}
 

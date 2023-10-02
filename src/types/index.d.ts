@@ -34,3 +34,14 @@ type BlogModel = {
   description: string;
   tags: string[];
 };
+
+type TeamModel = {
+  id: string;
+  name: string;
+  position: string;
+  portfolio: string;
+  imageUrl: string;
+  linkedin: string;
+  github: string;
+  teamCategory: "Owners" | "Programmers" | "Designers" | "Marketers" | "Testers" | "Others";
+}
