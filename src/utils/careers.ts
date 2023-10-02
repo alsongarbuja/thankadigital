@@ -6,7 +6,7 @@ export const getCareerList = async (): Promise<CareerModel[]> => {
       "Authorization": `Basic ${process.env.SHEETY_API_AUTHORIZATION}`
     },
     next: {
-      revalidate: 7200,
+      revalidate: 600,
     }
   })
   const careersJson = await careers.json();
