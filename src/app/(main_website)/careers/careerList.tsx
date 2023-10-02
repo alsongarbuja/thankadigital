@@ -18,6 +18,13 @@ const CareerList = ({ careerList }: ICareerListProps) => {
     setSelectedCareer(career);
     setIsApplyOpen(true);
   }
+
+  const handleSendMail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (nameRef.current?.value && phoneRef.current?.value && linkRef.current?.value) {
+      window.open("mailto:thankadigtial@gmail.com?subject=Career Application For "+selectedCareer?.title+" At Thanka Digtial&body=Name: " + nameRef.current?.value + "%0D%0APhone: " + phoneRef.current?.value + "%0D%0APortfolio: " + linkRef.current?.value + "%0D%0AQuery: " + queryRef.current?.value + "%0D%0A");
+    }
+  }
   
   return (
     <>
@@ -56,18 +63,19 @@ const CareerList = ({ careerList }: ICareerListProps) => {
               <h4>Apply For {selectedCareer?.title}</h4>
               <p>{selectedCareer?.description}</p>
               <p className="mb-4 font-semibold text-primary_red">Note: Please Attach your CV in the mail and any other details you want to add.</p>
-              <div className="flex flex-col gap-4">
+              <form onSubmit={handleSendMail} className="flex flex-col gap-4">
                 <input ref={nameRef} className="p-2 border border-gray-200 rounded-md" required type="text" placeholder="Full name" />
                 <input ref={phoneRef} className="p-2 border border-gray-200 rounded-md" required type="number" placeholder="Phone number" />
                 <input ref={linkRef} className="p-2 border border-gray-200 rounded-md" required type="text" placeholder="Porfolio Website / Github Link / Dribbble Link" />
                 <input ref={queryRef} className="p-2 border border-gray-200 rounded-md" type="text" placeholder="Any queries" />
-                <a 
-                  href={"mailto:thankadigital@gmail.com?subject=Career Application For "+selectedCareer?.title+" At Thanka Digtial&body=Name: " + nameRef.current?.value + "%0D%0APhone: " + phoneRef.current?.value + "%0D%0APortfolio: " + linkRef.current?.value + "%0D%0AQuery: " + queryRef.current?.value + "%0D%0A"} 
+                <button 
+                  type="submit"
+                  // href={"mailto:thankadigital@gmail.com?subject=Career Application For "+selectedCareer?.title+" At Thanka Digtial&body=Name: " + nameRef.current?.value + "%0D%0APhone: " + phoneRef.current?.value + "%0D%0APortfolio: " + linkRef.current?.value + "%0D%0AQuery: " + queryRef.current?.value + "%0D%0A"} 
                   className="p-4 text-center text-white rounded-sm bg-primary_blue"
                 >
                   Send Mail
-                </a>
-              </div>
+                </button>
+              </form>
             </div>
           </div>
         )
