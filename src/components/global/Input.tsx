@@ -1,6 +1,6 @@
 interface InputProps {
   label: string;
-  type: string;
+  type?: string;
   placeholder: string;
   isRequired?: boolean;
   value: string;
@@ -11,7 +11,7 @@ interface InputProps {
 }
 
 const Input = (props: InputProps) => {
-  const { label, name, type, placeholder, isRequired=true, value, handleChange, error, crrField } = props;
+  const { label, name, type="text", placeholder, isRequired=true, value, handleChange, error, crrField } = props;
 
   return (
     <div className={`w-full my-8 ${crrField===name?"block":"hidden"}`}>

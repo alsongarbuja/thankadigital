@@ -1,8 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 
-import Select from '@/components/temporary/Select';
-import Input from '@/components/temporary/Input';
+import Select from '@/components/global/Select';
+import Input from '@/components/global/Input';
 
 interface userData {
   "entry.668855873": string;

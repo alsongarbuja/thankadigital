@@ -10,7 +10,7 @@ import WorkSection from '@/components/WorkSection'
 
 export default function Home() {
   return (
-    <main className="max-w-[90%] mx-auto">
+    <>
 
       <HeroSection />
 
@@ -49,6 +49,6 @@ export default function Home() {
         </div>
       </section>
 
-    </main>
+    </>
   )
 }

@@ -2,7 +2,7 @@ import { blogList } from "@/utils/blogs"
 
 const BlogPage = () => {
   return (
-    <main className="max-w-[90%] min-h-[50vh] mx-auto">
+    <>
       <h3>Blogs</h3>
       <p className="font-medium text-gray-500">Read interesting blogs about tech industry</p>
       {
@@ -32,7 +32,7 @@ const BlogPage = () => {
           <p className="mt-12 text-center text-gray-500">No blogs to read at this moment</p>
         )
       }
-    </main>
+    </>
   )
 }
 
