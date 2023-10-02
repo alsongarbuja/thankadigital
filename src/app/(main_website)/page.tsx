@@ -2,11 +2,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Code, GitHub, Globe, Hexagon, Linkedin, TrendingUp } from 'react-feather'
 
-import { team } from '../../utils/team'
-import HeroSection from '../../components/HeroSection'
-import ServiceCard from '../../components/services/ServiceCard'
-import ServiceSection from '../../components/services/ServiceSection'
-import WorkSection from '../../components/WorkSection'
+import { team } from '@/utils/team'
+import HeroSection from '@/components/HeroSection'
+import ServiceCard from '@/components/services/ServiceCard'
+import ServiceSection from '@/components/services/ServiceSection'
+import WorkSection from '@/components/WorkSection'
 
 export default function Home() {
   return (

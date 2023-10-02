@@ -1,9 +1,10 @@
-import Image from "next/image";
-import Header from "../../components/Header";
-import Social from "../../components/Social";
-import { footerLinks } from "../../utils/footer";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+
+import Header from "@/components/Header";
+import Social from "@/components/Social";
+import { footerLinks } from "@/utils/footer";
 
 export default function MainLayout({
   children,

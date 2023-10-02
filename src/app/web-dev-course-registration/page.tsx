@@ -1,8 +1,8 @@
 'use client';
+import React, { useEffect, useState } from 'react';
 
-import Select from '../../components/temporary/Select';
-import Input from '../../components/temporary/Input';
-import React, { useEffect, useState } from 'react'
+import Select from '@/components/temporary/Select';
+import Input from '@/components/temporary/Input';
 
 interface userData {
   "entry.668855873": string;
@@ -14,7 +14,6 @@ interface userData {
 }
 
 const WebDevCourseRegisterPage = () => {
-  
   const [isFirstOpen, setIsFirstOpen] = useState(true);
   const [hasResponse, setHasResponse] = useState(true);
   const [data, setData] = useState<userData>({

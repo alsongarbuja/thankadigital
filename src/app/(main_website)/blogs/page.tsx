@@ -1,4 +1,4 @@
-import { blogList } from "../../../utils/blogs"
+import { blogList } from "@/utils/blogs"
 
 const BlogPage = () => {
   return (

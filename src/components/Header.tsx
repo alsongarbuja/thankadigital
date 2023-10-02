@@ -29,7 +29,10 @@ const Header = () => {
         {/* <span className="text-base font-bold md:text-xl">Thanka Digital</span> */}
       </span>
       <Menu className="cursor-pointer md:hidden" onClick={() => setIsNavbarOpen(prev => !prev)} />
-      <nav className={`fixed transition-[top] text-white md:text-black md:relative md:flex-row md:h-auto md:w-fit md:bg-inherit flex-col bg-primary_blue z-10 w-full h-screen ${isNavbarOpen ? 'top-0' : '-top-[150%]'} left-0 font-semibold flex gap-8 items-center justify-center`}>
+      <nav 
+        className={`fixed transition-[top] duration-300 text-white md:text-black md:relative md:flex-row md:h-auto md:w-fit md:bg-inherit flex-col bg-primary_blue z-10 w-full h-screen ${isNavbarOpen ? 'top-0' : '-top-[150%]'} left-0 font-semibold flex gap-8 items-center justify-center`}
+        onClick={()=>setIsNavbarOpen(false)}
+      >
         <Link href="/" className={`px-4 py-1 rounded-md ${pathname==="/" && "text-white bg-primary_red"}`}>HOME</Link>
         <Link href="/blogs" className={`px-4 py-1 rounded-md ${pathname==="/blogs" && "text-white bg-primary_red"}`}>BLOGS</Link>
         <Link href="#" className={`px-4 py-1 rounded-md ${pathname==="/portfolio" && "text-white bg-primary_red"}`}>WORKS</Link>

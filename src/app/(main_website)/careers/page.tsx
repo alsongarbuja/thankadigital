@@ -1,5 +1,5 @@
 import CareerList from "./careerList";
-import { getCareerList } from "../../../utils/careers";
+import { getCareerList } from "@/utils/careers";
 
 const CareerPage = async () => {
   const careerList = await getCareerList();

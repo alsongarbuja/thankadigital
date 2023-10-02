@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { projectsList } from "../utils/projects";
+import { projectsList } from "@/utils/projects";
 
 const WorkSection = () => {
   return (

@@ -59,7 +59,7 @@ const CareerList = ({ careerList }: ICareerListProps) => {
       {
         isApplyOpen && (
           <div className="fixed top-0 left-0 z-10 w-screen h-screen bg-black/70" onClick={()=>setIsApplyOpen(false)}>
-            <div className="fixed w-1/2 p-4 -translate-x-1/2 -translate-y-1/2 bg-white rounded-md top-1/2 left-1/2" onClick={(e) => e.stopPropagation()}>
+            <div className="fixed w-11/12 lg:w-1/2 p-4 -translate-x-1/2 -translate-y-1/2 bg-white rounded-md top-1/2 left-1/2" onClick={(e) => e.stopPropagation()}>
               <h4>Apply For {selectedCareer?.title}</h4>
               <p>{selectedCareer?.description}</p>
               <p className="mb-4 font-semibold text-primary_red">Note: Please Attach your CV in the mail and any other details you want to add.</p>
