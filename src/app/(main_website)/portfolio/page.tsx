@@ -1,33 +1,23 @@
 "use client";
 import { projectsList } from "@/utils/projects";
-import { useState } from "react"
-import { ChevronLeft, ChevronRight } from "react-feather";
+import { useState, useEffect } from "react";
 
 const PortfolioPage = () => {
-  const [active, setActive] = useState({
-    index: 0,
-    direction: "left",
-  });
-
-  const handleNext = () => setActive(prev => ({index: (prev.index+1)%projectsList.length, direction: "right"}));
-  const handlePrev = () => setActive(prev => ({index: (prev.index-1)%projectsList.length, direction: "left"}));
-
   return (
-    <>
-      <h3 className="uppercase">Our Works</h3>
-      <p className="font-semibold text-gray-400">See the journey of works we have done for our clients</p>
+    <div className="bg-white">
+      <h3 className="uppercase cursor-none">Our Works</h3>
+      <p className="font-semibold text-gray-400 cursor-none">See the journey of works we have done for our clients</p>
 
-      <div className="relative w-full mt-8 overflow-hidden">
+      <div className="relative w-full mt-8 overflow-hidden cursor-none">
         {
           projectsList.map((project, index) => (
             <div 
               data-index={index} 
               key={project.id} 
-              // className={`absolute top-0 transition-all duration-500 ease-in-out ${active.index===index?"left-0":"-right-full"} ${(active.direction==="right"&&active.index===index-1)&&"-left-full"} ${(active.direction==="left"&&active.index===index+1)&&"-right-full"} grid w-full h-full grid-cols-2 bg-white`}
-              className={`flex gap-2 my-12 even:flex-row-reverse`}
+              className={`flex gap-2 my-12 flex-col items-center md:flex-row md:even:flex-row-reverse`}
             >
-              <img src={project.thumbnail} alt={`${project.name} design system screenshot`} className="object-cover w-1/2 h-full border rounded-md" />
-              <div className="flex flex-col justify-center flex-1 p-5 bg-white odd:items-end">
+              <img src={project.thumbnail} alt={`${project.name} design system screenshot`} className="object-cover w-full h-full border rounded-md md:w-1/2" />
+              <div className="flex flex-col justify-center flex-1 p-5 odd:items-end">
                 <h2 className="font-semibold">{project.name}</h2>
                 <p className="text-gray-400">{project.description}</p>
                 <p className="flex items-center gap-2 my-4 font-semibold">
@@ -38,29 +28,32 @@ const PortfolioPage = () => {
                 <p className="flex items-center gap-2 my-4 font-semibold">
                   Project Status: <span className="text-green-600">{project.journey.status}</span>
                 </p>
-                <button className="px-4 py-2 mt-4 text-white bg-black rounded-md w-fit">View the journey</button>
+                <button className="px-4 py-2 mt-4 text-white bg-black rounded-md w-fit cursor-none">View the journey</button>
               </div>
             </div>
           ))
         }
-        {
-          projectsList.length > 1 && (
-            <>
-              {active.index > 0 && (
-                <button onClick={handlePrev} className="absolute z-10 p-4 text-white -translate-y-1/2 rounded-full bg-black/40 hover:bg-black/70 top-1/2">
-                  <ChevronLeft />
-                </button>
-              )}
-              {active.index < projectsList.length-1 && (
-                <button onClick={handleNext} className="absolute right-0 z-10 p-4 text-white -translate-y-1/2 rounded-full bg-black/40 hover:bg-black/70 top-1/2">
-                  <ChevronRight />
-                </button>
-              )}
-            </>
-          )
-        }
+        <CustomCursor />
       </div>
-    </>
+    </div>
+  )
+}
+
+const CustomCursor = () => {
+  const [position, setPosition] = useState({x: 0, y: 0});
+
+  useEffect(() => {
+    const handleMouse = (e: MouseEvent) => setPosition({x: e.clientX, y: e.clientY});
+    window.addEventListener("mousemove", handleMouse);
+    return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
+
+  return (
+    <div className="fixed z-50 hidden w-12 h-12 bg-white rounded-full pointer-events-none mix-blend-difference md:block" style={{
+      left: position.x-6,
+      top: position.y-6,
+      transform: "translate(-50%, -50%)",
+    }} />
   )
 }
 
