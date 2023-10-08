@@ -12,7 +12,7 @@ export const getCareerList = async (): Promise<CareerModel[]> => {
   const careersJson = await careers.json();
   const actualCareerList = careersJson.careers.map((c: dynamicObject) => ({
     ...c,
-    skills: c.skills.split(',').map(s => s.trim())
+    skills: c.skills.split(',').map((s: string) => s.trim())
   }));
   return actualCareerList as CareerModel[];
 }
