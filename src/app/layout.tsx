@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html className={`${dm_sans.variable}`} lang="en">
-      <body>
+      <body className="bg-white">
         {children}
       </body>
     </html>

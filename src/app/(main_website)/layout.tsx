@@ -17,7 +17,7 @@ export default function MainLayout({
 
       <main className="max-w-[90%] mx-auto min-h-[50vh]">{children}</main>
       
-      <footer className="py-16 mt-20">
+      <footer className="pb-16 pt-36">
         <div className="max-w-[90%] mx-auto ">
           <div className="flex flex-col items-start justify-between gap-12 lg:flex-row">
             <div>
