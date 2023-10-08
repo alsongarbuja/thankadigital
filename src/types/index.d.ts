@@ -1,5 +1,5 @@
 type dynamicObject = {
-  [key: string]: string;
+  [key: string]: any;
 }
 
 type CareerModel = {
@@ -22,7 +22,7 @@ type ProjectModel = {
   logo: string;
   liveLink: string;
   detailLink: string;
-  caseStudy: dynamicObject;
+  journey: dynamicObject;
 };
 
 type BlogModel = {
