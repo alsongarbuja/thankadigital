@@ -8,19 +8,19 @@ const WorkSection = () => {
     <section className="py-5 mt-5">
         <h3>Works</h3>
         <p className="mb-4">
-          Some of our selected projects. {projectsList.length > 6 && <Link href="/works" className="text-primary_blue underline">See More</Link>}
+          Some of our selected projects. {projectsList.length > 6 && <Link href="/works" className="underline text-primary_blue">See More</Link>}
         </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-center justify-center gap-2">
+      <div className="grid items-center justify-center grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {
           projectsList.map(project => (
             <Link href={project.detailLink} key={project.id}>
-              <figure className="relative rounded-md col-span-1 overflow-hidden group" key={project.id}>
+              <figure className="relative col-span-1 overflow-hidden rounded-md group" key={project.id}>
                 <Image 
                   src={project.thumbnail} 
                   alt={project.name} 
                   width={400} 
                   height={350} 
-                  className="w-full min-h-[300px] object-cover brightness-50"
+                  className="w-full h-[300px] object-cover brightness-50"
                 />
                 <div className="text-white p-4 flex flex-col justify-between absolute group-hover:top-0 transition-all ease-in-out top-[60%] left-0 w-full h-full bg-gradient-to-t from-primary_blue to-transparent">
                   <div>

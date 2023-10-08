@@ -28,42 +28,42 @@ const AboutPage = async () => {
 
       <div className="mt-10">
         <h4 className="">Our Teams</h4>
-        <h6 className="mt-8 text-center">Core Teams</h6>
+        <h6 className="mt-8 text-center">Core Team</h6>
         <MemberWrapper>
           {teams.coreTeams.map(team => (
             <Member member={team} key={team.id} />
           ))}
         </MemberWrapper>
 
-        <h6 className="mt-8 text-center">Developers Teams</h6>
+        <h6 className="mt-8 text-center">Developers</h6>
         <MemberWrapper>
           {teams.programmers.map(team => (
             <Member member={team} key={team.id} />
           ))}
         </MemberWrapper>
 
-        {teams.designers.length>0&&<h6 className="mt-8 text-center">Designers Teams</h6>}
+        {teams.designers.length>0&&<h6 className="mt-8 text-center">Designers</h6>}
         <MemberWrapper>
           {teams.designers.map(team => (
             <Member member={team} key={team.id} />
           ))}
         </MemberWrapper>
 
-        {teams.marketers.length>0&&<h6 className="mt-8 text-center">Marketers Teams</h6>}
+        {teams.marketers.length>0&&<h6 className="mt-8 text-center">Marketering Team</h6>}
         <MemberWrapper>
           {teams.marketers.map(team => (
             <Member member={team} key={team.id} />
           ))}
         </MemberWrapper>
 
-        {teams.testers.length>0&&<h6 className="mt-8 text-center">Testers Teams</h6>}
+        {teams.testers.length>0&&<h6 className="mt-8 text-center">Testers</h6>}
         <MemberWrapper>
           {teams.testers.map(team => (
             <Member member={team} key={team.id} />
           ))}
         </MemberWrapper>
 
-        {teams.others.length>0&&<h6 className="mt-8 text-center">Others Teams</h6>}
+        {teams.others.length>0&&<h6 className="mt-8 text-center">Others Members</h6>}
         <MemberWrapper>
           {teams.others.map(team => (
             <Member member={team} key={team.id} />
