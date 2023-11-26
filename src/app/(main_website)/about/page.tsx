@@ -1,10 +1,8 @@
-import { getTeams } from "@/utils/team";
+import { teams } from "@/utils/team";
 import Image from "next/image";
 import { GitHub, Globe, Linkedin } from "react-feather";
 
 const AboutPage = async () => {
-  const teams = await getTeams();
-
   return (
     <>
       <h3 className="uppercase">About US</h3>
@@ -37,7 +35,7 @@ const AboutPage = async () => {
 
         <h6 className="mt-8 text-center">Developers</h6>
         <MemberWrapper>
-          {teams.programmers.map(team => (
+          {teams.developers.map(team => (
             <Member member={team} key={team.id} />
           ))}
         </MemberWrapper>
@@ -84,7 +82,7 @@ const Member = ({ member }: { member: TeamModel }) => {
   return (
     <div className="relative w-full md:w-[18%] h-[350px] group overflow-hidden">
       <Image 
-        src={member.imageUrl}
+        src={member.image}
         alt={member.name}
         width={250}
         height={350}
@@ -99,7 +97,7 @@ const Member = ({ member }: { member: TeamModel }) => {
           <p className="py-2 font-semibold bg-primary_red/20">{member.position}</p>
         </div>
         <div className="flex gap-4">
-          {member.portfolio!=="-"&&<a href={member.portfolio} target='_blank' rel="noreferrer" aria-label={`link to portfolio of ${member.name}`}><Globe /></a>}
+          {member.portfolio&&<a href={member.portfolio} target='_blank' rel="noreferrer" aria-label={`link to portfolio of ${member.name}`}><Globe /></a>}
           <a href={member.linkedin} target='_blank' rel="noreferrer" aria-label={`link to linkedin of ${member.name}`}><Linkedin /></a>
           <a href={member.github} target='_blank' rel="noreferrer" aria-label={`link to github of ${member.name}`}><GitHub /></a>
         </div>

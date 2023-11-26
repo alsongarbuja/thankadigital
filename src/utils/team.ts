@@ -1,41 +1,64 @@
-export const getCoreTeam = async (): Promise<TeamModel[]> => {
-  const res = await fetch("https://api.sheety.co/2c6a673dad5828c32980a768a9560ca3/thankaTeams/teams", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.SHEETY_API_TEAM_AUTHORIZATION}`
-    }
-  });
-  const data = await res.json();
-
-  return data.teams.filter((t: TeamModel) => t.teamCategory==="Owners");
-}
-
-type Teams = {
-  coreTeams: TeamModel[];
-  programmers: TeamModel[];
-  testers: TeamModel[];
-  marketers: TeamModel[];
-  designers: TeamModel[];
-  others: TeamModel[];
-}
-
-export const getTeams = async (): Promise<Teams> => {
-  const res = await fetch("https://api.sheety.co/2c6a673dad5828c32980a768a9560ca3/thankaTeams/teams", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": `Bearer ${process.env.SHEETY_API_TEAM_AUTHORIZATION}`
-    }
-  });
-  const data = await res.json();
-  const teams: Teams = {
-    coreTeams: data.teams.filter((t: TeamModel) => t.teamCategory==="Owners"),
-    programmers: data.teams.filter((t: TeamModel) => t.teamCategory==="Programmers"),
-    designers: data.teams.filter((t: TeamModel) => t.teamCategory==="Designers"),
-    marketers: data.teams.filter((t: TeamModel) => t.teamCategory==="Marketers"),
-    testers: data.teams.filter((t: TeamModel) => t.teamCategory==="Testers"),
-    others: data.teams.filter((t: TeamModel) => t.teamCategory==="Others"),
-  }
-  return teams;
+export const teams: Team = {
+  coreTeams: [
+    {
+      id: 0,
+      name: "Alson Garbuja",
+      position: "Co-Founder & Full Stack Developer",
+      image: "https://avatars.githubusercontent.com/u/42911859?v=4",
+      linkedin: "https://www.linkedin.com/in/alsongarbuja/",
+      github: "https://github.com/alsongarbuja",
+      portfolio: "https://alsongarbuja.com.np",
+    },
+    {
+      id: 1,
+      name: "Bipin Adhikari",
+      position: "Co-Founder & App Developer",
+      image: "https://avatars.githubusercontent.com/u/53456593?v=4",
+      linkedin: "https://linkedin.com/in/bipinad",
+      github: "https//github.com/bipinad",
+      portfolio: null,
+    },
+    {
+      id: 2,
+      name: "Sunil Paudel",
+      position: "Co-Founder & Frontend Developer",
+      image: "https://avatars.githubusercontent.com/u/53456714?v=4",
+      linkedin: "https://linkedin.com/in/sunil-paudel-482a4125a",
+      github: "https://github.com/SunilPdl",
+      portfolio: null,
+    },
+    {
+      id: 3,
+      name: "Susant Basnet",
+      position: "Co-Founder & Frontend Developer",
+      image: "https://media.licdn.com/dms/image/D4D03AQGqQSGAyIDh-g/profile-displayphoto-shrink_800_800/0/1688698869409?e=2147483647&v=beta&t=7-1xQPFJ3qvKI2KcWm-wMXJIey76SV9alAulN-idxkk",
+      linkedin: "https://linkedin.com/in/susant-basnet-79b185254",
+      github: "https://github.com/Susant-Basnet",
+      portfolio: null,
+    },
+    {
+      id: 4,
+      name: "Utsab Gurung",
+      position: "Co-Founder & Frontend Developer",
+      image: "https://avatars.githubusercontent.com/u/53475177?v=4",
+      linkedin: "https://linkedin.com/in/utsab-gurung-928b0b280",
+      github: "https://github.com/utsab043",
+      portfolio: null,
+    },
+  ],
+  developers: [
+    {
+      id: 0,
+      name: "Prasiddha Khadka",
+      position: "App Developer",
+      image: "https://avatars.githubusercontent.com/u/53443661?v=4",
+      linkedin: "https://www.linkedin.com/in/prasiddha-khadka/",
+      github: "https://github.com/Prasiddha777",
+      portfolio: null,
+    },
+  ],
+  designers: [],
+  marketers: [],
+  testers: [],
+  others: [],
 }

@@ -1,12 +1,10 @@
-import { getCoreTeam } from '@/utils/team'
+import { teams } from '@/utils/team'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { GitHub, Linkedin } from 'react-feather'
 
 const AboutSection = async () => {
-  const teams = await getCoreTeam();
-
   return (
     <section className="py-5 mt-5">
       <h3>About US</h3>
@@ -15,9 +13,9 @@ const AboutSection = async () => {
       </p>
       <div className="about-images">
         {
-          teams.map((member, index) => (
+          teams.coreTeams.map((member, index) => (
             <figure className={`about-single-image single-image-${index} group`} key={index}>
-              <Image src={member.imageUrl} alt={member.name} className="object-cover w-full h-full" width={300} height={600} />
+              <Image src={member.image} alt={member.name} className="object-cover w-full h-full" width={300} height={600} />
               <figcaption className="absolute bottom-0 left-0 w-full h-full transition-all ease-in-out md:h-1/3 bg-gradient-to-t from-black to-transparent group-hover:h-full"></figcaption>
               <div className="absolute bottom-0 left-0 flex flex-col items-center justify-center w-full h-full text-white transition-all ease-in-out delay-100 opacity-100 lg:-bottom-full md:opacity-0 group-hover:opacity-100 lg:group-hover:bottom-0">
                 <h5 className="text-xl font-semibold">{member.name}</h5>

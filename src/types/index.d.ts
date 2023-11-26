@@ -36,12 +36,20 @@ type BlogModel = {
 };
 
 type TeamModel = {
-  id: string;
+  id: number;
   name: string;
   position: string;
-  portfolio: string;
-  imageUrl: string;
+  portfolio: string | null;
+  image: string;
   linkedin: string;
   github: string;
-  teamCategory: "Owners" | "Programmers" | "Designers" | "Marketers" | "Testers" | "Others";
+}
+
+type Team = {
+  coreTeams: TeamModel[];
+  developers: TeamModel[];
+  designers: TeamModel[];
+  marketers: TeamModel[];
+  testers: TeamModel[];
+  others: TeamModel[];
 }
