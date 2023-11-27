@@ -7,9 +7,6 @@ export async function POST(req: NextRequest) {
 
   try {
     const res = await login(email, password);
-    console.log(res);
-    return
-    
     return NextResponse.json({
       user: res.user,
       token: res.token,
