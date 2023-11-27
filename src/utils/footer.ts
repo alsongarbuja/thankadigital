@@ -61,6 +61,10 @@ export const footerLinks = [
         text: 'Career',
         href: '/careers',
       },
+      {
+        text: 'Admin',
+        href: '/admin/login',
+      }
     ],
   }
 ];
