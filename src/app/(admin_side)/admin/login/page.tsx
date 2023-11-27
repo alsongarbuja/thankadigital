@@ -31,8 +31,8 @@ export default function LoginPage() {
         })
       }).then(res => res.json()).then(res => {
         if (res.user) {
-          addToLocalStorage("user", JSON.stringify(res.user))
-          addToLocalStorage("token", res.token)
+          addToLocalStorage("thanka_user", JSON.stringify(res.user))
+          addToLocalStorage("thanka_token", res.token)
 
           router.push("/admin/dashboard")
         } else {
