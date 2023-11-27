@@ -5,6 +5,7 @@ import userModel from "@/server/models/user.model";
 import dbConnect from "..";
 import { ApiError } from "@/server/helpers/ApiError";
 import tokenModel from "../models/token.model";
+import { removePrivateProperty } from "../helpers/privateProperty";
 
 export const register = async (user: { name: string; email: string; password: string; }) => {
   await dbConnect();
@@ -21,7 +22,7 @@ export const register = async (user: { name: string; email: string; password: st
   await tokenModel.create({ accessToken: token, user: newUser._id, expires: moment().add(30, 'days') });
 
   return {
-    user: newUser,
+    user: removePrivateProperty(newUser),
     token,
   };
 }
@@ -45,10 +46,8 @@ export const login = async (email: string, password: string) => {
   });
   await tokenModel.create({ accessToken: token, user: user._id, expires: moment().add(30, 'days') });
 
-  // const userObj = removePrivateProperty(user, "password");
-
   return {
-    user,
+    user: removePrivateProperty(user),
     token,
   };
 }

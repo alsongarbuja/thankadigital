@@ -1,4 +1,7 @@
 export const removePrivateProperty = (obj: dynamicObject) => {
-  // remove the private property of the obj
-  
+  const newObj: dynamicObject = { id: obj._id.toString(), ...obj._doc };
+  delete newObj._id;
+  delete newObj.password;
+  delete newObj.__v;
+  return newObj;
 }
