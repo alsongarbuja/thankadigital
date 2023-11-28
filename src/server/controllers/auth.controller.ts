@@ -51,3 +51,13 @@ export const login = async (email: string, password: string) => {
     token,
   };
 }
+
+export const logout = async (token: string) => {
+  await dbConnect();
+  const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { id: string };
+  if (!decoded) {
+    throw new ApiError("Invalid token", 401);
+  }
+  await tokenModel.deleteOne({ accessToken: token, user: decoded.id });
+  return true;
+}

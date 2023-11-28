@@ -9,3 +9,9 @@ export const getFromLocalStorage = (key: string, isJson: boolean = false) => {
     return isJson ? JSON.parse(localStorage.getItem(key) as string || '{}') : localStorage.getItem(key);
   }
 }
+
+export const removeFromLocalStorage = (key: string) => {
+  if (typeof window !== "undefined") {
+    localStorage.removeItem(key);
+  }
+}

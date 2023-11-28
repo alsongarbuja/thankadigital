@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { Grid, Users } from "react-feather";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { getFromLocalStorage, removeFromLocalStorage } from "@/helpers/localstorage";
 
 const sidebarLinks = [
   {
@@ -33,6 +34,33 @@ const sidebarLinks = [
 
 const AdminSidebar = () => {
   const pathname = usePathname();
+  const router = useRouter();
+
+  const logout = async () => {
+    try {
+      const res = await fetch("/api/admin/logout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify({
+          token: getFromLocalStorage("thanka_token")
+        }),
+      });
+      const data = await res.json();
+      if(res.status === 200) {
+        removeFromLocalStorage("thanka_user");
+        removeFromLocalStorage("thanka_token");
+
+        router.replace("/");
+      } else {
+        console.log(data);
+      }
+    } catch (err) {
+      console.log(err);
+    } finally {
+      console.log("logout");
+    }
+  }
 
   return (
     <nav className="flex flex-col justify-between h-screen col-span-1 text-white bg-primary_blue">
@@ -49,7 +77,7 @@ const AdminSidebar = () => {
         ))}
       </ul>
     </div>
-    <button className="py-4 text-primary_red">
+    <button className="py-4 text-primary_red" onClick={logout}>
       Logout
     </button>
   </nav>
