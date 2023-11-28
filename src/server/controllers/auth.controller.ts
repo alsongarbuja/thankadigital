@@ -61,3 +61,20 @@ export const logout = async (token: string) => {
   await tokenModel.deleteOne({ accessToken: token, user: decoded.id });
   return true;
 }
+
+export const checkToken = async (token: string) => {
+  await dbConnect();
+  const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { id: string };
+  if (!decoded) {
+    throw new ApiError("Invalid token", 401);
+  }
+  const user = await userModel.findById(decoded.id);
+  if (!user) {
+    throw new ApiError("User not found", 404);
+  }
+  const tokenDoc = await tokenModel.findOne({ accessToken: token, user: decoded.id });
+  if (!tokenDoc) {
+    throw new ApiError("Invalid token", 401);
+  }
+  return true;
+}
