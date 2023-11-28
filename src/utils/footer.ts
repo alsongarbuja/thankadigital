@@ -63,7 +63,7 @@ export const footerLinks = [
       },
       {
         text: 'Admin',
-        href: '/admin/login',
+        href: '/login',
       }
     ],
   }

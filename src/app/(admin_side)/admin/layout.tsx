@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import AdminSidebar from "./_components/AdminSidebar";
+import AdminSidebar from "../_components/AdminSidebar";
 
 
 const AdminLayout = ({ children }: PropsWithChildren) => {
