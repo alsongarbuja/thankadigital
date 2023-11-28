@@ -1,5 +1,6 @@
 "use client"
 
+import { schemaParser } from '@/helpers/schemaParser';
 import { useRouter } from 'next/navigation';
 import React, { PropsWithChildren, useRef } from 'react'
 import { ChevronLeft } from 'react-feather';
@@ -7,16 +8,24 @@ import { ChevronLeft } from 'react-feather';
 type FormLayoutProps = PropsWithChildren<{
   url: string;
   method: "POST" | "PATCH";
+  schema?: string[];
 }>
 
-const FormLayout = ({ children, url, method }: FormLayoutProps) => {
+const FormLayout = ({ children, url, method, schema }: FormLayoutProps) => {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    const data = Object.fromEntries(formData.entries())
+    let data = Object.fromEntries(formData.entries())
+    
+    if(schema) {
+      data = schemaParser(schema, data);
+    }
+
+    console.log(data);
+    return;
 
     const res = await fetch(url, {
       method: method,

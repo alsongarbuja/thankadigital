@@ -1,6 +1,6 @@
 
 type AdminSelectProps = {
-  label: string;
+  label?: string;
   name: string;
   required?: boolean;
   value?: string;
