@@ -1,19 +1,42 @@
 "use client"
 
 import { schemaParser } from '@/helpers/schemaParser';
-import { useRouter } from 'next/navigation';
-import React, { PropsWithChildren, useRef } from 'react'
+import { useParams, useRouter } from 'next/navigation';
+import React, { PropsWithChildren, useEffect, useRef } from 'react'
 import { ChevronLeft } from 'react-feather';
 
 type FormLayoutProps = PropsWithChildren<{
   url: string;
   method: "POST" | "PATCH";
   schema?: string[];
+  param?: string;
+  modelName?: string;
 }>
 
-const FormLayout = ({ children, url, method, schema }: FormLayoutProps) => {
+const FormLayout = ({ children, url, method, schema, param, modelName }: FormLayoutProps) => {
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
+  const params = useParams();
+
+  useEffect(() => {
+    if(method === "PATCH" && param && modelName) {
+      (async () => {
+        const res = await fetch(`${url}/${params[param]}`)
+        const json = await res.json();
+        
+        if(res.status === 200) {
+          Object.keys(json[modelName]).forEach(key => {
+            const input = formRef.current?.querySelector(`[name="${key}"]`) as HTMLInputElement;
+            if(input) {
+              input.value = json[modelName][key];
+            }
+          })
+        } else {
+          console.log(json)
+        }
+      })()
+    }
+  }, [])
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -23,9 +46,6 @@ const FormLayout = ({ children, url, method, schema }: FormLayoutProps) => {
     if(schema) {
       data = schemaParser(schema, data);
     }
-
-    console.log(data);
-    return;
 
     const res = await fetch(url, {
       method: method,
@@ -44,7 +64,10 @@ const FormLayout = ({ children, url, method, schema }: FormLayoutProps) => {
   
   return (
     <form ref={formRef} className="flex flex-col gap-8" onSubmit={handleSubmit}>
-      <button className='p-2 border-2 rounded-md w-fit' type="button" onClick={()=>router.back()}><ChevronLeft /></button>
+      <div className="flex gap-4">
+        <button className='p-2 border-2 rounded-md w-fit' type="button" onClick={()=>router.back()}><ChevronLeft /></button>
+        <h3>{method==="POST"?"Create":"Edit"} {modelName}</h3>
+      </div>
       {children}
       <button type="submit" className="px-4 py-2 text-white rounded-md bg-primary_red">Submit</button>
     </form>

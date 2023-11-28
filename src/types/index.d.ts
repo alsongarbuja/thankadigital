@@ -26,12 +26,20 @@ type ProjectModel = {
 };
 
 type BlogModel = {
-  id: string;
+  _id: string;
   title: string;
   summary: string;
-  author: string;
-  date: string;
-  description: string;
+  author: {
+    name: string;
+    link: string;
+  };
+  body: {
+    time: number;
+    version: string;
+    blocks: dynamicObject[];
+  };
+  createdAt: Date;
+  updatedAt: Date;
   tags: string[];
 };
 

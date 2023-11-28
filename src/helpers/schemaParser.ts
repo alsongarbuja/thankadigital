@@ -8,6 +8,9 @@ export const schemaParser = (schema: string[], data: dynamicObject) => {
         return acc;
       }, {});
       result[mainKey] = innerData;
+    } else if(key.includes("|")) {
+      const actualKey = key.split("|")[0];
+      result[actualKey] = JSON.parse(data[actualKey]);
     } else {
       result[key] = data[key];
     }
