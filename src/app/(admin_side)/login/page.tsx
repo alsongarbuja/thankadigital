@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { addToLocalStorage } from "@/helpers/localstorage";
@@ -10,6 +10,31 @@ import { ArrowLeft, Loader } from "react-feather";
 export default function LoginPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
+
+  useEffect(() => {
+    const user = localStorage.getItem("thanka_user")
+    const token = localStorage.getItem("thanka_token")
+
+    if (user && token) {
+      (async () => {
+        await fetch("/api/admin/login/check", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            token
+          })
+        }).then(res => res.json()).then(res => {
+          if (res.success) {
+            router.push("/admin/dashboard")
+          }
+        }).catch(e => {
+          console.log(e)
+        })
+      })()
+    }
+  }, [])
 
   const submitLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
