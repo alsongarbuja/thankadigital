@@ -1,5 +1,6 @@
 "use client"
 
+import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -16,27 +17,29 @@ const BlogList = () => {
   }, [])
 
   return (
-    <section>
+    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {
         blogList.length > 0 ? (
           <>
             {
               blogList.map(blog => (
-                <div className="p-4 mt-8 border-b-2 border-gray-300" key={blog._id}>
-                  <h4 className="font-semibold text-center">{blog.title}</h4>
-                  <p className="mt-4 font-medium text-right">
-                    Author: <span className="text-primary_blue">{blog.author.name}</span> ({blog.createdAt.toString()})
-                  </p>
-                  <p className="mt-4 text-justify">{blog.summary}</p>
-                  <div className="flex flex-wrap gap-2 mt-2 mb-4">
-                    {
-                      blog.tags.map((tag: string, index: number) => (
-                        <span className="px-4 py-1 text-white rounded-full bg-primary_blue" key={index}>{tag}</span>
-                      ))
-                    }
+                <Link href={`/blogs/${blog._id}`} key={blog._id}>
+                  <div className="p-4 mt-8 border-2 border-gray-300 rounded-md" key={blog._id}>
+                    <h4 className="font-semibold">{blog.title}</h4>
+                    <span className="font-medium text-primary_blue">{blog.author.name}</span> 
+                    <p className="text-sm font-medium">
+                      {moment(blog.createdAt).fromNow()}
+                    </p>
+                    <p className="mt-4 text-justify">{blog.summary}</p>
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {
+                        blog.tags.map((tag: string, index: number) => (
+                          <span className="px-4 py-1 text-white rounded-full bg-primary_blue" key={index}>{tag}</span>
+                        ))
+                      }
+                    </div>
                   </div>
-                  <Link href={`/blogs/${blog._id}`} className="underline text-primary_blue">Read In Detail</Link>
-                </div>
+                </Link>
               ))
             }
           </>
