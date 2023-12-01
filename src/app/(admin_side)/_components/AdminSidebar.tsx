@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link";
-import { Grid, Users } from "react-feather";
+import { Briefcase, FileText, Grid, Users } from "react-feather";
 import { usePathname, useRouter } from "next/navigation";
 import { getFromLocalStorage, removeFromLocalStorage } from "@/helpers/localstorage";
 
@@ -22,13 +22,13 @@ const sidebarLinks = [
     id: 2,
     name: "Blogs",
     path: "/admin/blogs",
-    icon: <Grid />,
+    icon: <FileText />,
   },
   {
     id: 3,
     name: "Careers",
     path: "/admin/careers",
-    icon: <Grid />,
+    icon: <Briefcase />,
   },
 ];
 

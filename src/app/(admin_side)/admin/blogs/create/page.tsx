@@ -6,7 +6,7 @@ import WysiwygEditor from '@/components/WysiwygEditor'
 const CreateBlog = () => {
   return (
     <div className="p-4 m-4">
-      <FormLayout url="/api/admin/blog" method="POST" schema={["title", "summary", "body|", "author:name:link", "tags"]}>
+      <FormLayout url="/api/admin/blog" modelName="Blog" method="POST" schema={["title", "summary", "body|", "author:name:link", "tags"]}>
         <div className="w-full h-full">
           <AdminInput name="title" placeholder="Enter title" />
           <AdminInput name="summary" placeholder="Enter Summary" />
