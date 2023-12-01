@@ -39,50 +39,54 @@ const BlogSinglePage = () => {
   }, [])
 
   return (
-    <section className="w-11/12 mx-auto my-5 md:w-9/12">
-      <button className="p-2 border rounded-md" onClick={()=>router.back()}><ChevronLeft /></button>
-      <h2>{blog.title}</h2>
-      <div className="flex flex-col items-end justify-end gap-1">
-        <p className="font-bold">
-          By <Link href={blog.author.link} className="text-primary_blue">{blog.author.name}</Link>
-        </p>
-        <p className="text-gray-500">{moment(blog.createdAt).fromNow()}</p>
+    <section className="grid w-11/12 grid-cols-1 mx-auto my-5 md:grid-cols-6">
+      <div className="p-4 bg-white">
+        <button className="p-2 border rounded-md" onClick={()=>router.back()}><ChevronLeft /></button>
       </div>
-      <hr className="my-2" />
-      <Blocks 
-        data={blog.body as any}
-        config={editorRenderConfig}
-        renderers={{
-          simpleImage: ({data}) => {
-            
-            if(data.withBackground) {
+      <article className="col-span-4">
+        <h3>{blog.title}</h3>
+        <div className="flex flex-col items-end justify-end gap-1">
+          <p className="font-bold">
+            By <Link href={blog.author.link} className="text-primary_blue">{blog.author.name}</Link>
+          </p>
+          <p className="text-gray-500">{moment(blog.createdAt).fromNow()}</p>
+        </div>
+        <hr className="my-2" />
+        <Blocks 
+          data={blog.body as any}
+          config={editorRenderConfig}
+          renderers={{
+            simpleImage: ({data}) => {
+              
+              if(data.withBackground) {
+                return (
+                  <figure className="p-4 mb-4 bg-gray-100 rounded-lg">
+                    <img alt={data.caption} src={data.url} className="w-full h-auto mx-auto mb-4 md:w-1/2" />
+                  </figure>
+                )
+              }
               return (
-                <figure className="p-4 mb-4 bg-gray-100 rounded-lg">
-                  <img alt={data.caption} src={data.url} className="w-full h-auto mx-auto mb-4 md:w-1/2" />
-                </figure>
+                <img alt={data.caption} src={data.url} className="w-full h-auto mb-4" />
               )
-            }
-            return (
-              <img alt={data.caption} src={data.url} className="w-full h-auto mb-4" />
-            )
-          },
-          warning: ({data}) => {
-            return (
-              <div className="p-4 mb-4 text-yellow-800 bg-yellow-100">
-                <p className="font-bold">{data.title}</p>
-                <p>{data.message}</p>
-              </div>
-            )
-          },
-          code: ({data}) => {
-            return (
-              <pre className="p-4 mb-4 text-white bg-gray-900 rounded-lg">
-                <code>{data.code}</code>
-              </pre>
-            )
-          },
-        }}
-      />
+            },
+            warning: ({data}) => {
+              return (
+                <div className="p-4 mb-4 text-yellow-800 bg-yellow-100">
+                  <p className="font-bold">{data.title}</p>
+                  <p>{data.message}</p>
+                </div>
+              )
+            },
+            code: ({data}) => {
+              return (
+                <pre className="p-4 mb-4 overflow-x-scroll text-white bg-gray-900 rounded-lg">
+                  <code>{data.code}</code>
+                </pre>
+              )
+            },
+          }}
+        />
+      </article>
     </section>
   )
 }

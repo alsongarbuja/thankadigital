@@ -17,15 +17,15 @@ const BlogList = () => {
   }, [])
 
   return (
-    <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+    <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {
         blogList.length > 0 ? (
           <>
             {
               blogList.map(blog => (
                 <Link href={`/blogs/${blog._id}`} key={blog._id}>
-                  <div className="p-4 mt-8 border-2 border-gray-300 rounded-md" key={blog._id}>
-                    <h4 className="font-semibold">{blog.title}</h4>
+                  <div className="p-4 mt-8 border-b-2 border-gray-300" key={blog._id}>
+                    <h6 className="font-semibold">{blog.title}</h6>
                     <span className="font-medium text-primary_blue">{blog.author.name}</span> 
                     <p className="text-sm font-medium">
                       {moment(blog.createdAt).fromNow()}
@@ -34,7 +34,7 @@ const BlogList = () => {
                     <div className="flex flex-wrap gap-2 mt-2">
                       {
                         blog.tags.map((tag: string, index: number) => (
-                          <span className="px-4 py-1 text-white rounded-full bg-primary_blue" key={index}>{tag}</span>
+                          <span className="inline-block text-base font-semibold text-primary_blue" key={index}>#{tag}</span>
                         ))
                       }
                     </div>

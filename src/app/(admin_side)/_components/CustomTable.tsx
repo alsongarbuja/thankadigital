@@ -1,5 +1,6 @@
 "use client"
 
+import moment from "moment";
 import Link from "next/link";
 import { useEffect, useState } from "react"
 
@@ -64,7 +65,7 @@ const CustomTable = ({ url, keys, pathUrl }: CustomTableProps) => {
       <thead>
         <tr className="border-b-2 border-gray-700">
           {keys.map((key, index) => (
-            <th key={index} className="h-12 text-center">{key}</th>
+            <th key={index} className="h-12 text-left">{key}</th>
           ))}
           <th>Actions</th>
         </tr>
@@ -75,7 +76,13 @@ const CustomTable = ({ url, keys, pathUrl }: CustomTableProps) => {
           return (
             <tr key={index} className="border-b-2 border-gray-200">
               {Object.values(newData).map((value: any, index) => (
-                <td key={index} className="h-24 text-center">{value}</td>
+                <td key={index} className="h-24">
+                  {
+                    /T.*:.*\./.test(value)?
+                      moment(value).fromNow():
+                      value
+                  }
+                </td>
               ))}
               <td className="flex items-center justify-center h-24 gap-4">
                 <Link href={`/admin/${pathUrl}/edit/${d.id||d._id}`} className="font-semibold text-primary_blue">Edit</Link>

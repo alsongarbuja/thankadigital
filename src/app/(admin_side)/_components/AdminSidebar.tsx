@@ -65,7 +65,9 @@ const AdminSidebar = () => {
   return (
     <nav className="flex flex-col justify-between h-screen col-span-1 text-white bg-primary_blue">
     <div>
-      <span className="inline-block px-4 my-8 text-3xl">Thanka Digital</span>
+      <Link href="/">
+        <span className="inline-block px-4 my-8 text-3xl">Thanka Digital</span>
+      </Link>
       <ul>
         {sidebarLinks.map(link => (
           <Link href={link.path} key={link.id}>
