@@ -6,6 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Blocks from 'editorjs-blocks-react-renderer';
 import { ChevronLeft } from "react-feather";
+import { editorRenderConfig } from "@/utils/editorRenderConfig";
 
 const BlogSinglePage = () => {
   const [blog, setBlog] = useState<BlogModel>({
@@ -48,7 +49,32 @@ const BlogSinglePage = () => {
         <p className="text-gray-500">{moment(blog.createdAt).fromNow()}</p>
       </div>
       <hr className="my-2" />
-      <Blocks data={blog.body as any} />
+      <Blocks 
+        data={blog.body as any}
+        config={editorRenderConfig}
+        renderers={{
+          simpleImage: ({data}) => {
+            return (
+              <img alt={data.caption} src={data.url} className="w-full h-auto mb-4" />
+            )
+          },
+          warning: ({data}) => {
+            return (
+              <div className="p-4 mb-4 text-yellow-800 bg-yellow-100">
+                <p className="font-bold">{data.title}</p>
+                <p>{data.message}</p>
+              </div>
+            )
+          },
+          code: ({data}) => {
+            return (
+              <pre className="p-4 mb-4 text-white bg-gray-900 rounded-lg">
+                <code>{data.code}</code>
+              </pre>
+            )
+          },
+        }}
+      />
     </section>
   )
 }
