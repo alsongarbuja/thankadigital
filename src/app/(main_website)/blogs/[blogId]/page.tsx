@@ -39,7 +39,7 @@ const BlogSinglePage = () => {
   }, [])
 
   return (
-    <section className="w-11/12 mx-auto my-5">
+    <section className="w-11/12 mx-auto my-5 md:w-9/12">
       <button className="p-2 border rounded-md" onClick={()=>router.back()}><ChevronLeft /></button>
       <h2>{blog.title}</h2>
       <div className="flex flex-col items-end justify-end gap-1">
@@ -54,6 +54,14 @@ const BlogSinglePage = () => {
         config={editorRenderConfig}
         renderers={{
           simpleImage: ({data}) => {
+            
+            if(data.withBackground) {
+              return (
+                <figure className="p-4 mb-4 bg-gray-100 rounded-lg">
+                  <img alt={data.caption} src={data.url} className="w-full h-auto mx-auto mb-4 md:w-1/2" />
+                </figure>
+              )
+            }
             return (
               <img alt={data.caption} src={data.url} className="w-full h-auto mb-4" />
             )
