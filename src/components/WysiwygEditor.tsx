@@ -78,7 +78,7 @@ const WysiwygEditor = ({ value }: WysiwygEditorProps) => {
 
   return (
     <>
-      <input type="text" className="opacity-0" name="body" value={data} />
+      <input type="text" className="opacity-0" name="body" value={data} onChange={()=>{}} />
       <div id="editor"></div>
       <div className="flex items-center justify-end">
         <button type="button" className="px-4 py-2 text-white rounded-md w-fit align-center bg-primary_blue" onClick={save}>
