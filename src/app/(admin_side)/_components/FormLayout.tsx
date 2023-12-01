@@ -1,6 +1,6 @@
 "use client"
 
-import { schemaParser } from '@/helpers/schemaParser';
+import { dataToSchemaParser, schemaToDataParser } from '@/helpers/schemaParser';
 import { useParams, useRouter } from 'next/navigation';
 import React, { PropsWithChildren, useEffect, useRef } from 'react'
 import { ChevronLeft } from 'react-feather';
@@ -25,10 +25,11 @@ const FormLayout = ({ children, url, method, schema, param, modelName }: FormLay
         const json = await res.json();
         
         if(res.status === 200) {
-          Object.keys(json[modelName]).forEach(key => {
+          const data = schemaToDataParser(json[modelName]);
+          Object.keys(data).forEach(key => {
             const input = formRef.current?.querySelector(`[name="${key}"]`) as HTMLInputElement;
             if(input) {
-              input.value = json[modelName][key];
+              input.value = data[key];
             }
           })
         } else {
@@ -44,7 +45,7 @@ const FormLayout = ({ children, url, method, schema, param, modelName }: FormLay
     let data = Object.fromEntries(formData.entries())
     
     if(schema) {
-      data = schemaParser(schema, data);
+      data = dataToSchemaParser(schema, data);
     }
 
     const res = await fetch(url, {
