@@ -13,7 +13,6 @@ const dm_sans = DM_Sans({
 export const metadata: Metadata = {
   title: 'Thanka Digital',
   description: 'Bring your business to next level with Thanka Digital',
-  icons: { icon: "/icons/favicon.ico" }
 }
 
 export default function RootLayout({
