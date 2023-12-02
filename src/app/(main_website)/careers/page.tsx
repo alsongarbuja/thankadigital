@@ -1,8 +1,8 @@
+import { getCareers } from "@/server/controllers/career.controller";
 import CareerList from "./careerList";
-import { getCareerList } from "@/utils/careers";
 
 const CareerPage = async () => {
-  const careerList = await getCareerList();
+  const careerList: CareerModel[] = await getCareers();
 
   return (
     <>

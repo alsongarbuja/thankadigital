@@ -3,7 +3,7 @@ type dynamicObject = {
 }
 
 type CareerModel = {
-  identifier: string;
+  _id: string;
   title: string;
   description: string;
   salary: string;
