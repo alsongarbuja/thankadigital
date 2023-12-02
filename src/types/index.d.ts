@@ -61,3 +61,15 @@ type Team = {
   testers: TeamModel[];
   others: TeamModel[];
 }
+
+type EditorBlockValue = {
+  time?: number;
+  blocks: {
+    type: string;
+    data: {
+      text: string;
+      level?: number;
+    };
+  }[];
+  version?: string;
+};

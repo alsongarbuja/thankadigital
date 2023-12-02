@@ -6,17 +6,7 @@ import { EDITOR_JS_TOOLS } from '@/utils/editorTools';
 import React, { useEffect, useRef, useState } from 'react';
 
 type WysiwygEditorProps = {
-  value: {
-    time?: number;
-    blocks: {
-      type: string;
-      data: {
-        text: string;
-        level?: number;
-      };
-    }[];
-    version?: string;
-  };
+  value: EditorBlockValue;
 }
 
 const WysiwygEditor = ({ value }: WysiwygEditorProps) => {
@@ -31,6 +21,9 @@ const WysiwygEditor = ({ value }: WysiwygEditorProps) => {
       const editor = new EditorJS({
         holder: 'editor',
         tools: EDITOR_JS_TOOLS,
+        onChange: () => {
+          save();
+        }
       });
   
       editorCore.current = editor as EditorJS;
@@ -45,8 +38,22 @@ const WysiwygEditor = ({ value }: WysiwygEditorProps) => {
 
   useEffect(() => {
     if(editorCore.current) {
+      let data = value;
+      if(value.blocks.length === 0) {
+        data = {
+          ...data,
+          blocks: [
+            {
+              type: "paragraph",
+              data: {
+                text: ""
+              }
+            }
+          ]
+        };
+      }
       editorCore.current.isReady.then(() => {
-        editorCore.current?.render(value);
+        editorCore.current?.render(data);
       })
     }
   }, [value])
@@ -80,11 +87,6 @@ const WysiwygEditor = ({ value }: WysiwygEditorProps) => {
     <>
       <input type="text" className="opacity-0" name="body" value={data} onChange={()=>{}} />
       <div id="editor"></div>
-      <div className="flex items-center justify-end">
-        <button type="button" className="px-4 py-2 text-white rounded-md w-fit align-center bg-primary_blue" onClick={save}>
-          Save Editor data
-        </button>
-      </div>
     </>
   )
 }
