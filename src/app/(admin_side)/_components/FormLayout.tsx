@@ -1,5 +1,6 @@
 "use client"
 
+import { apiCaller } from '@/helpers/apiCaller';
 import { dataToSchemaParser, schemaToDataParser } from '@/helpers/schemaParser';
 import { useParams, useRouter } from 'next/navigation';
 import React, { PropsWithChildren, useEffect, useRef } from 'react'
@@ -21,11 +22,10 @@ const FormLayout = ({ children, url, method, schema, param, modelName }: FormLay
   useEffect(() => {
     if(method === "PATCH" && param && modelName) {
       (async () => {
-        const res = await fetch(`${url}/${params[param]}`)
-        const json = await res.json();
+        const res = await apiCaller(`${url}/${params[param]}`)
         
-        if(res.status === 200) {
-          const data = schemaToDataParser(json[modelName]);
+        if(res.isGood) {
+          const data = schemaToDataParser(res.data[modelName]);
           Object.keys(data).forEach(key => {
             const input = formRef.current?.querySelector(`[name="${key}"]`) as HTMLInputElement;
             if(input) {
@@ -33,33 +33,39 @@ const FormLayout = ({ children, url, method, schema, param, modelName }: FormLay
             }
           })
         } else {
-          console.log(json)
+          console.log(res)
         }
       })()
     }
   }, [])
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    let data = Object.fromEntries(formData.entries())
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    let data = Object.fromEntries(formData.entries());
+
+    Object.keys(data).forEach(key => {
+      if(data[key] === "") {
+        delete data[key];
+      }
+    })
     
     if(schema) {
       data = dataToSchemaParser(schema, data);
     }
 
-    const res = await fetch(url, {
-      method: method,
-      body: JSON.stringify(data)
-    });
-    const json = await res.json();
+    let finalUrl = url;
+    if(method === "PATCH" && param) {
+      finalUrl += `/${params[param]}`
+    }
 
-    if(res.status === 200 || res.status === 201) {
+    const res = await apiCaller(finalUrl, method, 200, data);
+    if(res.isGood) {
       if(method==="POST") {
         formRef.current?.reset();
       }
     } else {
-      console.log(json)
+      console.log(res)
     }
   }
   

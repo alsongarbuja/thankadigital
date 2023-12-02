@@ -13,7 +13,7 @@ const AdminInput = (props: AdminInputProps) => {
     <label>
       <span className="block mb-2">{props.label}</span>
       <input 
-        required={props.required||true} 
+        required={props.required} 
         type={props.type||"text"} 
         name={props.name} 
         placeholder={props.placeholder} 
