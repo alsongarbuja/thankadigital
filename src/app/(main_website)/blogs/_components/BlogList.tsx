@@ -1,20 +1,10 @@
-"use client"
-
 import moment from "moment";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
-const BlogList = () => {
-  const [blogList, setBlogList] = useState<BlogModel[]>([]);
+import { getBlogs } from "@/server/controllers/blog.controller";
 
-  useEffect(() => {
-    (async () => {
-      const res = await fetch("/api/admin/blog");
-      const json = await res.json();
-
-      setBlogList(json.blogs);
-    })()
-  }, [])
+const BlogList = async () => {
+  const blogList: BlogModel[] = await getBlogs();
 
   return (
     <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -44,7 +34,7 @@ const BlogList = () => {
             }
           </>
         ) : (
-          <p className="mt-12 text-center text-gray-500">No blogs to read at this moment</p>
+          <p className="col-span-4 mt-12 text-center text-gray-500">No blogs to read at this moment</p>
         )
       }
     </section>

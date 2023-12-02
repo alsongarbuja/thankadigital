@@ -1,7 +1,6 @@
 import BlogList from "./_components/BlogList"
 
 const BlogPage = async () => {
-  
   return (
     <>
       <h3>Blogs</h3>
