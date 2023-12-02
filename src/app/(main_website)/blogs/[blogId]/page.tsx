@@ -16,7 +16,6 @@ export async function generateMetadata({ params }: { params: { blogId: string } 
     metadataBase: new URL(`https://thankadigital.com/blogs/${blog._id}`),
     openGraph: {
       type: 'website',
-      url: `https://thankadigital.com/blogs/${blog._id}`,
       title: blog.title,
       description: blog.summary,
       images: blog.body.blocks
