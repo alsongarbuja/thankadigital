@@ -1,47 +1,44 @@
-"use client"
-
 import moment from "moment";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+
 import Blocks from 'editorjs-blocks-react-renderer';
 import { ChevronLeft } from "react-feather";
 import { editorRenderConfig } from "@/utils/editorRenderConfig";
+import { Metadata } from "next";
+import { getBlog } from "@/server/controllers/blog.controller";
 
-const BlogSinglePage = () => {
-  const [blog, setBlog] = useState<BlogModel>({
-    _id: "",
-    title: "",
-    summary: "",
-    body: {
-      time: 0,
-      blocks: [],
-      version: ""
+export async function generateMetadata({ params }: { params: { blogId: string } }): Promise<Metadata> {
+  const blog = await getBlog(params.blogId);
+  return {
+    title: blog.title,
+    description: blog.summary,
+    authors: [blog.author.name],
+    metadataBase: new URL(`https://thankadigital.com/blogs/${blog._id}`),
+    openGraph: {
+      type: 'website',
+      url: `https://thankadigital.com/blogs/${blog._id}`,
+      title: blog.title,
+      description: blog.summary,
+      images: blog.body.blocks
+        .filter((block: { type: string; }) => block.type === 'simpleImage')
+        .map((block: { data: { url: string; caption: string; }; }) => ({
+          url: block.data.url,
+          width: 800,
+          height: 600,
+          alt: block.data.caption,
+        })),
+      site_name: 'Thanka Digital',
     },
-    author: {
-      name: "",
-      link: ""
-    },
-    tags: [],
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  });
-  const param = useParams();
-  const router = useRouter();
+  } as Metadata
+}
 
-  useEffect(() => {
-    (async () => {
-      const res = await fetch(`/api/admin/blog/${param.blogId}`);
-      const json = await res.json();
-
-      setBlog(json.blogs);
-    })()
-  }, [])
+const BlogSinglePage = async ({ params }: { params: { blogId: string } }) => {
+  const blog = await getBlog(params.blogId);
 
   return (
     <section className="grid w-11/12 grid-cols-1 mx-auto my-5 md:grid-cols-6">
       <div className="p-4 bg-white">
-        <button className="p-2 border rounded-md" onClick={()=>router.back()}><ChevronLeft /></button>
+        <Link href="/blogs" className="inline-block p-2 border rounded-md"><ChevronLeft /></Link>
       </div>
       <article className="col-span-4">
         <h3>{blog.title}</h3>
