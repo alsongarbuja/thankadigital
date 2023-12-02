@@ -4,19 +4,19 @@ type AdminInputProps = {
   label?: string;
   name: string;
   type?: string;
-  placeholder: string;
+  placeholder?: string;
   required?: boolean;
 }
 
-const AdminInput = (props: AdminInputProps) => {
+const AdminInput = ({ label, name, type="text", placeholder="", required=true }: AdminInputProps) => {
   return (
     <label>
-      <span className="block mb-2">{props.label}</span>
+      <span className="block mb-2">{label}</span>
       <input 
-        required={props.required} 
-        type={props.type||"text"} 
-        name={props.name} 
-        placeholder={props.placeholder} 
+        required={required} 
+        type={type} 
+        name={name} 
+        placeholder={placeholder} 
         className="w-full p-2 border-2 border-gray-300 rounded-md" 
       />
     </label>
