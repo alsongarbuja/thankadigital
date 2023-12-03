@@ -29,7 +29,7 @@ const LoginForm = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     // @ts-ignore
-    if (session?.value) {
+    if (session?.value !== 'null') {
       router.push("/admin/dashboard");
     }
     if (search.get("error") && search.get("error") === "CredentialsSignin") {
