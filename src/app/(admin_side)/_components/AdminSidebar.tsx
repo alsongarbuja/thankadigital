@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Briefcase, FileText, Grid, Users } from "react-feather";
 import { usePathname, useRouter } from "next/navigation";
 import { getFromLocalStorage, removeFromLocalStorage } from "@/helpers/localstorage";
+import { signOut, useSession } from "next-auth/react";
 
 const sidebarLinks = [
   {
@@ -36,31 +37,12 @@ const AdminSidebar = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const logout = async () => {
-    try {
-      const res = await fetch("/api/admin/logout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          token: getFromLocalStorage("thanka_token")
-        }),
-      });
-      const data = await res.json();
-      if(res.status === 200) {
-        removeFromLocalStorage("thanka_user");
-        removeFromLocalStorage("thanka_token");
-
-        router.replace("/");
-      } else {
-        console.log(data);
-      }
-    } catch (err) {
-      console.log(err);
-    } finally {
-      console.log("logout");
-    }
-  }
+  const { } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/login");
+    },
+  });
 
   return (
     <nav className="flex flex-col justify-between h-screen col-span-1 text-white bg-primary_blue">
@@ -79,7 +61,7 @@ const AdminSidebar = () => {
         ))}
       </ul>
     </div>
-    <button className="py-4 text-primary_red" onClick={logout}>
+    <button className="py-4 text-primary_red" onClick={() => signOut()}>
       Logout
     </button>
   </nav>
