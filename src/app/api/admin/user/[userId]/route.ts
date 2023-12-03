@@ -1,9 +1,11 @@
 import { deleteUserById, getUserById, updateUserById } from "@/server/controllers/user.controller";
 import { ApiError } from "@/server/helpers/ApiError";
+import { authorizeEmail } from "@/server/helpers/authorization";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function DELETE(req: NextRequest, params: { params: { userId: string } }) {
   try {
+    await authorizeEmail(req);
     const { userId } = params.params;
     const res = await deleteUserById(userId);
     if (res !== "DELETED") {
@@ -35,6 +37,7 @@ export async function GET(req: NextRequest, params: { params: { userId: string }
 
 export async function PATCH(req: NextRequest, params: { params: { userId: string } }) {
   try {
+    await authorizeEmail(req);
     const { userId } = params.params;
     const body = await req.json();
     const user = await updateUserById(userId, body);

@@ -1,8 +1,10 @@
 import { createBlog, getBlogs } from "@/server/controllers/blog.controller";
+import { authorizeEmail } from "@/server/helpers/authorization";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest, res: NextResponse) {
   try {
+    await authorizeEmail(req, ["superadmin", "admin", "content-writer"])
     const body = await req.json();
     const blog = await createBlog(body);
 
