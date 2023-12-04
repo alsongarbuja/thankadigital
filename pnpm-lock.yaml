@@ -521,7 +521,7 @@ packages:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.9
-      caniuse-lite: 1.0.30001506
+      caniuse-lite: 1.0.30001566
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -569,7 +569,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001506
+      caniuse-lite: 1.0.30001566
       electron-to-chromium: 1.4.437
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11(browserslist@4.21.9)
@@ -596,12 +596,8 @@ packages:
     engines: {node: '>= 6'}
     dev: false
 
-  /caniuse-lite@1.0.30001506:
-    resolution: {integrity: sha512-6XNEcpygZMCKaufIcgpQNZNf00GEqc7VQON+9Rd0K1bMYo8xhMZRAo5zpbnbMNizi4YNgIDAFrdykWsvY3H4Hw==}
-    dev: false
-
-  /caniuse-lite@1.0.30001564:
-    resolution: {integrity: sha512-DqAOf+rhof+6GVx1y+xzbFPeOumfQnhYzVnZD6LAXijR77yPtm9mfOcqOnT3mpnJiZVT+kwLAFnRlZcIz+c6bg==}
+  /caniuse-lite@1.0.30001566:
+    resolution: {integrity: sha512-ggIhCsTxmITBAMmK8yZjEhCO5/47jKXPu6Dha/wuCS4JePVL+3uiDEBuhu2aIoT+bqTOR8L76Ip1ARL9xYsEJA==}
     dev: false
 
   /chokidar@3.5.3:
@@ -1261,7 +1257,7 @@ packages:
       '@next/env': 14.0.3
       '@swc/helpers': 0.5.2
       busboy: 1.6.0
-      caniuse-lite: 1.0.30001564
+      caniuse-lite: 1.0.30001566
       postcss: 8.4.31
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)

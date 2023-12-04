@@ -1,8 +1,9 @@
 "use client";
 
-import { apiCaller } from "@/helpers/apiCaller";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
+
+import { apiCaller } from "@/helpers/apiCaller";
+import { getFromLocalStorage } from "@/helpers/localstorage";
 
 interface ActionTdProps {
   editUrl: string;
@@ -10,12 +11,10 @@ interface ActionTdProps {
 }
 
 const ActionTd = ({ editUrl, deleteUrl }: ActionTdProps) => {
-  const { data: session } = useSession();
-
   const handleDelete = async () => {
     if(!window.confirm("Are you sure you want to delete this record?")) return;
     const res = await apiCaller(deleteUrl, "DELETE", 200, undefined, {
-      "Authorization": `User ${session?.user?.email}`
+      "Authorization": `User ${getFromLocalStorage("thanka_email")}`
     });
     if(res.isGood) {
       window.location.reload();

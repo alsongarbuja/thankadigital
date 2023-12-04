@@ -7,9 +7,9 @@ const AdminNavUserName = () => {
   const [username, setUsername] = useState("");
   
   useEffect(() => {
-    const user = JSON.parse(getFromLocalStorage("thanka_user"))
-    if (user) {
-      setUsername(user.name)
+    const email = getFromLocalStorage("thanka_email")
+    if (email) {
+      setUsername(email)
     }
   }, [])
 
