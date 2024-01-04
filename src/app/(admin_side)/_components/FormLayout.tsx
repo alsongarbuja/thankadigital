@@ -1,8 +1,8 @@
 "use client"
 
 import { apiCaller } from '@/helpers/apiCaller';
+import { getFromLocalStorage } from '@/helpers/localstorage';
 import { dataToSchemaParser, schemaToDataParser } from '@/helpers/schemaParser';
-import { useSession } from 'next-auth/react';
 import { useParams, useRouter } from 'next/navigation';
 import React, { PropsWithChildren, useEffect, useRef } from 'react'
 import { ChevronLeft } from 'react-feather';
@@ -16,7 +16,6 @@ type FormLayoutProps = PropsWithChildren<{
 }>
 
 const FormLayout = ({ children, url, method, schema, param, modelName }: FormLayoutProps) => {
-  const { data: session } = useSession();
   const router = useRouter();
   const formRef = useRef<HTMLFormElement>(null);
   const params = useParams();
@@ -62,7 +61,7 @@ const FormLayout = ({ children, url, method, schema, param, modelName }: FormLay
     }
 
     const res = await apiCaller(finalUrl, method, 200, data, {
-      "Authorization": `User ${session?.user?.email}`
+      "Authorization": `User ${getFromLocalStorage("thanka_email")}`
     });
     if(res.isGood) {
       if(method==="POST") {

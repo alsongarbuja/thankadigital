@@ -2,13 +2,17 @@ import Link from "next/link";
 import { ArrowLeft } from "react-feather";
 
 import LoginForm from "./_components/LoginForm";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/utils/auth";
 
 export default function LoginPage() {
+  const session = getServerSession(authOptions);
+
   return (
     <div className="flex flex-col items-center justify-center w-screen h-screen">
       <div className="p-6 rounded-md shadow-md w-fit">
         <h1 className="mb-4 text-2xl font-semibold text-center">Login</h1>
-        <LoginForm>
+        <LoginForm session={session}>
           <div className="w-full">
             <label htmlFor="email" className="block font-bold">Email</label>
             <input required type="email" name="email" id="email" className="w-full p-2 border border-gray-300 rounded-md" />

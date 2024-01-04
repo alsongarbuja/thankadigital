@@ -4,11 +4,15 @@ import { PropsWithChildren } from 'react'
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Loader } from 'react-feather';
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
+import { addToLocalStorage } from '@/helpers/localstorage';
 
-const LoginForm = ({ children }: PropsWithChildren) => {
+interface LoginFormProps {
+  session: any;
+}
+
+const LoginForm = ({ children, session }: PropsWithChildren<LoginFormProps>) => {
   const search = useSearchParams();
-  const { data: session } = useSession();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
@@ -30,7 +34,12 @@ const LoginForm = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     // @ts-ignore
     if (session?.value !== 'null') {
-      router.push("/admin/dashboard");
+      addToLocalStorage("thanka_email", JSON.parse(session?.value)?.user?.email);
+      if(search.get("callbackUrl")) {
+        router.push(search.get("callbackUrl") as string);
+      } else {
+        router.push("/admin/dashboard");
+      }
     }
     if (search.get("error") && search.get("error") === "CredentialsSignin") {
       setError("Incorrect Email or passowrd");
