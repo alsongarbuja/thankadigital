@@ -3,7 +3,7 @@ export const footerLinks = [
     title: 'ADDRESS',
     links: [
       {
-        text: 'Fulbari - 11, Pokhara',
+        text: 'Remote',
         href: null,
       },
       {

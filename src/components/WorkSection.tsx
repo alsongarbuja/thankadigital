@@ -20,9 +20,10 @@ const WorkSection = () => {
                   alt={project.name} 
                   width={400} 
                   height={350} 
+                  priority={project.id==="1"}
                   className="w-full h-[300px] object-cover brightness-50"
                 />
-                <div className="text-white p-4 flex flex-col justify-between absolute group-hover:top-0 transition-all ease-in-out top-[60%] left-0 w-full h-full bg-gradient-to-t from-primary_blue to-transparent">
+                <div className="text-white p-4 flex flex-col justify-between absolute group-hover:top-0 transition-all ease-in-out top-[60%] left-0 w-full h-full bg-gradient-to-t from-primary_blue to-transparent hover:to-black/30">
                   <div>
                     <h4>{project.name}</h4>
                     <p>{project.description}</p>

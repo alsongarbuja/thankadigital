@@ -34,7 +34,7 @@ const BlogList = async () => {
             }
           </>
         ) : (
-          <p className="col-span-4 mt-12 text-center text-gray-500">No blogs to read at this moment</p>
+          <p className="col-span-4 mt-12 font-medium text-center text-gray-600">No blogs to read at this moment</p>
         )
       }
     </section>

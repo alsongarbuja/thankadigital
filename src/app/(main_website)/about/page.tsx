@@ -6,7 +6,7 @@ const AboutPage = () => {
   return (
     <>
       <h3 className="uppercase">About US</h3>
-      <p className="font-semibold text-gray-400">Meet our teams who are working together to make great products</p>
+      <p className="font-medium text-gray-600">Meet our teams who are working together to make great products</p>
 
       <div className="grid items-center grid-cols-1 gap-4 mt-8 md:grid-cols-2">
         <div className="">

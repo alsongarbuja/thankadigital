@@ -1,14 +1,14 @@
 export const projectsList: ProjectModel[] = [
   {
     id: '1',
-    name: 'Talewears',
-    description: 'E commerce website and mobile application for clothing brand',
-    thumbnail: 'https://alkyhora.sirv.com/portfolio/talewears-cover.png',
-    logo: 'https://alkyhora.sirv.com/portfolio/talewears_logo.png',
+    name: 'Exam Yatra',
+    description: 'E learning platform for students of engineering and medical to prepare for their license examination in nepal.',
+    thumbnail: 'https://alkyhora.sirv.com/portfolio/exam_yatra_thumbnail.png',
+    logo: 'https://alkyhora.sirv.com/portfolio/logo.png',
     liveLink: '#',
     detailLink: '#',
     journey: {
-      scopes: ["web", "mobile"],
+      scopes: ["mobile"],
       status: "ongoing",
     },
   },

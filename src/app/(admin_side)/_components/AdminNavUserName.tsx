@@ -24,7 +24,7 @@ const AdminNavUserName = () => {
   return (
     <div className="flex items-center gap-4">
       <p>{username}</p>
-      <button className="py-4 text-primary_red" onClick={handleLogout}>
+      <button className="py-4 text-primary_red" aria-label="logout button" onClick={handleLogout}>
         <LogOut />
       </button>
     </div>

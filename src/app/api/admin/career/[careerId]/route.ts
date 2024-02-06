@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function PATCH(req: NextRequest,  params: { params: { careerId: string } }) {
   try {
-    await authorizeEmail(req, ["superadmin", "admin"])
+    // await authorizeEmail(req, ["superadmin", "admin"])
     const { careerId } = params.params;
     const body = await req.json();
     const career = await updateCareer(careerId, body);

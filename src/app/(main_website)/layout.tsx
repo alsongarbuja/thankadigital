@@ -24,7 +24,7 @@ export default function MainLayout({
             <div>
               <span className="flex items-center gap-2 mb-8">
                 <Image src="/thanka_digital_logo.svg" alt="Thanka Digital logo" className="w-14 h-14" width={50} height={50} />
-                <h5>Thanka Digital</h5>
+                <p className="text-2xl font-bold">Thanka Digital</p>
               </span>
               <Social />
             </div>

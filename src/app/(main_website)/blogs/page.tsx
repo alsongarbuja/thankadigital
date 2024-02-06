@@ -4,7 +4,7 @@ const BlogPage = () => {
   return (
     <>
       <h3>Blogs</h3>
-      <p className="font-medium text-gray-500">Read interesting blogs about tech industry</p>
+      <p className="font-medium text-gray-600">Read interesting blogs about tech industry</p>
       <BlogList />
     </>
   )

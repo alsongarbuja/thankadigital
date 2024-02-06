@@ -70,11 +70,11 @@ const ContactPage = () => {
   
   return (
     <>
-      <button className="border rounded-md p-2 mb-4" onClick={()=>router.back()}>
+      <button className="p-2 mb-4 border rounded-md" onClick={()=>router.back()}>
         <ArrowLeft />
       </button>
       <h3>Contact Us</h3>
-      <form onSubmit={handleSubmit} className="border py-4 px-10 rounded-md flex flex-col items-end">
+      <form onSubmit={handleSubmit} className="flex flex-col items-end px-10 py-4 border rounded-md">
         {sent.isSent && (
           <div className={`w-full text-center ${sent.isSuccess ? "bg-green-500" : "bg-red-500"} text-white p-2 py-4 rounded-md`}>
             <p className="font-semibold">
@@ -118,7 +118,7 @@ const ContactPage = () => {
       <section className="mt-8">
         <h4>Connect With Us</h4>
         <p>Follow us on social media</p>
-        <div className="flex gap-4 mt-2 flex-wrap">
+        <div className="flex flex-wrap gap-4 mt-2">
           <Link href="https://www.facebook.com/thankadigital1" className="flex gap-2 items-center bg-[#1877f2] py-2 px-4 rounded-sm text-white">
             <Facebook /> Facebook
           </Link>
@@ -130,7 +130,7 @@ const ContactPage = () => {
           </Link>
         </div>
         <p className="mt-4">Direct Contact</p>
-        <div className="flex gap-4 mt-2 flex-wrap">
+        <div className="flex flex-wrap gap-4 mt-2">
           <Link href="tel:+9779825140802" className="flex gap-2 items-center bg-[#00c16e] py-2 px-4 rounded-sm text-white">
             <Phone /> 9825140802
           </Link>
@@ -140,10 +140,6 @@ const ContactPage = () => {
           <Link href="mailto:thankadigital@gmail.com" className="flex gap-2 items-center bg-[#4285f4] py-2 px-4 rounded-sm text-white">
             <Mail /> thankadigital@gmail.com
           </Link>
-        </div>
-        <p className="mt-4">Visit Us</p>
-        <div className="flex gap-4 mt-2">
-          
         </div>
       </section>
     </>

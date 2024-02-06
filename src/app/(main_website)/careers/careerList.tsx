@@ -54,7 +54,7 @@ const CareerList = ({ careerList }: ICareerListProps) => {
             }
           </>
         ) : (
-          <p className="mt-12 text-center text-gray-500">No career opportunities available at this moment</p>
+          <p className="mt-12 font-medium text-center text-gray-600">No career opportunities available at this moment</p>
         )
       }
       {
