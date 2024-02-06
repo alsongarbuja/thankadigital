@@ -3,7 +3,7 @@ type dynamicObject = {
 }
 
 type CareerModel = {
-  identifier: string;
+  _id: string;
   title: string;
   description: string;
   salary: string;
@@ -61,3 +61,15 @@ type Team = {
   testers: TeamModel[];
   others: TeamModel[];
 }
+
+type EditorBlockValue = {
+  time?: number;
+  blocks: {
+    type: string;
+    data: {
+      text: string;
+      level?: number;
+    };
+  }[];
+  version?: string;
+};

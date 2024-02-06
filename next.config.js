@@ -19,10 +19,7 @@ const nextConfig = {
         hostname: 'media.licdn.com',
       },
     ],
-  },
-  // experimental: {
-  //   optimizeCss: true,
-  // }
+  }
 }
 
 module.exports = nextConfig

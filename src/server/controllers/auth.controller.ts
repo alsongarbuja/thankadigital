@@ -32,13 +32,13 @@ export const login = async (email: string, password: string) => {
   const user = await userModel.findOne({ email });  
 
   if (!user) {
-    throw new ApiError("User not found", 404);
+    return undefined;
   }
 
   const isMatch = await user.isPasswordVerified(password);
 
   if (!isMatch) {
-    throw new ApiError("Incorrect password", 401);
+    return undefined;
   }
 
   const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET as string, {
@@ -47,7 +47,7 @@ export const login = async (email: string, password: string) => {
   await tokenModel.create({ accessToken: token, user: user._id, expires: moment().add(30, 'days') });
 
   return {
-    user: removePrivateProperty(user),
+    user: removePrivateProperty(user) as any,
     token,
   };
 }

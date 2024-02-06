@@ -79,6 +79,17 @@ p, a {
   overflow: hidden;
 }
 
+.blog-table { width: 100%; }
+.blog-table tr:first-child {
+  background-color: #e8e8eb;
+  font-weight: bold;
+}
+.blog-table tr { border-bottom: 2px solid #e8e8eb; }
+.blog-table td { padding: .75em; }
+
+ul { list-style: disc; }
+ol { list-style: decimal; }
+
 @media (min-width: 760px) {
   .about-images {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;

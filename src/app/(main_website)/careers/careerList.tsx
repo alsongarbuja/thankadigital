@@ -33,13 +33,14 @@ const CareerList = ({ careerList }: ICareerListProps) => {
           <>
             {
               careerList.map(career => (
-                <div className="p-4 mt-8 bg-white rounded-md shadow-md" key={career.identifier}>
+                <div className="p-4 mt-8 bg-white rounded-md shadow-md" key={career._id}>
                   <h4 className="font-semibold">{career.title}</h4>
                   <p className="text-gray-500">{career.description}</p>
                   <p className="mt-4 font-medium">Location: {career.location}</p>
                   <p className="font-medium">Type: {career.type}</p>
-                  {career.salary !== "-" && <p className="font-medium">Salary: {career.salary}</p>}
-                  {career.time !== "-" && <p className="font-medium">Time Period: {career.time}</p>}
+                  <p className="font-medium">Salary: {career.salary}</p>
+                  {career.time !== "" && <p className="font-medium">Time Period: {career.time}</p>}
+                  {career.experience !== "" && <p className="font-medium">Experience: {career.experience}</p>}
                   <div className="flex flex-wrap gap-2 mt-2 mb-4">
                     {
                       career.skills.map((skill, index) => (
@@ -59,7 +60,7 @@ const CareerList = ({ careerList }: ICareerListProps) => {
       {
         isApplyOpen && (
           <div className="fixed top-0 left-0 z-10 w-screen h-screen bg-black/70" onClick={()=>setIsApplyOpen(false)}>
-            <div className="fixed w-11/12 lg:w-1/2 p-4 -translate-x-1/2 -translate-y-1/2 bg-white rounded-md top-1/2 left-1/2" onClick={(e) => e.stopPropagation()}>
+            <div className="fixed w-11/12 p-4 -translate-x-1/2 -translate-y-1/2 bg-white rounded-md lg:w-1/2 top-1/2 left-1/2" onClick={(e) => e.stopPropagation()}>
               <h4>Apply For {selectedCareer?.title}</h4>
               <p>{selectedCareer?.description}</p>
               <p className="mb-4 font-semibold text-primary_red">Note: Please Attach your CV in the mail and any other details you want to add.</p>

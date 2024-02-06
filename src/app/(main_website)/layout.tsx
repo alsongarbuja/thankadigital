@@ -11,6 +11,7 @@ export default function MainLayout({
 }: {
   children: React.ReactNode
 }) {
+  const year = new Date().getFullYear();
   return (
     <>
       <Header />
@@ -51,7 +52,7 @@ export default function MainLayout({
             </div>
           </div>
           <hr className="my-8" />
-          <p className="font-semibold text-center">&copy; {new Date().getFullYear()} Thanka Digital. All rights reserved.</p>
+          <p className="font-semibold text-center">&copy; {year} Thanka Digital. All rights reserved.</p>
         </div>
       </footer>
     </>

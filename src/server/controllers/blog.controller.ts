@@ -24,9 +24,9 @@ export async function getBlog(id: string) {
   return blog;
 }
 
-export async function getBlogs() {
+export async function getBlogs(status: string = "published") {
   await dbConnect();
-  const blogs = await blogModel.find();
+  const blogs = status === "all" ? await blogModel.find() : await blogModel.find({ status: "published" });
 
   if (!blogs) {
     throw new ApiError("Blogs not found", 404);

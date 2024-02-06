@@ -1,6 +1,8 @@
 "use client"
 
-import { schemaParser } from '@/helpers/schemaParser';
+import { apiCaller } from '@/helpers/apiCaller';
+import { getFromLocalStorage } from '@/helpers/localstorage';
+import { dataToSchemaParser, schemaToDataParser } from '@/helpers/schemaParser';
 import { useParams, useRouter } from 'next/navigation';
 import React, { PropsWithChildren, useEffect, useRef } from 'react'
 import { ChevronLeft } from 'react-feather';
@@ -21,44 +23,52 @@ const FormLayout = ({ children, url, method, schema, param, modelName }: FormLay
   useEffect(() => {
     if(method === "PATCH" && param && modelName) {
       (async () => {
-        const res = await fetch(`${url}/${params[param]}`)
-        const json = await res.json();
+        const res = await apiCaller(`${url}/${params[param]}`)
         
-        if(res.status === 200) {
-          Object.keys(json[modelName]).forEach(key => {
+        if(res.isGood) {
+          const data = schemaToDataParser(res.data[modelName]);
+          Object.keys(data).forEach(key => {
             const input = formRef.current?.querySelector(`[name="${key}"]`) as HTMLInputElement;
             if(input) {
-              input.value = json[modelName][key];
+              input.value = data[key];
             }
           })
         } else {
-          console.log(json)
+          console.log(res)
         }
       })()
     }
   }, [])
   
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    const formData = new FormData(e.currentTarget)
-    let data = Object.fromEntries(formData.entries())
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    let data = Object.fromEntries(formData.entries());
+
+    Object.keys(data).forEach(key => {
+      if(data[key] === "") {
+        delete data[key];
+      }
+    })
     
     if(schema) {
-      data = schemaParser(schema, data);
+      data = dataToSchemaParser(schema, data);
     }
 
-    const res = await fetch(url, {
-      method: method,
-      body: JSON.stringify(data)
-    });
-    const json = await res.json();
+    let finalUrl = url;
+    if(method === "PATCH" && param) {
+      finalUrl += `/${params[param]}`
+    }
 
-    if(res.status === 200 || res.status === 201) {
+    const res = await apiCaller(finalUrl, method, 200, data, {
+      "Authorization": `User ${getFromLocalStorage("thanka_email")}`
+    });
+    if(res.isGood) {
       if(method==="POST") {
         formRef.current?.reset();
       }
     } else {
-      console.log(json)
+      console.log(res)
     }
   }
   

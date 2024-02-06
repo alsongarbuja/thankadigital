@@ -24,6 +24,17 @@ export const getUserById = async (userId: string, getSchema: boolean = false) =>
   return getSchema ? user : removePrivateProperty(user);
 }
 
+export const getUserByEmail = async (email: string) => {
+  await dbConnect();
+  const user = await userModel.findOne({ email });
+
+  if (!user) {
+    throw new ApiError("User not found", 404);
+  }
+
+  return removePrivateProperty(user);
+}
+
 export const updateUserById = async (userId: string, data: any) => {
   const user = await getUserById(userId, true);
   Object.assign(user, data);

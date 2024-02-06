@@ -3,7 +3,7 @@
 import AdminInput from "@/app/(admin_side)/_components/AdminInput"
 import AdminSelect from "@/app/(admin_side)/_components/AdminSelect"
 import WysiwygEditor from "@/components/WysiwygEditor"
-import { schemaParser } from "@/helpers/schemaParser"
+import { dataToSchemaParser, schemaToDataParser } from "@/helpers/schemaParser"
 import { useParams, useRouter  } from "next/navigation"
 import { useEffect, useRef, useState } from "react"
 import { ChevronLeft } from "react-feather"
@@ -21,10 +21,11 @@ const EditBlogPage = () => {
       
       if(res.status === 200) {
         setBlocksData(json["blogs"]["body"]);
-        Object.keys(json["blogs"]).forEach(key => {
+        const data = schemaToDataParser(json["blogs"], ["body", "_id", "__v"]);
+        Object.keys(data).forEach(key => {
           const input = formRef.current?.querySelector(`[name="${key}"]`) as HTMLInputElement;
           if(input) {
-            input.value = json["blogs"][key];
+            input.value = data[key];
           }
         })
       } else {
@@ -37,9 +38,8 @@ const EditBlogPage = () => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     let data = Object.fromEntries(formData.entries())
-    console.log(data);
-    
-    data = schemaParser(["title", "summary", "body|", "author:name:link", "tags"], data);
+
+    data = dataToSchemaParser(["title", "summary", "body|", "author:name:link", "tags"], data);
 
     const res = await fetch(`/api/admin/blog/${params.blogId}`, {
       method: "PATCH",

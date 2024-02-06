@@ -45,6 +45,11 @@ const BlogSchema = new mongoose.Schema({
     },
     required: true,
   },
+  status: {
+    type: String,
+    enum: ["draft", "published", "archieved"],
+    default: "draft",
+  },
 }, { timestamps: true });
 
 export default mongoose.models.Blog ||
