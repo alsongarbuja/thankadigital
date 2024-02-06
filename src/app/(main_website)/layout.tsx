@@ -1,4 +1,4 @@
-import React from "react";
+import { Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -39,7 +39,7 @@ export default function MainLayout({
                             link.href ? (
                               <Link href={link.href} key={index}>{link.text}</Link>
                             ) : (
-                              <React.Fragment key={index}>{link.text}</React.Fragment>
+                              <Fragment key={index}>{link.text}</Fragment>
                             )
                           }
                         </p>

@@ -2,7 +2,7 @@ import { teams } from "@/utils/team";
 import Image from "next/image";
 import { GitHub, Globe, Linkedin } from "react-feather";
 
-const AboutPage = async () => {
+const AboutPage = () => {
   return (
     <>
       <h3 className="uppercase">About US</h3>

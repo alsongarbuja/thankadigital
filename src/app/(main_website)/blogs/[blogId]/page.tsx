@@ -32,6 +32,33 @@ const BlogSinglePage = () => {
     (async () => {
       const res = await fetch(`/api/admin/blog/${param.blogId}`);
       const json = await res.json();
+// import { editorRenderConfig } from "@/utils/editorRenderConfig";
+// // import { Metadata } from "next";
+// import { getBlog } from "@/server/controllers/blog.controller";
+
+// export async function generateMetadata({ params }: { params: { blogId: string } }): Promise<Metadata> {
+//   const blog = await getBlog(params.blogId);
+//   return {
+//     title: blog.title,
+//     description: blog.summary,
+//     authors: [blog.author.name],
+//     metadataBase: new URL(`https://thankadigital.com/blogs/${blog._id}`),
+//     openGraph: {
+//       type: 'website',
+//       title: blog.title,
+//       description: blog.summary,
+//       images: blog.body.blocks
+//         .filter((block: { type: string; }) => block.type === 'simpleImage')
+//         .map((block: { data: { url: string; caption: string; }; }) => ({
+//           url: block.data.url,
+//           width: 800,
+//           height: 600,
+//           alt: block.data.caption,
+//         })),
+//       site_name: 'Thanka Digital',
+//     },
+//   } as Metadata
+// }
 
       setBlog(json.blogs);
     })()
