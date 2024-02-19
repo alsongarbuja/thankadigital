@@ -1,9 +1,9 @@
 export const projectsList: ProjectModel[] = [
   {
     id: '1',
-    name: 'Exam Yatra',
+    name: 'Exam Samaya',
     description: 'E learning platform for students of engineering and medical to prepare for their license examination in nepal.',
-    thumbnail: 'https://alkyhora.sirv.com/portfolio/exam_yatra_thumbnail.png',
+    thumbnail: 'https://alkyhora.sirv.com/portfolio/exam_samaya_cover.png',
     logo: 'https://alkyhora.sirv.com/portfolio/logo.png',
     liveLink: '#',
     detailLink: '#',
