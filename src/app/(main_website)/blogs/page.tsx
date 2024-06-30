@@ -12,7 +12,7 @@ const BlogPage = () => {
 
   return (
     <CustomWidthWrapper>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 mb-12">
         <h2>Blogs</h2>
         {/* <p className="font-medium text-gray-600">
           Read interesting blogs about tech industry

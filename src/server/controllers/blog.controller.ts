@@ -34,7 +34,6 @@ export async function getBlogs(status: string = "published") {
     }
 
     return blogs;
-
   } catch (error) {
     console.log(error);
     throw new ApiError("Blogs not found", 404);
