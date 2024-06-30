@@ -23,37 +23,40 @@ export const footerConnect = [
       {
         id: 0,
         contact: "+977 9825140802",
+        link: "tel:9825140802",
       },
       {
         id: 1,
-        contact: "+977 9825140801",
+        contact: "+977 9866011579",
+        link: "tel:9866011579",
       },
       {
         id: 2,
         contact: "thankadigital@gmail.com",
+        link: "mailto:thankadigital@gmail.com",
       },
     ],
   },
 
-  {
-    socialmedia: [
-      {
-        id: 0,
-        name: "linkedin",
-        link: "/",
-      },
-      {
-        id: 1,
-        name: "whatsapp",
-        link: "/",
-      },
-      {
-        id: 2,
-        name: "facebook",
-        link: "/",
-      },
-    ],
-  },
+  // {
+  //   socialmedia: [
+  //     {
+  //       id: 0,
+  //       name: "linkedin",
+  //       link: "/",
+  //     },
+  //     {
+  //       id: 1,
+  //       name: "whatsapp",
+  //       link: "/",
+  //     },
+  //     {
+  //       id: 2,
+  //       name: "facebook",
+  //       link: "/",
+  //     },
+  //   ],
+  // },
 ];
 
 export const footerLinks = [
@@ -62,15 +65,15 @@ export const footerLinks = [
     links: [
       {
         name: "About us",
-        link: "#",
+        link: "/about",
       },
       {
         name: "Blogs",
-        link: "#",
+        link: "/blogs",
       },
       {
         name: "Careers",
-        link: "#",
+        link: "/careers",
       },
     ],
   },
@@ -79,15 +82,15 @@ export const footerLinks = [
     links: [
       {
         name: "Youtube",
-        link: "#",
+        link: "https://www.youtube.com/channel/UCoAxJVPdJ3Dx3P_PL_fesXw",
       },
       {
         name: "Discord",
         link: "#",
       },
       {
-        name: "Community",
-        link: "#",
+        name: "Dev.to",
+        link: "https://dev.to/thankadigital",
       },
     ],
   },
@@ -97,84 +100,16 @@ export const footerContacts = [
   {
     id: 0,
     icon: <Linkedin />,
-    link: "/",
+    link: "https://www.linkedin.com/company/96073578/admin/dashboard/",
   },
   {
     id: 1,
     icon: <Facebook />,
-    link: "/",
+    link: "https://www.facebook.com/thankadigital1",
   },
   {
     id: 2,
     icon: <MessageCircle />,
-    link: "/",
+    link: "https://wa.me/9825140802",
   },
 ];
-// {
-//   title: 'ADDRESS',
-//   links: [
-//     {
-//       text: 'Remote',
-//       href: null,
-//     },
-//     {
-//       text: 'Nepal 33700',
-//       href: null,
-//     },
-//   ],
-// },
-// {
-//   title: 'CONTACT US',
-//   links: [
-//     {
-//       text: '+977 9825140802',
-//       href: 'tel:9825140802',
-//     },
-//     {
-//       text: '+977 9866011579',
-//       href: 'tel:9866011579',
-//     },
-//     {
-//       text: 'thankadigital@gmail.com',
-//       href: 'mailto:thankadigital@gmail.com',
-//     },
-//   ],
-// },
-// {
-//   title: 'SERVICES',
-//   links: [
-//     {
-//       text: 'Web Development',
-//       href: null,
-//     },
-//     {
-//       text: 'App Development',
-//       href: null,
-//     },
-//     {
-//       text: 'Digital Marketing',
-//       href: null,
-//     },
-//     {
-//       text: 'SEO',
-//       href: null,
-//     },
-//   ],
-// },
-// {
-//   title: 'IMPORTANT LINKS',
-//   links: [
-//     {
-//       text: 'Blogs',
-//       href: '/blogs',
-//     },
-//     {
-//       text: 'Career',
-//       href: '/careers',
-//     },
-//     {
-//       text: 'Admin',
-//       href: '/login',
-//     }
-//   ],
-// }

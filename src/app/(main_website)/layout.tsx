@@ -37,17 +37,19 @@ export default function MainLayout({
 
               <section className="flex flex-col gap-2">
                 {footerConnect[1].connect?.map((con, i) => (
-                  <p key={i}>{con.contact}</p>
+                  <Link href={con.link} key={i}>
+                    {con.contact}
+                  </Link>
                 ))}
               </section>
 
-              <section className="flex flex-col gap-2">
+              {/* <section className="flex flex-col gap-2">
                 {footerConnect[2].socialmedia?.map((con, i) => (
                   <Link href={con.link} key={i}>
                     {con.name}
                   </Link>
                 ))}
-              </section>
+              </section> */}
             </div>
           </div>
         </CustomWidthWrapper>
