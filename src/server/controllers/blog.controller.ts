@@ -25,14 +25,20 @@ export async function getBlog(id: string) {
 }
 
 export async function getBlogs(status: string = "published") {
-  await dbConnect();
-  const blogs = status === "all" ? await blogModel.find() : await blogModel.find({ status: "published" });
+  try {
+    await dbConnect();
+    const blogs = status === "all" ? await blogModel.find() : await blogModel.find({ status: "published" });
 
-  if (!blogs) {
+    if (!blogs) {
+      throw new ApiError("Blogs not found", 404);
+    }
+
+    return blogs;
+
+  } catch (error) {
+    console.log(error);
     throw new ApiError("Blogs not found", 404);
   }
-
-  return blogs;
 }
 
 export async function updateBlog(id: string, body: dynamicObject) {

@@ -15,7 +15,16 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "Thanka Digital",
-  description: "Bring your business to next level with Thanka Digital",
+  description:
+    "Software Development company based in Nepal. We build software that helps businesses grow.",
+  openGraph: {
+    title: "Thanka Digital",
+    description:
+      "Software Development company based in Nepal. We build software that helps businesses grow.",
+    url: "https://thankadigital.com",
+    type: "website",
+    images: ["/images/hero.png"],
+  },
 };
 
 export default function RootLayout({

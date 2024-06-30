@@ -14,7 +14,7 @@ export default function MainLayout({
     <>
       <Header />
 
-      <main className="w-full min-h-[50vh] pt-28">{children}</main>
+      <main className="w-full min-h-[50vh] pt-12">{children}</main>
 
       <section className="pt-12 pb-20 bg-background_gray">
         <CustomWidthWrapper>

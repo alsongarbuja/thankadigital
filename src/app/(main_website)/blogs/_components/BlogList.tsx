@@ -1,14 +1,28 @@
 import moment from "moment";
 import Link from "next/link";
 
-import { getBlogs } from "@/server/controllers/blog.controller";
+// import { getBlogs } from "@/server/controllers/blog.controller";
+import { useEffect, useState } from "react";
 
-const BlogList = async () => {
-  const blogList: BlogModel[] = await getBlogs();
+const BlogList = () => {
+  // const blogList: BlogModel[] = await getBlogs();
+  const [blogList, setBlogList] = useState<BlogModel[]>([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      const res = await fetch("/api/admin/blog");
+      console.log(res);
+      const blogs = await res.json();
+
+      setBlogList(blogs);
+    };
+
+    fetchBlogs();
+  }, []);
 
   return (
     <section className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {
+      {/* {
         blogList.length > 0 ? (
           <>
             {
@@ -33,12 +47,14 @@ const BlogList = async () => {
               ))
             }
           </>
-        ) : (
-          <p className="col-span-4 mt-12 font-medium text-center text-gray-600">No blogs to read at this moment</p>
-        )
-      }
+        ) : ( */}
+      <p className="col-span-4 mt-12 font-medium text-center text-gray-600">
+        No blogs to read at this moment
+      </p>
+      {/* )
+      } */}
     </section>
-  )
-}
+  );
+};
 
-export default BlogList
+export default BlogList;
