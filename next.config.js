@@ -19,6 +19,9 @@ const nextConfig = {
         hostname: 'media.licdn.com',
       },
     ],
+  },
+  experimental: {
+    optimizePackageImports: ['@mantine/core', '@mantine/hooks'],
   }
 }
 
