@@ -1,26 +1,55 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
+
+import CustomWidthWrapper from "./wrappers/CustomWidthWrapper";
+import HeroJourneySection from "@/app/(main_website)/_components/HeroJourneySection";
 
 const HeroSection = () => {
   return (
-    <section className="relative flex items-center justify-between">
-      <div>
-        <h1 className="text-primary_red">Thanka <span className="text-primary_blue">Digital</span></h1>
-        <p className="font-semibold text-primary_red">CODE CRAFTED FOR QUALITY</p>
-        <p className="w-full mb-4 md:w-3/4">Leverage our expertise to elevate your business. Our meticulously crafted code and state-of-the-art technologies, backed by our dedicated teams, ensure the delivery of top-tier quality solutions.</p>
-        <Link href="/contact" className="inline-block p-4 mr-4 text-white rounded-md bg-primary_red">Contact us</Link>
-        <Link href="/portfolio" className="font-medium text-primary_blue">View our portfolio</Link>
-      </div>
-      <Image 
-        src="/hero_section_img.svg" 
-        alt="illustration of young man waving while sitting at the computer" 
-        width={250}
-        height={350} 
-        priority
-        className="w-[45rem] hidden md:block"
-      />
-    </section>
-  )
-}
+    <section className="flex flex-col items-center justify-center gap-10 pt-10 text-center">
+      <CustomWidthWrapper>
+        <section className="relative flex flex-col items-center justify-center py-12 hero-section">
+          <Image
+            src="/images/hero.png"
+            width={800}
+            height={500}
+            priority
+            className="ml-8"
+            alt={"Helping you in each step of your business"}
+          />
+          {/* <h1 className="text-center">
+            Helping you in{" "}
+            <span className="px-2 text-white rounded-md bg-secondary">
+              each
+            </span>
+            <br />
+            <span className="px-2 text-white rounded-md bg-primary">step</span>
+            &nbsp;
+            <span className="inline-block mt-11">of</span>&nbsp;
+            <span className="inline-block mt-16">your</span>&nbsp;
+            <span className="">business</span>
+          </h1> */}
 
-export default HeroSection
+          <div className="flex gap-4 -mt-10">
+            <Link
+              href="/portfolio"
+              className="px-8 py-4 text-white rounded-full bg-primary_blue"
+            >
+              Works we have done
+            </Link>
+            <Link
+              href="/contact"
+              className="px-8 py-4 border rounded-full border-primary_blue text-primary_blue"
+            >
+              Connect with us
+            </Link>
+          </div>
+        </section>
+      </CustomWidthWrapper>
+
+      <HeroJourneySection />
+    </section>
+  );
+};
+
+export default HeroSection;

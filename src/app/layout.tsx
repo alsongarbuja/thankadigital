@@ -1,30 +1,36 @@
-import React from 'react';
-import { Metadata } from 'next';
+import React from "react";
+import type { Metadata } from "next";
 
-import './globals.css'
-import { DM_Sans } from 'next/font/google';
+import "@mantine/core/styles.css";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 
-const dm_sans = DM_Sans({
-  subsets: ['latin'],
+import "./globals.css";
+import { Montserrat } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-dm-sans",
-})
+});
 
 export const metadata: Metadata = {
-  title: 'Thanka Digital',
-  description: 'Bring your business to next level with Thanka Digital',
-}
+  title: "Thanka Digital",
+  description: "Bring your business to next level with Thanka Digital",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html className={`${dm_sans.variable}`} lang="en">
-      <body className="bg-white">
-        {children}
+    <html lang="en">
+      <head>
+        <ColorSchemeScript />
+      </head>
+      <body className={montserrat.className}>
+        <MantineProvider>{children}</MantineProvider>
       </body>
     </html>
-  )
+  );
 }

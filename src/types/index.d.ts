@@ -20,7 +20,7 @@ type ProjectModel = {
   description: string;
   thumbnail: string;
   logo: string;
-  liveLink: string;
+  liveLink: string | null;
   detailLink: string;
   journey: dynamicObject;
 };

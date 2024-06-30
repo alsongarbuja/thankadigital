@@ -1,17 +1,48 @@
+import { servicesDatas } from "@/utils/services";
+import Image from "next/image";
 
 interface IServiceCardProps {
-  icon: React.ReactNode;
-  title: string;
-  bgColor?: "bg-inherit" | "bg-purple-50" | "bg-red-50" | "bg-green-50" | "bg-blue-50",
+  serviceCardData: (typeof servicesDatas)[0];
 }
 
-const ServiceCard = ({ icon, title, bgColor="bg-inherit" }: IServiceCardProps) => {
+const ServiceCard = ({ serviceCardData }: IServiceCardProps) => {
   return (
-    <div className={`flex flex-col items-center justify-center gap-4 text-center p-4 w-full min-h-[200px] md:min-h-[350px] rounded-md ${bgColor}`}>
-      {icon}
-      <h6 className={`${bgColor === "bg-inherit" && "text-primary_blue"}`}>{title}</h6>
+    <div
+      className={`w-full px-8 py-6 place-content-center ${
+        serviceCardData.variant === "white"
+          ? "bg-white"
+          : serviceCardData.variant === "black"
+          ? "bg-black text-white"
+          : "bg-primary_red text-white"
+      } ${
+        serviceCardData.colSpan === 3
+          ? "col-span-1 sm:col-span-2 lg:col-span-3"
+          : ""
+      } ${
+        serviceCardData.colSpan === 1
+          ? "col-span-1"
+          : "col-span-1 lg:col-span-2"
+      } 
+      rounded-md 
+      `}
+    >
+      <div className="flex flex-col-reverse items-center sm:flex-row gap-7">
+        <div>
+          <p className="text-2xl font-bold">{serviceCardData.title}</p>
+          <p>{serviceCardData.description}</p>
+        </div>
+        {serviceCardData.image && (
+          <Image
+            width={250}
+            height={180}
+            src="/images/web-app.png"
+            alt="image"
+            className="pr-2 sm:pr-4 lg:pr-6"
+          />
+        )}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ServiceCard
+export default ServiceCard;
