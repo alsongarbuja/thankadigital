@@ -1,28 +1,8 @@
-import { createBlog, getBlogs } from "@/server/controllers/blog.controller";
-import { authorizeEmail } from "@/server/helpers/authorization";
 import { NextRequest, NextResponse } from "next/server";
-
-export async function POST(req: NextRequest, res: NextResponse) {
-  try {
-    await authorizeEmail(req, ["superadmin", "admin", "content-writer"])
-    const body = await req.json();
-    const blog = await createBlog(body);
-
-    return NextResponse.json({
-      blog,
-    });
-  } catch (error: any) {
-    return NextResponse.json({
-      error: error.message,
-    }, {
-      status: error.status || 500,
-    })
-  }
-}
 
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
-    const blogs = await getBlogs();
+    const blogs = {}; // TODO: fetch from dev.to 
 
     return NextResponse.json({
       blogs,

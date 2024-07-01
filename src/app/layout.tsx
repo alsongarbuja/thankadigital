@@ -14,6 +14,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://thankadigital.com"),
   title: "Thanka Digital",
   description:
     "Software Development company based in Nepal. We build software that helps businesses grow.",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
       "Software Development company based in Nepal. We build software that helps businesses grow.",
     url: "https://thankadigital.com",
     type: "website",
-    images: ["/images/hero.png"],
+    images: ["/images/seo/link-preview.png"],
   },
 };
 

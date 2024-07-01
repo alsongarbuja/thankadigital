@@ -15,13 +15,13 @@ export const sidebarLinks = [
     icon: <Users />,
     permissions: ["superadmin", "admin"],
   },
-  {
-    id: 2,
-    name: "Blogs",
-    path: "/admin/blogs",
-    icon: <FileText />,
-    permissions: ["superadmin", "admin", "content-writer"],
-  },
+  // {
+  //   id: 2,
+  //   name: "Blogs",
+  //   path: "/admin/blogs",
+  //   icon: <FileText />,
+  //   permissions: ["superadmin", "admin", "content-writer"],
+  // },
   {
     id: 3,
     name: "Careers",

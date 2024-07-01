@@ -72,10 +72,10 @@ h5 {
   line-height: 1.75rem;
 }
 
-p,
+/* p,
 a {
   font-size: var(--font-size-base);
-}
+} */
 
 .mask {
   width: 100%;

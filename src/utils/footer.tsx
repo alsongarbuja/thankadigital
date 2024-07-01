@@ -5,7 +5,7 @@ export const footerConnect = [
     location: [
       {
         id: 0,
-        location: "Fulbari 11",
+        location: "Ranipauwa",
       },
       {
         id: 1,
@@ -84,10 +84,10 @@ export const footerLinks = [
         name: "Youtube",
         link: "https://www.youtube.com/channel/UCoAxJVPdJ3Dx3P_PL_fesXw",
       },
-      {
-        name: "Discord",
-        link: "#",
-      },
+      // {
+      //   name: "Discord",
+      //   link: "#",
+      // },
       {
         name: "Dev.to",
         link: "https://dev.to/thankadigital",

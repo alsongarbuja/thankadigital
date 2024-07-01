@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import CustomWidthWrapper from "./wrappers/CustomWidthWrapper";
-import HeroJourneySection from "@/app/(main_website)/_components/HeroJourneySection";
+import HeroJourneySection from "@/app/(main_site)/_components/HeroJourneySection";
 
 const HeroSection = () => {
   return (
@@ -30,16 +30,16 @@ const HeroSection = () => {
             <span className="">business</span>
           </h1> */}
 
-          <div className="flex gap-4 -mt-10">
+          <div className="flex flex-col gap-4 -mt-10 md:flex-row">
             <Link
               href="/portfolio"
-              className="px-8 py-4 text-white rounded-full bg-primary_blue"
+              className="px-8 py-3 text-white rounded-full bg-primary_blue"
             >
               Works we have done
             </Link>
             <Link
               href="/contact"
-              className="px-8 py-4 border rounded-full border-primary_blue text-primary_blue"
+              className="px-8 py-2 border rounded-full border-primary_blue text-primary_blue"
             >
               Connect with us
             </Link>

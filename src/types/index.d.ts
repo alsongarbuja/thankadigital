@@ -25,22 +25,25 @@ type ProjectModel = {
   journey: dynamicObject;
 };
 
+// TODO: Change the blog model schema
 type BlogModel = {
-  _id: string;
   title: string;
-  summary: string;
-  author: {
+  description: string;
+  user: {
     name: string;
-    link: string;
+    profile_image: string;
+    website_url: string;
+    github_username: string;
   };
-  body: {
-    time: number;
-    version: string;
-    blocks: dynamicObject[];
-  };
-  createdAt: Date;
-  updatedAt: Date;
-  tags: string[];
+  created_at: Date;
+  edited_at: Date;
+  tag_list: string[];
+  url: string;
+  slug: string;
+  cover_image: string;
+  social_image: string;
+  canonical_url: string;
+  reading_time_minutes: number;
 };
 
 type TeamModel = {
@@ -61,15 +64,3 @@ type Team = {
   testers: TeamModel[];
   others: TeamModel[];
 }
-
-type EditorBlockValue = {
-  time?: number;
-  blocks: {
-    type: string;
-    data: {
-      text: string;
-      level?: number;
-    };
-  }[];
-  version?: string;
-};
