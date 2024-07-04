@@ -21,7 +21,7 @@ const ConnectSection = () => {
             </h6>
           </div>
 
-          <div className="flex flex-col justify-between w-full md:flex-row md:justify-between">
+          <div className="flex flex-col justify-between w-full gap-10 md:flex-row md:justify-between">
             <div className="flex flex-col gap-2">
               <p className="flex gap-2 text-2xl font-bold">
                 <Map className="text-primary_red" /> Location
