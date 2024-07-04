@@ -16,6 +16,7 @@ const AboutCompany = () => {
             alt="image"
             width={500}
             height={300}
+            priority
             className="w-[560px] h-full object-cover rounded-md"
           />
         </div>
@@ -69,6 +70,7 @@ const AboutCompany = () => {
             alt="image"
             width={700}
             height={300}
+            priority
             className="w-full h-full object-cover rounded-2xl aspect-[16/9]"
           />
         </div>

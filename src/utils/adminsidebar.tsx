@@ -15,6 +15,13 @@ export const sidebarLinks = [
     icon: <Users />,
     permissions: ["superadmin", "admin"],
   },
+  {
+    id: 2,
+    name: "Teams",
+    path: "/admin/teams",
+    icon: <Users />,
+    permissions: ["superadmin", "admin"],
+  },
   // {
   //   id: 2,
   //   name: "Blogs",

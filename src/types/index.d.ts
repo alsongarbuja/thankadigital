@@ -14,6 +14,15 @@ type CareerModel = {
   time: string;
 };
 
+
+type TeamModel = {
+  _id: string;
+  name: string;
+  position: string;
+  team: 'Core' | 'Members';
+  imageUrl: string;
+};
+
 type ProjectModel = {
   id: string;
   name: string;
