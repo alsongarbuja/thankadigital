@@ -2,7 +2,6 @@ import Link from "next/link";
 import CustomTable from "../../_components/CustomTable";
 import { getTeams } from "@/server/controllers/team.controller";
 import ActionTd from "../../_components/ActionTd";
-import CustomSelectTd from "../../_components/CustomSelectTd";
 import Image from "next/image";
 
 export default async function TeamPage() {

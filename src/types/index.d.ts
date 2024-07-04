@@ -54,22 +54,3 @@ type BlogModel = {
   canonical_url: string;
   reading_time_minutes: number;
 };
-
-type TeamModel = {
-  id: number;
-  name: string;
-  position: string;
-  portfolio: string | null;
-  image: string;
-  linkedin: string;
-  github: string;
-}
-
-type Team = {
-  coreTeams: TeamModel[];
-  developers: TeamModel[];
-  designers: TeamModel[];
-  marketers: TeamModel[];
-  testers: TeamModel[];
-  others: TeamModel[];
-}
