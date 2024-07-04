@@ -14,7 +14,7 @@ const HeroSection = () => {
             width={800}
             height={500}
             priority
-            className="ml-8"
+            className="w-full h-full ml-8"
             alt={"Helping you in each step of your business"}
           />
           {/* <h1 className="text-center">
