@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import CustomWidthWrapper from "./wrappers/CustomWidthWrapper";
-import HeroJourneySection from "@/app/(main_site)/_components/HeroJourneySection";
+import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
+import HeroJourneySection from "./HeroJourneySection";
 
 const HeroSection = () => {
   return (
-    <section className="flex flex-col items-center justify-center gap-10 pt-10 text-center">
+    <section className="flex flex-col items-center justify-center text-center">
       <CustomWidthWrapper>
-        <section className="relative flex flex-col items-center justify-center py-12 hero-section">
+        <section className="relative flex flex-col items-center justify-center py-3 md:py-12 hero-section">
           <Image
             src="/images/hero.png"
             width={800}
@@ -38,8 +38,8 @@ const HeroSection = () => {
               Works we have done
             </Link>
             <Link
-              href="/contact"
-              className="px-8 py-2 border rounded-full border-primary_blue text-primary_blue"
+              href="#connect-section"
+              className="flex items-center justify-center px-8 py-2 border rounded-full border-primary_blue text-primary_blue"
             >
               Connect with us
             </Link>

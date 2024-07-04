@@ -1,7 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import NavigationHeader from "./main_website_navigation/NavigationHeader";
-import CustomWidthWrapper from "./wrappers/CustomWidthWrapper";
+
+import NavigationHeader from "./NavigationHeader";
+import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 
 const Header = () => {
   return (

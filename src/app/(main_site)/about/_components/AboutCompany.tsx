@@ -5,9 +5,9 @@ const AboutCompany = () => {
     <>
       <div className="hidden grid-cols-7 lg:grid">
         <div className="col-span-7 px-10 text-white bg-secondary lg:col-span-4 py-14 rounded-t-xl rounded-bl-xl">
-          <h3>
+          <h2>
             Thanka Digital aims to provide amazing products for our clients
-          </h3>
+          </h2>
         </div>
 
         <div className="col-span-7 ml-4 lg:col-span-3 lg:mb-4 rounded-xl">
@@ -16,7 +16,7 @@ const AboutCompany = () => {
             alt="image"
             width={500}
             height={300}
-            className="w-[560px] h-[280px] object-cover rounded-md"
+            className="w-[560px] h-full object-cover rounded-md"
           />
         </div>
 
@@ -26,18 +26,18 @@ const AboutCompany = () => {
             alt="image"
             width={500}
             height={200}
-            className="w-[560px] h-[330px] object-cover rounded-md"
+            className="w-[560px] h-full object-cover rounded-md"
           />
         </div>
 
         <div className="relative flex items-center col-span-7 px-10 bg-secondary lg:col-span-4 lg:tracking-wide text-[#C9C8F5] py-14 rounded-b-xl">
-          <h3 className="my-1">
+          <h2 className="my-1">
             We are team of dedicated engineers and designers with years of
             experience.
-          </h3>
+          </h2>
 
           <div className="hidden lg:block">
-            <div className="absolute top-0 right-0 bg-white w-28 h-28 rounded-bl-2xl"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white rounded-bl-2xl"></div>
             <div className=" absolute w-11 h-11 rounded-full bg-[#C9C8F5] top-1 right-1"></div>
             <div className="absolute top-0 right-0 ">
               <svg
@@ -59,9 +59,9 @@ const AboutCompany = () => {
 
       {/* for md and small */}
       <div className="lg:hidden bg-secondary rounded-xl">
-        <p className="px-6 text-4xl tracking-wider text-center text-white py-14 lg:text-5xl">
+        <h3 className="px-6 tracking-wider text-center text-white py-14">
           Thanka Digital aims to provide amazing products for our clients
-        </p>
+        </h3>
 
         <div className="max-w-[90%] bg-white lg:mb-4 border-y-[20px] border-r-[20px] border-white rounded-r-2xl">
           <Image
@@ -73,10 +73,10 @@ const AboutCompany = () => {
           />
         </div>
 
-        <p className="px-10 text-5xl text-center about-text py-14">
+        <h3 className="px-10 text-center about-text py-14 text-[#C9C8F5]">
           We are team of dedicated engineers and designers with years of
           experience.
-        </p>
+        </h3>
 
         <div className="flex justify-end">
           <div className="w-[95%] bg-white lg:mb-4 border-t-[20px] border-l-[20px] border-white rounded-tl-2xl">

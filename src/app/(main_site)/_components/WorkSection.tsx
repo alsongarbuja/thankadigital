@@ -1,22 +1,19 @@
-// import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "react-feather";
 import { Carousel, CarouselSlide } from "@mantine/carousel";
 
 import { projectsList } from "@/utils/projects";
-import CustomWidthWrapper from "./wrappers/CustomWidthWrapper";
+import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 
 import "@mantine/carousel/styles.css";
-import { ChevronLeft, ChevronRight } from "react-feather";
-import Link from "next/link";
 
 const WorkSection = () => {
   return (
     <section className="py-9">
       <CustomWidthWrapper>
-        <p className="text-2xl font-semibold text-secondary">Projects</p>
-        <p className="text-xl font-semibold">
-          Some of our selected projects showcase
-        </p>
+        <h3 className="text-secondary">Projects</h3>
+        <h6>Some of our selected projects showcase</h6>
       </CustomWidthWrapper>
 
       <div className="my-12 mask">
@@ -30,8 +27,18 @@ const WorkSection = () => {
           align="center"
           loop
           containScroll="trimSnaps"
-          nextControlIcon={<ChevronRight className="w-12 h-12 text-black" />}
-          previousControlIcon={<ChevronLeft className="w-12 h-12 text-black" />}
+          nextControlIcon={
+            <ChevronRight
+              className="w-12 h-12 text-black"
+              aria-label="chevron button to slide previous project"
+            />
+          }
+          previousControlIcon={
+            <ChevronLeft
+              className="w-12 h-12 text-black"
+              aria-label="chevron button to slide next project"
+            />
+          }
         >
           {projectsList.map((project, i) => (
             <CarouselSlide key={i}>

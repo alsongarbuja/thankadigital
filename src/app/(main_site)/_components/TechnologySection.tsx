@@ -1,17 +1,15 @@
 import Image from "next/image";
 import Marquee from "react-fast-marquee";
 
-import CustomWidthWrapper from "../wrappers/CustomWidthWrapper";
+import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 import { technologies } from "@/utils/technology";
 
 const TechnologySection = () => {
   return (
     <section className="my-3 mb-6">
       <CustomWidthWrapper>
-        <p className="text-2xl font-semibold text-secondary">Technologies</p>
-        <p className="text-xl font-semibold">
-          We use modern tech stack to build great products
-        </p>
+        <h3 className="text-secondary">Technologies</h3>
+        <h6>We use modern tech stack to build great products</h6>
       </CustomWidthWrapper>
 
       <div className="mt-6">

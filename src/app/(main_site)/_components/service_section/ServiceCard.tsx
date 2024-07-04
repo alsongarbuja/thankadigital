@@ -8,7 +8,7 @@ interface IServiceCardProps {
 const ServiceCard = ({ serviceCardData }: IServiceCardProps) => {
   return (
     <div
-      className={`w-full px-8 py-6 place-content-center ${
+      className={`w-full px-8 py-4 min-h-[280px] place-content-center ${
         serviceCardData.variant === "white"
           ? "bg-white"
           : serviceCardData.variant === "black"

@@ -1,20 +1,14 @@
-// "use client";
-// import { useState } from "react";
-
 import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 import BlogList from "./_components/BlogList";
-// import { blogCategories } from "@/utils/blog";
-// import { Chip } from "@mantine/core";
-import { Search } from "react-feather";
 
 export default function BlogPage() {
   return (
     <CustomWidthWrapper>
       <div className="flex flex-col gap-4 mb-12">
         <h2>Blogs</h2>
-        {/* <p className="font-medium text-gray-600">
+        <p className="font-medium text-gray-600">
           Read interesting blogs about tech industry
-        </p> */}
+        </p>
 
         <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center">
           {/* <div>
@@ -36,14 +30,14 @@ export default function BlogPage() {
             </div>
           </div> */}
 
-          <section className="relative">
+          {/* <section className="relative">
             <p className="text-lg uppercase">Search Blog</p>
             <input
               className="py-4 rounded-md bg-background_lightblue px-14"
               placeholder="Read About..."
             />
             <Search className="absolute mx-4 text-gray-500 top-11" />
-          </section>
+          </section> */}
         </div>
 
         <BlogList />

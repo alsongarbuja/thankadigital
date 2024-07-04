@@ -4,7 +4,7 @@ const helpingMembers = [
   {
     name: "Prashiddha Khadka",
     position: "Flutter Developer",
-    image: "/images/about/prasid.png",
+    image: "https://alkyhora.sirv.com/teams/members/prasid.png",
   },
   {
     name: "Manika Gurung",
@@ -14,7 +14,7 @@ const helpingMembers = [
   {
     name: "Binod Adhikari",
     position: "Web Developer",
-    image: "/images/about/binod.png",
+    image: "https://alkyhora.sirv.com/teams/members/binod.png",
   },
   // {
   //   name: "Santosh Bhandari ",

@@ -1,8 +1,9 @@
 import Link from "next/link";
 
-import Header from "@/components/Header";
-import { footerConnect, footerContacts, footerLinks } from "@/utils/footer";
+import Header from "@/app/(main_site)/_components/layout/Header";
+import { footerContacts, footerLinks } from "@/utils/footer";
 import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
+import ConnectSection from "./_components/ConnectSection";
 
 export default function MainLayout({
   children,
@@ -13,55 +14,14 @@ export default function MainLayout({
   return (
     <>
       <Header />
-
       <main className="w-full min-h-[50vh] pt-12">{children}</main>
-
-      <section className="pt-12 pb-20 bg-background_gray">
-        <CustomWidthWrapper>
-          <div className="flex flex-col items-center gap-6">
-            <section className="flex flex-col items-center gap-3">
-              <p className="text-3xl font-semibold text-secondary">
-                Connect with us
-              </p>
-              <p className="text-xl font-medium">
-                Found us interesting? Let&apos;s have a talk
-              </p>
-            </section>
-
-            <div className="flex flex-col w-full gap-6 my-6 md:flex-row md:justify-between">
-              <section className="flex flex-col gap-2">
-                {footerConnect[0].location?.map((con, i) => (
-                  <p key={i} className="text-xl">
-                    {con.location}
-                  </p>
-                ))}
-              </section>
-
-              <section className="flex flex-col gap-2">
-                {footerConnect[1].connect?.map((con, i) => (
-                  <Link href={con.link} key={i} className="text-xl">
-                    {con.contact}
-                  </Link>
-                ))}
-              </section>
-
-              {/* <section className="flex flex-col gap-2">
-                {footerConnect[2].socialmedia?.map((con, i) => (
-                  <Link href={con.link} key={i}>
-                    {con.name}
-                  </Link>
-                ))}
-              </section> */}
-            </div>
-          </div>
-        </CustomWidthWrapper>
-      </section>
+      <ConnectSection />
       <footer className="pt-6 pb-0 bg-background_lightblue">
         <CustomWidthWrapper>
           <div className="flex flex-col gap-5 py-16 md:flex-row md:justify-between">
             <div className="flex flex-col gap-5 md:flex-row md:gap-36">
               {footerLinks.map((footer, i) => (
-                <section className="flex flex-col gap-2 text-xl" key={i}>
+                <section className="flex flex-col gap-4 text-xl" key={i}>
                   <p className="my-3 text-2xl font-semibold">
                     {footer.menuTitle}
                   </p>
@@ -80,7 +40,9 @@ export default function MainLayout({
               <div className="flex gap-4">
                 {footerContacts.map((con, i) => (
                   <section className="p-2 bg-white rounded-full" key={i}>
-                    <Link href={con.link}>{con.icon}</Link>
+                    <Link href={con.link} aria-label={con.name}>
+                      {con.icon}
+                    </Link>
                   </section>
                 ))}
               </div>

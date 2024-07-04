@@ -37,31 +37,24 @@ export const footerConnect = [
       },
     ],
   },
-
-  // {
-  //   socialmedia: [
-  //     {
-  //       id: 0,
-  //       name: "linkedin",
-  //       link: "/",
-  //     },
-  //     {
-  //       id: 1,
-  //       name: "whatsapp",
-  //       link: "/",
-  //     },
-  //     {
-  //       id: 2,
-  //       name: "facebook",
-  //       link: "/",
-  //     },
-  //   ],
-  // },
 ];
 
 export const footerLinks = [
   {
     menuTitle: "Important Links",
+    links: [
+      {
+        name: "Privacy Policy",
+        link: "#",
+      },
+      {
+        name: "Terms of Service",
+        link: "#",
+      },
+    ],
+  },
+  {
+    menuTitle: "Website Links",
     links: [
       {
         name: "About us",
@@ -101,15 +94,18 @@ export const footerContacts = [
     id: 0,
     icon: <Linkedin />,
     link: "https://www.linkedin.com/company/96073578/admin/dashboard/",
+    name: "link to thanka digital linkedin",
   },
   {
     id: 1,
     icon: <Facebook />,
     link: "https://www.facebook.com/thankadigital1",
+    name: "link to thanka digital facebook",
   },
   {
     id: 2,
     icon: <MessageCircle />,
-    link: "https://wa.me/9825140802",
+    link: "https://wa.me/9808449001",
+    name: "link to thanka digital whatsapp",
   },
 ];

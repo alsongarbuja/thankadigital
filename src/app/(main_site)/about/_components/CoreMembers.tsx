@@ -15,7 +15,7 @@ const CoreMembers = () => {
       <div className="hidden grid-cols-8 sm:grid ">
         <div className="flex-col items-center justify-center col-span-2 ">
           <Image
-            src="/images/about/alson.png"
+            src="https://alkyhora.sirv.com/teams/core/alson.png"
             alt="image"
             width={600}
             height={500}
@@ -31,7 +31,7 @@ const CoreMembers = () => {
 
         <div className="col-span-2 ">
           <Image
-            src="/images/about/bipin.png"
+            src="https://alkyhora.sirv.com/teams/core/bipin.png"
             alt="image"
             width={600}
             height={500}
@@ -46,7 +46,7 @@ const CoreMembers = () => {
         <div className=" sm:col-span-3 md:col-span-1"></div>
         <div className="flex-col items-center justify-center col-span-2 ">
           <Image
-            src="/images/about/sunil.png"
+            src="https://alkyhora.sirv.com/teams/core/sunil.png"
             alt="image"
             width={600}
             height={500}
@@ -61,7 +61,7 @@ const CoreMembers = () => {
 
         <div className="flex-col items-center justify-center col-span-2">
           <Image
-            src="/images/about/susant.png"
+            src="https://alkyhora.sirv.com/teams/core/susant.png"
             alt="image"
             width={600}
             height={500}
@@ -76,7 +76,7 @@ const CoreMembers = () => {
 
         <div className="flex-col items-center justify-center col-span-2 ">
           <Image
-            src="/images/about/utsab.png"
+            src="https://alkyhora.sirv.com/teams/core/utsab.png"
             alt="image"
             width={600}
             height={500}
@@ -93,7 +93,7 @@ const CoreMembers = () => {
       <div className="flex flex-col items-center justify-center gap-4 sm:hidden">
         <div className="flex-col items-center justify-center ">
           <Image
-            src="/images/about/ceo.png"
+            src="https://alkyhora.sirv.com/teams/core/alson.png"
             alt="image"
             width={600}
             height={500}
@@ -107,7 +107,7 @@ const CoreMembers = () => {
 
         <div className="">
           <Image
-            src="/images/about/cfo.png"
+            src="https://alkyhora.sirv.com/teams/core/bipin.png"
             alt="image"
             width={600}
             height={500}
@@ -121,7 +121,7 @@ const CoreMembers = () => {
 
         <div className="flex-col items-center justify-center ">
           <Image
-            src="/images/about/coo.png"
+            src="https://alkyhora.sirv.com/teams/core/sunil.png"
             alt="image"
             width={600}
             height={500}
@@ -135,7 +135,7 @@ const CoreMembers = () => {
 
         <div className="flex-col items-center justify-center ">
           <Image
-            src="/images/about/cmo.png"
+            src="https://alkyhora.sirv.com/teams/core/susant.png"
             alt="image"
             width={600}
             height={500}
@@ -149,7 +149,7 @@ const CoreMembers = () => {
 
         <div className="flex-col items-center justify-center ">
           <Image
-            src="/images/about/cto.png"
+            src="https://alkyhora.sirv.com/teams/core/utsab.png"
             alt="image"
             width={600}
             height={500}

@@ -1,11 +1,7 @@
-import { Code, Globe, Hexagon, TrendingUp } from "react-feather";
-
-import HeroSection from "@/components/HeroSection";
-import ServiceCard from "@/components/services/ServiceCard";
-import ServiceSection from "@/components/services/ServiceSection";
-import WorkSection from "@/components/WorkSection";
-import AboutSection from "@/components/AboutSection";
-import TechnologySection from "@/components/landing/TechnologySection";
+import HeroSection from "./_components/hero_section/HeroSection";
+import ServiceSection from "./_components/service_section/ServiceSection";
+import WorkSection from "./_components/WorkSection";
+import TechnologySection from "./_components/TechnologySection";
 
 export default function Home() {
   return (

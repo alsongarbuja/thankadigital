@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const HeroJourneySection = () => {
   return (
-    <section className="relative flex my-24">
+    <section className="relative w-screen my-12 overflow-hidden">
       <motion.svg
         width="1830"
         height="199"
@@ -27,7 +27,7 @@ const HeroJourneySection = () => {
         />
       </motion.svg>
 
-      <div className="flex absolute justify-around w-[90%] left-1/2 -translate-x-1/2">
+      <div className="flex flex-wrap absolute top-0 justify-around w-[90%] left-1/2 -translate-x-1/2">
         <motion.figure
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
