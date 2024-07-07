@@ -1,42 +1,120 @@
-import FormLayout from "@/app/(admin)/_components/FormLayout";
-import AdminInput from "@/app/(admin)/_components/AdminInput";
-import AdminSelect from "@/app/(admin)/_components/AdminSelect";
+"use client";
+import { useForm } from "@mantine/form";
+import { notifications } from "@mantine/notifications";
+import { zodResolver } from "mantine-form-zod-resolver";
+
+import { apiCaller } from "@/helpers/apiCaller";
+import { getFromLocalStorage } from "@/helpers/localstorage";
+import { FormWrapper } from "../../_components/FormWrapper";
+import { Button, Select, TextInput } from "@mantine/core";
+import { CareerSchema, CareerSchemaType } from "@/app/(admin)/utils/formSchema";
 
 export default function CreateCareer() {
+  const careerForm = useForm<CareerSchemaType>({
+    mode: "uncontrolled",
+    validate: zodResolver(CareerSchema),
+  });
+
+  const handleSubmit = async (values: CareerSchemaType) => {
+    try {
+      const res = await apiCaller("/api/admin/career", "POST", 200, values, {
+        Authorization: `User ${getFromLocalStorage("thanka_email")}`,
+      });
+      if (res.isGood) {
+        careerForm.reset();
+        notifications.show({
+          title: "Career created successfully",
+          message: "Career has been created successfully",
+          color: "teal",
+          fz: "lg",
+        });
+      } else {
+        notifications.show({
+          title: "Error creating career",
+          message: res.data.toString(),
+          color: "red",
+          fz: "lg",
+        });
+      }
+    } catch (error: any) {
+      notifications.show({
+        title: "Error creating career",
+        message: error.toString(),
+        color: "red",
+        fz: "lg",
+      });
+    }
+  };
+
   return (
-    <div className="p-4 m-4">
-      <FormLayout url="/api/admin/career" modelName="Career" method="POST">
-        <AdminInput label="Title" name="title" placeholder="Enter title" />
-        <AdminInput label="Salary" name="salary" placeholder="Enter Salary" />
-        <AdminInput
+    <FormWrapper modelName="Career" method="POST">
+      <form
+        onSubmit={careerForm.onSubmit(handleSubmit)}
+        className="flex flex-col gap-4"
+      >
+        <TextInput
+          label="Title"
+          placeholder="Enter title"
+          withAsterisk
+          size="lg"
+          key={careerForm.key("title")}
+          {...careerForm.getInputProps("title")}
+        />
+        <TextInput
+          label="Salary"
+          placeholder="Enter salary"
+          withAsterisk
+          size="lg"
+          key={careerForm.key("salary")}
+          {...careerForm.getInputProps("salary")}
+        />
+        <TextInput
           label="Description"
-          name="description"
-          placeholder="Enter Description"
+          placeholder="Enter description"
+          withAsterisk
+          size="lg"
+          key={careerForm.key("description")}
+          {...careerForm.getInputProps("description")}
         />
-        <AdminInput
+        <TextInput
           label="Time"
-          name="time"
-          placeholder="Enter Time"
-          required={false}
+          placeholder="Enter time"
+          size="lg"
+          key={careerForm.key("time")}
+          {...careerForm.getInputProps("time")}
         />
-        <AdminInput
+        <TextInput
           label="Experience"
-          name="experience"
-          placeholder="Enter Experience"
-          required={false}
+          placeholder="Enter experience"
+          size="lg"
+          key={careerForm.key("experience")}
+          {...careerForm.getInputProps("experience")}
         />
-        <AdminSelect
+        <Select
           label="Location"
-          name="location"
-          options={["Remote", "On-site", "Hybrid"]}
+          size="lg"
+          withAsterisk
+          allowDeselect={false}
+          defaultValue="On-site"
+          data={["Remote", "On-site", "Hybrid"]}
+          key={careerForm.key("location")}
+          {...careerForm.getInputProps("location")}
         />
-        <AdminSelect
+        <Select
           label="Type"
-          name="type"
-          options={["Full Time", "Part Time"]}
+          size="lg"
+          withAsterisk
+          allowDeselect={false}
+          defaultValue="Full Time"
+          data={["Full Time", "Part Time", "Internship"]}
+          key={careerForm.key("type")}
+          {...careerForm.getInputProps("type")}
         />
-        {/* skills: string[]; */}
-      </FormLayout>
-    </div>
+
+        <Button type="submit" variant="filled" bg="red" w="100%">
+          Create
+        </Button>
+      </form>
+    </FormWrapper>
   );
 }

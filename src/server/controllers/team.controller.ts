@@ -1,6 +1,7 @@
 import dbConnect from "..";
 import { ApiError } from "@/server/helpers/ApiError";
 import teamsModel from "../models/teams.model";
+import { removePrivateProperty } from "../helpers/privateProperty";
 
 export async function createTeam(body: dynamicObject) {
   await dbConnect();
@@ -10,10 +11,10 @@ export async function createTeam(body: dynamicObject) {
     throw new ApiError("Team could not be created", 500);
   }
 
-  return team;
+  return removePrivateProperty(team);
 }
 
-export async function getTeam(id: string) {
+export async function getTeam(id: string, getSchema: boolean = false) {
   await dbConnect();
   const team = await teamsModel.findById(id);
 
@@ -21,7 +22,7 @@ export async function getTeam(id: string) {
     throw new ApiError("Team not found", 404);
   }
 
-  return team;
+  return getSchema ? team : removePrivateProperty(team);
 }
 
 export async function getTeams(teamType: string = "all") {
@@ -32,20 +33,22 @@ export async function getTeams(teamType: string = "all") {
     throw new ApiError("Teams not found", 404);
   }
 
-  return teams;
+  return {
+    teams: teams.map(team => removePrivateProperty(team)),
+  };
 }
 
 export async function updateTeam(id: string, body: dynamicObject) {
   await dbConnect();
-  const team = await getTeam(id);
+  const team = await getTeam(id, true);
   Object.assign(team, body);
   await team.save();
-  return team;
+  return removePrivateProperty(team);
 }
 
 export async function deleteTeam(id: string) {
   await dbConnect();
-  const team = await getTeam(id);
+  const team = await getTeam(id, true);
   await team.deleteOne();
   return "DELETED";
 }

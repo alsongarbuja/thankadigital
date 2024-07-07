@@ -32,7 +32,7 @@ const HeroSection = () => {
 
           <div className="flex flex-col gap-4 -mt-10 md:flex-row">
             <Link
-              href="/portfolio"
+              href="/work"
               className="px-8 py-3 text-white rounded-full bg-primary_blue"
             >
               Works we have done

@@ -1,36 +1,127 @@
-import AdminInput from "@/app/(admin)/_components/AdminInput";
-import AdminSelect from "@/app/(admin)/_components/AdminSelect";
-import FormLayout from "@/app/(admin)/_components/FormLayout";
+"use client";
+import { useForm } from "@mantine/form";
+import { Button, Select, TextInput } from "@mantine/core";
+import { zodResolver } from "mantine-form-zod-resolver";
+import { notifications } from "@mantine/notifications";
+
+import { UserSchema, UserSchemaType } from "@/app/(admin)/utils/formSchema";
+import { FormWrapper } from "../../../_components/FormWrapper";
+import { apiCaller } from "@/helpers/apiCaller";
+import { getFromLocalStorage } from "@/helpers/localstorage";
+import { useParams } from "next/navigation";
+import { useEffect } from "react";
+import { schemaToDataParser } from "@/helpers/schemaParser";
 
 export default function EditUser() {
+  const userForm = useForm<UserSchemaType>({
+    mode: "uncontrolled",
+    validate: zodResolver(UserSchema),
+  });
+  const params = useParams();
+
+  const handleSubmit = async (values: UserSchemaType) => {
+    try {
+      const res = await apiCaller(
+        `/api/admin/user/${params.userId}`,
+        "PATCH",
+        200,
+        values,
+        {
+          Authorization: `User ${getFromLocalStorage("thanka_email")}`,
+        }
+      );
+      if (res.isGood) {
+        notifications.show({
+          title: "User updated successfully",
+          message: "User has been updated successfully",
+          color: "teal",
+          fz: "lg",
+        });
+      } else {
+        notifications.show({
+          title: "Error updating user",
+          message: res.data.toString(),
+          color: "red",
+          fz: "lg",
+        });
+      }
+    } catch (error: any) {
+      notifications.show({
+        title: "Error updating user",
+        message: error.toString(),
+        color: "red",
+        fz: "lg",
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (params.userId) {
+      (async () => {
+        const res = await apiCaller(`/api/admin/user/${params.userId}`);
+
+        if (res.isGood) {
+          const data = schemaToDataParser(res.data.user);
+          userForm.setValues(data);
+        } else {
+          notifications.show({
+            title: "Error fetching user",
+            message: res.data.toString(),
+            color: "red",
+            fz: "lg",
+          });
+        }
+      })();
+    }
+  }, [params.userId]);
+
   return (
-    <div className="p-4 m-4">
-      <FormLayout
-        url="/api/admin/user"
-        method="PATCH"
-        modelName="user"
-        param="userId"
+    <FormWrapper modelName="User" method="PATCH">
+      <form
+        onSubmit={userForm.onSubmit(handleSubmit)}
+        className="flex flex-col gap-4"
       >
-        <AdminInput label="Name" name="name" placeholder="Enter name" />
-        <AdminInput
+        <TextInput
+          label="Name"
+          placeholder="Enter name"
+          withAsterisk
+          size="lg"
+          key={userForm.key("name")}
+          {...userForm.getInputProps("name")}
+        />
+        <TextInput
           label="Email"
-          name="email"
+          placeholder="Enter email"
+          withAsterisk
+          size="lg"
           type="email"
-          placeholder="Enter Email"
+          key={userForm.key("email")}
+          {...userForm.getInputProps("email")}
         />
-        <AdminInput
+        <TextInput
           label="Password"
-          name="password"
+          placeholder="Enter password"
+          withAsterisk
+          size="lg"
           type="password"
-          placeholder="Enter Password"
-          required={false}
+          key={userForm.key("password")}
+          {...userForm.getInputProps("password")}
         />
-        <AdminSelect
+        <Select
           label="Role"
-          name="role"
-          options={["admin", "content-writer", "superadmin"]}
+          size="lg"
+          withAsterisk
+          allowDeselect={false}
+          defaultValue="admin"
+          data={["admin", "content-writer"]}
+          key={userForm.key("role")}
+          {...userForm.getInputProps("role")}
         />
-      </FormLayout>
-    </div>
+
+        <Button type="submit" variant="filled" bg="red" w="100%">
+          Update
+        </Button>
+      </form>
+    </FormWrapper>
   );
 }

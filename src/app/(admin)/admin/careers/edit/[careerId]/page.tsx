@@ -1,47 +1,149 @@
-import FormLayout from "@/app/(admin)/_components/FormLayout";
-import AdminInput from "@/app/(admin)/_components/AdminInput";
-import AdminSelect from "@/app/(admin)/_components/AdminSelect";
+"use client";
+import { useForm } from "@mantine/form";
+import { useParams } from "next/navigation";
+import { Button, Select, TextInput } from "@mantine/core";
+import { notifications } from "@mantine/notifications";
+import { zodResolver } from "mantine-form-zod-resolver";
+
+import { FormWrapper } from "../../../_components/FormWrapper";
+import { apiCaller } from "@/helpers/apiCaller";
+import { getFromLocalStorage } from "@/helpers/localstorage";
+import { CareerSchema, CareerSchemaType } from "@/app/(admin)/utils/formSchema";
+import { useEffect } from "react";
+import { schemaToDataParser } from "@/helpers/schemaParser";
 
 export default function EditCareer() {
+  const careerForm = useForm<CareerSchemaType>({
+    mode: "uncontrolled",
+    validate: zodResolver(CareerSchema),
+  });
+  const params = useParams();
+
+  const handleSubmit = async (values: CareerSchemaType) => {
+    try {
+      const res = await apiCaller(
+        `/api/admin/career/${params.careerId}`,
+        "PATCH",
+        200,
+        values,
+        {
+          Authorization: `User ${getFromLocalStorage("thanka_email")}`,
+        }
+      );
+      if (res.isGood) {
+        notifications.show({
+          title: "Career updated successfully",
+          message: "Career has been updated successfully",
+          color: "teal",
+          fz: "lg",
+        });
+      } else {
+        notifications.show({
+          title: "Error updating career",
+          message: res.data.toString(),
+          color: "red",
+          fz: "lg",
+        });
+      }
+    } catch (error: any) {
+      notifications.show({
+        title: "Error updating career",
+        message: error.toString(),
+        color: "red",
+        fz: "lg",
+      });
+    }
+  };
+
+  useEffect(() => {
+    if (params.careerId) {
+      (async () => {
+        const res = await apiCaller(`/api/admin/career/${params.careerId}`);
+
+        if (res.isGood) {
+          const data = schemaToDataParser(res.data.careers);
+          careerForm.setValues(data);
+        } else {
+          notifications.show({
+            title: "Error fetching career",
+            message: res.data.toString(),
+            color: "red",
+            fz: "lg",
+          });
+        }
+      })();
+    }
+  }, [params.careerId]);
+
   return (
-    <div className="p-4 m-4">
-      <FormLayout
-        url="/api/admin/career"
-        modelName="careers"
-        method="PATCH"
-        param="careerId"
+    <FormWrapper modelName="Career" method="PATCH">
+      <form
+        onSubmit={careerForm.onSubmit(handleSubmit)}
+        className="flex flex-col gap-4"
       >
-        <AdminInput label="Title" name="title" placeholder="Enter title" />
-        <AdminInput label="Salary" name="salary" placeholder="Enter Salary" />
-        <AdminInput
+        <TextInput
+          label="Title"
+          placeholder="Enter title"
+          withAsterisk
+          size="lg"
+          key={careerForm.key("title")}
+          {...careerForm.getInputProps("title")}
+        />
+        <TextInput
+          label="Salary"
+          placeholder="Enter salary"
+          withAsterisk
+          size="lg"
+          key={careerForm.key("salary")}
+          {...careerForm.getInputProps("salary")}
+        />
+        <TextInput
           label="Description"
-          name="description"
-          placeholder="Enter Description"
+          placeholder="Enter description"
+          withAsterisk
+          size="lg"
+          key={careerForm.key("description")}
+          {...careerForm.getInputProps("description")}
         />
-        <AdminInput
+        <TextInput
           label="Time"
-          name="time"
-          placeholder="Enter Time"
-          required={false}
+          placeholder="Enter time"
+          size="lg"
+          key={careerForm.key("time")}
+          {...careerForm.getInputProps("time")}
         />
-        <AdminInput
+        <TextInput
           label="Experience"
-          name="experience"
-          placeholder="Enter Experience"
-          required={false}
+          placeholder="Enter experience"
+          size="lg"
+          key={careerForm.key("experience")}
+          {...careerForm.getInputProps("experience")}
         />
-        <AdminSelect
+        <Select
           label="Location"
-          name="location"
-          options={["Remote", "On-site", "Hybrid"]}
+          size="lg"
+          withAsterisk
+          allowDeselect={false}
+          defaultValue="On-site"
+          data={["Remote", "On-site", "Hybrid"]}
+          key={careerForm.key("location")}
+          {...careerForm.getInputProps("location")}
         />
-        <AdminSelect
+        <Select
           label="Type"
-          name="type"
-          options={["Full Time", "Part Time"]}
+          size="lg"
+          withAsterisk
+          allowDeselect={false}
+          defaultValue="Full Time"
+          data={["Full Time", "Part Time", "Internship"]}
+          key={careerForm.key("type")}
+          {...careerForm.getInputProps("type")}
         />
-        {/* skills: string[]; */}
-      </FormLayout>
-    </div>
+
+        <Button type="submit" variant="filled" bg="red" w="100%">
+          Update
+        </Button>
+      </form>
+    </FormWrapper>
   );
 }

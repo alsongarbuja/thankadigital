@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 
 import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
 import "./globals.css";
-import Head from "next/head";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -48,16 +49,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="bg-neutral_white">
-      <Head>
+      {/* <Head>
         <meta
           name="description"
           content="Software Development company based in Nepal. We build software that helps businesses grow."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <ColorSchemeScript />
-      </Head>
+      </Head> */}
       <body className={montserrat.className}>
-        <MantineProvider>{children}</MantineProvider>
+        <MantineProvider>
+          <Notifications
+            position="top-right"
+            zIndex={1000}
+            notificationMaxHeight={250}
+          />
+          {children}
+        </MantineProvider>
       </body>
     </html>
   );

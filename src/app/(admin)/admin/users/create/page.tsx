@@ -1,30 +1,98 @@
-import FormLayout from "@/app/(admin)/_components/FormLayout";
-import AdminInput from "@/app/(admin)/_components/AdminInput";
-import AdminSelect from "@/app/(admin)/_components/AdminSelect";
+"use client";
+import { useForm } from "@mantine/form";
+import { Button, Select, TextInput } from "@mantine/core";
+import { zodResolver } from "mantine-form-zod-resolver";
+import { notifications } from "@mantine/notifications";
+
+import { UserSchema, UserSchemaType } from "@/app/(admin)/utils/formSchema";
+import { FormWrapper } from "../../_components/FormWrapper";
+import { apiCaller } from "@/helpers/apiCaller";
+import { getFromLocalStorage } from "@/helpers/localstorage";
 
 export default function CreateUser() {
+  const userForm = useForm<UserSchemaType>({
+    mode: "uncontrolled",
+    validate: zodResolver(UserSchema),
+  });
+
+  const handleSubmit = async (values: UserSchemaType) => {
+    try {
+      const res = await apiCaller("/api/admin/register", "POST", 200, values, {
+        Authorization: `User ${getFromLocalStorage("thanka_email")}`,
+      });
+      if (res.isGood) {
+        userForm.reset();
+        notifications.show({
+          title: "User created successfully",
+          message: "User has been created successfully",
+          color: "teal",
+          fz: "lg",
+        });
+      } else {
+        notifications.show({
+          title: "Error creating user",
+          message: res.data.toString(),
+          color: "red",
+          fz: "lg",
+        });
+      }
+    } catch (error: any) {
+      notifications.show({
+        title: "Error creating user",
+        message: error.toString(),
+        color: "red",
+        fz: "lg",
+      });
+    }
+  };
+
   return (
-    <div className="p-4 m-4">
-      <FormLayout url="/api/admin/register" method="POST" modelName="User">
-        <AdminInput label="Name" name="name" placeholder="Enter name" />
-        <AdminInput
+    <FormWrapper modelName="User" method="POST">
+      <form
+        onSubmit={userForm.onSubmit(handleSubmit)}
+        className="flex flex-col gap-4"
+      >
+        <TextInput
+          label="Name"
+          placeholder="Enter name"
+          withAsterisk
+          size="lg"
+          key={userForm.key("name")}
+          {...userForm.getInputProps("name")}
+        />
+        <TextInput
           label="Email"
-          name="email"
+          placeholder="Enter email"
+          withAsterisk
+          size="lg"
           type="email"
-          placeholder="Enter Email"
+          key={userForm.key("email")}
+          {...userForm.getInputProps("email")}
         />
-        <AdminInput
+        <TextInput
           label="Password"
-          name="password"
+          placeholder="Enter password"
+          withAsterisk
+          size="lg"
           type="password"
-          placeholder="Enter Password"
+          key={userForm.key("password")}
+          {...userForm.getInputProps("password")}
         />
-        <AdminSelect
+        <Select
           label="Role"
-          name="role"
-          options={["admin", "content-writer"]}
+          size="lg"
+          withAsterisk
+          allowDeselect={false}
+          defaultValue="admin"
+          data={["admin", "content-writer"]}
+          key={userForm.key("role")}
+          {...userForm.getInputProps("role")}
         />
-      </FormLayout>
-    </div>
+
+        <Button type="submit" variant="filled" bg="red" w="100%">
+          Create
+        </Button>
+      </form>
+    </FormWrapper>
   );
 }

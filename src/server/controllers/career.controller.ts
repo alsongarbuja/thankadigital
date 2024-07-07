@@ -1,6 +1,7 @@
 import dbConnect from "..";
 import { ApiError } from "@/server/helpers/ApiError";
 import careerModel from "@/server/models/career.model";
+import { removePrivateProperty } from "../helpers/privateProperty";
 
 export async function createCareer(body: dynamicObject) {
   await dbConnect();
@@ -10,10 +11,10 @@ export async function createCareer(body: dynamicObject) {
     throw new ApiError("Career could not be created", 500);
   }
 
-  return career;
+  return removePrivateProperty(career);
 }
 
-export async function getCareer(id: string) {
+export async function getCareer(id: string, getSchema: boolean = false) {
   await dbConnect();
   const career = await careerModel.findById(id);
 
@@ -21,7 +22,7 @@ export async function getCareer(id: string) {
     throw new ApiError("Career not found", 404);
   }
 
-  return career;
+  return getSchema ? career : removePrivateProperty(career);
 }
 
 export async function getCareers(status: string = "published") {
@@ -32,20 +33,22 @@ export async function getCareers(status: string = "published") {
     throw new ApiError("Careers not found", 404);
   }
 
-  return careers;
+  return {
+    careers: careers.map((career) => removePrivateProperty(career)),
+  };
 }
 
 export async function updateCareer(id: string, body: dynamicObject) {
   await dbConnect();
-  const career = await getCareer(id);
+  const career = await getCareer(id, true);
   Object.assign(career, body);
   await career.save();
-  return career;
+  return removePrivateProperty(career);
 }
 
 export async function deleteCareer(id: string) {
   await dbConnect();
-  const career = await getCareer(id);
+  const career = await getCareer(id, true);
   await career.deleteOne();
   return "DELETED";
 }

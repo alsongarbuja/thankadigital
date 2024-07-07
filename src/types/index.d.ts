@@ -34,7 +34,6 @@ type ProjectModel = {
   journey: dynamicObject;
 };
 
-// TODO: Change the blog model schema
 type BlogModel = {
   title: string;
   description: string;
@@ -53,4 +52,10 @@ type BlogModel = {
   social_image: string;
   canonical_url: string;
   reading_time_minutes: number;
+};
+
+type ApiResponse = {
+  status: number;
+  message?: string;
+  data?: dynamicObject;
 };
