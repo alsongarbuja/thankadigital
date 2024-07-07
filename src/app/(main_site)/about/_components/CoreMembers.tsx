@@ -9,7 +9,7 @@ const CoreMembers = () => {
   const fetchMembers = async () => {
     const res = await fetch("/api/admin/teams?type=Core");
     const data = await res.json();
-    setMembers(data.teams);
+    setMembers(data.teams.teams);
   };
 
   useEffect(() => {
@@ -40,9 +40,9 @@ const CoreMembers = () => {
             </div>
           ))}
         {!fetching &&
-          members.map((member: TeamModel) => (
+          members.map((member: TeamModel & { id: string }) => (
             <div
-              key={member._id}
+              key={member.id}
               className="flex flex-col items-center justify-center gap-4"
             >
               <Image

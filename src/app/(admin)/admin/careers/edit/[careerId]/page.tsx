@@ -139,6 +139,15 @@ export default function EditCareer() {
           key={careerForm.key("type")}
           {...careerForm.getInputProps("type")}
         />
+        <Select
+          label="Status"
+          size="lg"
+          allowDeselect={false}
+          defaultValue="draft"
+          data={["published", "draft", "archieved"]}
+          key={careerForm.key("status")}
+          {...careerForm.getInputProps("status")}
+        />
 
         <Button type="submit" variant="filled" bg="red" w="100%">
           Update

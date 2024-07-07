@@ -3,7 +3,7 @@ import CareerList from "./careerList";
 import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 
 export default async function CareerPage() {
-  const careerList: CareerModel[] = await getCareers();
+  const careerList: dynamicObject = await getCareers();
 
   return (
     <CustomWidthWrapper>
@@ -11,7 +11,7 @@ export default async function CareerPage() {
       <p className="font-medium text-gray-600">
         Find about the career opportunities at thanka digital
       </p>
-      <CareerList careerList={careerList} />
+      <CareerList careerList={careerList.careers} />
     </CustomWidthWrapper>
   );
 }

@@ -24,5 +24,6 @@ export const CareerSchema = z.object({
   experience: z.string().optional(),
   location: z.enum(["Remote", "On-site", "Hybrid"]),
   type: z.enum(["Full Time", "Part Time", "Internship"]),
+  status: z.enum(["published", "draft", "archieved"]).optional(),
 });
 export type CareerSchemaType = z.infer<typeof CareerSchema>;

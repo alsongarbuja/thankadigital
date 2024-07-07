@@ -9,7 +9,7 @@ const Members = () => {
   const fetchMembers = async () => {
     const res = await fetch("/api/admin/teams?type=Members");
     const data = await res.json();
-    setMembers(data.teams);
+    setMembers(data.teams.teams);
   };
 
   useEffect(() => {
