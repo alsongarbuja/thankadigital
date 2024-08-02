@@ -6,17 +6,18 @@ import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 
 const Header = () => {
   return (
-    <header className="py-8">
+    <header className="py-4 border-b border-neutral-200">
       <CustomWidthWrapper>
         <nav className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center">
             <Image
               src="/thanka_digital_logo.svg"
               alt="Thanka Digital logo"
-              className="w-10 h-10 md:w-14 md:h-14"
-              width={60}
-              height={60}
+              className="w-10 h-10 md:w-14 md:h-12"
+              width={40}
+              height={40}
             />
+            <span className="text-xl font-playfair">Thanka Digital</span>
           </Link>
           <NavigationHeader />
         </nav>

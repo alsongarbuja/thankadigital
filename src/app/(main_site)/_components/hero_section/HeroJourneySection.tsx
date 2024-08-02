@@ -39,7 +39,7 @@ const HeroJourneySection = () => {
             alt="image"
             width={200}
             height={180}
-            className="w-full h-full"
+            className="object-contain w-full h-full"
           />
         </motion.figure>
 
@@ -54,7 +54,7 @@ const HeroJourneySection = () => {
             alt="image"
             width={220}
             height={120}
-            className="w-full h-full"
+            className="object-contain w-full h-full"
           />
         </motion.figure>
 
@@ -69,7 +69,7 @@ const HeroJourneySection = () => {
             alt="image"
             width={180}
             height={150}
-            className="w-full h-full"
+            className="object-contain w-full h-full"
           />
         </motion.figure>
 
@@ -84,7 +84,7 @@ const HeroJourneySection = () => {
             alt="image"
             width={180}
             height={170}
-            className="w-full h-full"
+            className="object-contain w-full h-full"
           />
         </motion.figure>
       </div>

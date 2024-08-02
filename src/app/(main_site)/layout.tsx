@@ -14,7 +14,7 @@ export default function MainLayout({
   return (
     <>
       <Header />
-      <main className="w-full min-h-[50vh] pt-12">{children}</main>
+      <main className="w-full min-h-[50vh]">{children}</main>
       <ConnectSection />
       <footer className="pt-6 pb-0 bg-background_lightblue">
         <CustomWidthWrapper>

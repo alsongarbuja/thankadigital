@@ -20,8 +20,10 @@ module.exports = {
         filter_btn: "#3F3D56",
       },
       fontFamily: {
-        koho: ["var(--font-koho)", "sans-serif"],
         dm: ["var(--font-dm-sans)", "sans-serif"],
+        playfair: ["var(--font-playfair)", "serif"],
+        josefin: ["var(--font-josefin-sans)", "sans-serif"],
+        lato: ["var(--font-lato)", "sans"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

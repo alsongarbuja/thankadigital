@@ -1,5 +1,7 @@
+"use client";
 import { servicesDatas } from "@/utils/services";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface IServiceCardProps {
   serviceCardData: (typeof servicesDatas)[0];
@@ -7,7 +9,11 @@ interface IServiceCardProps {
 
 const ServiceCard = ({ serviceCardData }: IServiceCardProps) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      transition={{ duration: 0.75 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
       className={`w-full px-8 py-4 min-h-[280px] place-content-center ${
         serviceCardData.variant === "white"
           ? "bg-white"
@@ -41,7 +47,7 @@ const ServiceCard = ({ serviceCardData }: IServiceCardProps) => {
           />
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

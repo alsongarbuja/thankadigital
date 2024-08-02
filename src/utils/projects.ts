@@ -51,4 +51,17 @@ export const projectsList: ProjectModel[] = [
       status: "ongoing",
     },
   },
+  {
+    id: '5',
+    name: 'Ghar Phela',
+    description: 'Real estate platform for buying and selling properties in nepal.',
+    thumbnail: 'https://alkyhora.sirv.com/portfolio/gharphela_cover.png',
+    liveLink: 'https://gharphela.netlify.app/',
+    detailLink: '#',
+    logo: 'https://alkyhora.sirv.com/portfolio/gharphela_logo.png',
+    journey: {
+      scopes: ["web"],
+      status: "live",
+    },
+  },
 ];

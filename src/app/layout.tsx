@@ -1,16 +1,39 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
-import { ColorSchemeScript, MantineProvider } from "@mantine/core";
+import {
+  DM_Sans,
+  Playfair_Display,
+  Josefin_Sans,
+  Lato,
+} from "next/font/google";
+import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import "./globals.css";
 
-const montserrat = Montserrat({
+const dm = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-dm-sans",
+});
+
+const playfair_display = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-playfair",
+});
+
+const josefin_sans = Josefin_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-josefin-sans",
+});
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-lato",
 });
 
 export const metadata: Metadata = {
@@ -48,16 +71,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="bg-neutral_white">
-      {/* <Head>
-        <meta
-          name="description"
-          content="Software Development company based in Nepal. We build software that helps businesses grow."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <ColorSchemeScript />
-      </Head> */}
-      <body className={montserrat.className}>
+    <html
+      lang="en"
+      className={`${playfair_display.variable} ${lato.variable} bg-white text-neutral_black`}
+    >
+      <body className="font-lato">
         <MantineProvider>
           <Notifications
             position="top-right"
