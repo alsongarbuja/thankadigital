@@ -17,7 +17,7 @@ const NavigationHeader = () => {
         onClick={() => setIsNavbarOpen((prev) => !prev)}
       />
       <nav
-        className={`fixed transition-[top] duration-300 text-white md:text-black md:relative md:flex-row md:h-auto md:w-fit md:bg-inherit flex-col bg-primary_blue z-10 w-full h-screen ${
+        className={`fixed transition-[top] duration-300 text-white md:text-neutral_black md:relative md:flex-row md:h-auto md:w-fit md:bg-inherit flex-col bg-primary_blue z-10 w-full h-screen ${
           isNavbarOpen ? "top-0" : "-top-[150%]"
         } left-0 flex gap-12 items-center justify-center`}
         onClick={() => setIsNavbarOpen(false)}

@@ -8,9 +8,11 @@ import Particles from "./Particles";
 
 const HeroSection = () => {
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       <Particles className="absolute inset-0 pointer-events-none" />
-      <div className="absolute top-0 -translate-x-1/2 left-1/2 blob"></div>
+      <div className="absolute -translate-x-1/2 -top-2 left-1/2 blob"></div>
+      <div className="absolute -left-32 bottom-12 blob blob-long"></div>
+      <div className="absolute bottom-0 -right-12 blob blob-wide"></div>
       <CustomWidthWrapper>
         <div className="relative flex flex-col items-center justify-center gap-8 py-3 md:pb-24 hero-section">
           {/* <Image
@@ -23,11 +25,11 @@ const HeroSection = () => {
           /> */}
           <h1 className="mt-4 font-medium text-center font-playfair">
             Helping you in{" "}
-            <span className="px-4 pb-1 text-white bg-primary_blue">
+            <span className="px-4 pb-2 text-white bg-primary_blue">
               each and every
             </span>{" "}
             <br />
-            <span className="px-4 pb-1 text-white bg-primary_red">step</span> of
+            <span className="px-4 pb-3 text-white bg-primary_red">step</span> of
             your great business
           </h1>
 

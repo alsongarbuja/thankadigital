@@ -19,14 +19,18 @@ export default function MainLayout({
       <footer className="pt-6 pb-0 bg-background_lightblue">
         <CustomWidthWrapper>
           <div className="flex flex-col gap-5 py-16 md:flex-row md:justify-between">
-            <div className="flex flex-col gap-5 md:flex-row md:gap-36">
+            <div className="flex flex-row flex-wrap gap-12">
               {footerLinks.map((footer, i) => (
-                <section className="flex flex-col gap-4 text-xl" key={i}>
-                  <p className="my-3 text-2xl font-semibold">
+                <section className="flex flex-col gap-2 text-xl" key={i}>
+                  <p className="my-1 text-lg font-semibold">
                     {footer.menuTitle}
                   </p>
                   {footer.links.map((link, i) => (
-                    <Link href={link.link} key={i} className="group w-fit">
+                    <Link
+                      href={link.link}
+                      key={i}
+                      className="text-lg font-medium group w-fit"
+                    >
                       {link.name}
                       <hr className="h-0.5 bg-black w-0 group-hover:w-full transition-[width] duration-300" />
                     </Link>
@@ -36,7 +40,7 @@ export default function MainLayout({
             </div>
 
             <section className="flex flex-col gap-2 text-xl">
-              <p className="text-2xl font-semibold">Socials</p>
+              <p className="text-lg font-semibold">Socials</p>
               <div className="flex gap-4">
                 {footerContacts.map((con, i) => (
                   <section className="p-2 bg-white rounded-full" key={i}>
@@ -50,7 +54,7 @@ export default function MainLayout({
           </div>
 
           <div className="flex justify-between mb-12">
-            <p className="text-2xl font-semibold">&copy;{year}</p>
+            <p className="text-2xl font-semibold">&copy; {year}</p>
             <Link
               href="#top"
               className="text-2xl font-semibold underline rounded-md"

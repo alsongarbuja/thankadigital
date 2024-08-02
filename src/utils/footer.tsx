@@ -41,7 +41,7 @@ export const footerConnect = [
 
 export const footerLinks = [
   {
-    menuTitle: "Important Links",
+    menuTitle: "Company",
     links: [
       {
         name: "Privacy Policy",
@@ -61,17 +61,17 @@ export const footerLinks = [
         link: "/about",
       },
       {
-        name: "Blogs",
-        link: "/blogs",
-      },
-      {
         name: "Careers",
         link: "/careers",
+      },
+      {
+        name: "Blogs",
+        link: "/blogs",
       },
     ],
   },
   {
-    menuTitle: "Company",
+    menuTitle: "Important Links",
     links: [
       {
         name: "Youtube",

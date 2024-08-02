@@ -16,7 +16,7 @@ const WorkSection = () => {
         <h6>Some of our selected projects showcase</h6>
       </CustomWidthWrapper>
 
-      <div className="my-12 mask">
+      <div className="mt-12 mask">
         <Carousel
           slideSize={{
             lg: "60%",

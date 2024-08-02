@@ -6,7 +6,7 @@ import { technologies } from "@/utils/technology";
 
 const TechnologySection = () => {
   return (
-    <section className="pt-8 pb-4 text-white bg-primary_blue">
+    <section className="pt-8 pb-4 text-white bg-blue-950">
       <CustomWidthWrapper>
         <h3>Technologies</h3>
         <h6 className="font-medium">

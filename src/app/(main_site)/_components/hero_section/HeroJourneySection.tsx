@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const HeroJourneySection = () => {
   return (
-    <section className="relative w-screen my-12 overflow-hidden">
+    <section className="relative w-screen my-12">
       <motion.svg
         width="1830"
         height="199"
