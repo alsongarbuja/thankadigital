@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
-import {
-  DM_Sans,
-  Playfair_Display,
-  Josefin_Sans,
-  Lato,
-} from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 
@@ -22,18 +17,6 @@ const playfair_display = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-playfair",
-});
-
-const josefin_sans = Josefin_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-josefin-sans",
-});
-
-const lato = Lato({
-  subsets: ["latin"],
-  weight: "400",
-  variable: "--font-lato",
 });
 
 export const metadata: Metadata = {
@@ -73,9 +56,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair_display.variable} ${lato.variable} bg-white text-neutral_black`}
+      className={`${playfair_display.variable} ${dm.variable} bg-white text-neutral_black`}
     >
-      <body className="font-lato">
+      <body className="font-dm">
         <MantineProvider>
           <Notifications
             position="top-right"
