@@ -6,10 +6,11 @@ export default async function CareerPage() {
   const careerList: dynamicObject = await getCareers();
 
   return (
-    <CustomWidthWrapper>
-      <h3>Career opportunities</h3>
-      <p className="font-medium text-gray-600">
-        Find about the career opportunities at thanka digital
+    <CustomWidthWrapper className="py-12">
+      <h1>Career opportunities</h1>
+      <p className="pb-12 font-medium text-gray-600 border-b border-gray-200">
+        We are always looking for passionate people to join our team. Feel free
+        to contact us even if you don't see an opening.
       </p>
       <CareerList careerList={careerList.careers} />
     </CustomWidthWrapper>

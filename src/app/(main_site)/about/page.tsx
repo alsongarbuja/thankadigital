@@ -5,7 +5,7 @@ import Members from "./_components/Members";
 
 export default function AboutPage() {
   return (
-    <CustomWidthWrapper>
+    <CustomWidthWrapper className="pt-12">
       <AboutCompany />
       <CoreMembers />
       <Members />

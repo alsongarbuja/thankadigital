@@ -1,4 +1,4 @@
-export const projectsList: ProjectModel[] = [
+export const projectsList: (ProjectModel & { colSpan: number })[] = [
   {
     id: '1',
     name: 'Exam Samaya',
@@ -11,6 +11,7 @@ export const projectsList: ProjectModel[] = [
       scopes: ["mobile", "web app"],
       status: "live",
     },
+    colSpan: 3,
   },
   {
     id: '2',
@@ -24,6 +25,7 @@ export const projectsList: ProjectModel[] = [
       scopes: ["mobile", "web app"],
       status: "ongoing",
     },
+    colSpan: 1,
   },
   {
     id: '3',
@@ -37,22 +39,10 @@ export const projectsList: ProjectModel[] = [
       scopes: ["web"],
       status: "ongoing",
     },
+    colSpan: 2,
   },
   {
     id: '4',
-    name: 'HISSAN Exam management system',
-    description: 'Exam management system for HISSAN Kaski, digitalizing the examination process for schools and colleges.',
-    thumbnail: 'https://alkyhora.sirv.com/portfolio/b.png',
-    liveLink: null,
-    logo: 'https://alkyhora.sirv.com/portfolio/talewears_logo.png',
-    detailLink: '#',
-    journey: {
-      scopes: ["web app"],
-      status: "ongoing",
-    },
-  },
-  {
-    id: '5',
     name: 'Ghar Phela',
     description: 'Real estate platform for buying and selling properties in nepal.',
     thumbnail: 'https://alkyhora.sirv.com/portfolio/gharphela_cover.png',
@@ -63,5 +53,20 @@ export const projectsList: ProjectModel[] = [
       scopes: ["web"],
       status: "live",
     },
+    colSpan: 2,
+  },
+  {
+    id: '5',
+    name: 'HISSAN Exam management system',
+    description: 'Exam management system for HISSAN Kaski, digitalizing the examination process for schools and colleges.',
+    thumbnail: 'https://alkyhora.sirv.com/portfolio/b.png',
+    liveLink: null,
+    logo: 'https://alkyhora.sirv.com/portfolio/talewears_logo.png',
+    detailLink: '#',
+    journey: {
+      scopes: ["web app"],
+      status: "ongoing",
+    },
+    colSpan: 1,
   },
 ];

@@ -1,87 +1,53 @@
 import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 import { projectsList } from "@/utils/projects";
+import ProjectContainer from "./_components/ProjectContainer";
 
 export default function WorkPage() {
   return (
-    <CustomWidthWrapper>
+    <CustomWidthWrapper className="py-12">
       <div className="bg-white">
         <h3 className="uppercase">Our Works</h3>
         <p className="font-semibold text-gray-400">
           See the journey of works we have done for our clients
         </p>
 
-        <div className="relative w-full mt-8 overflow-hidden">
-          {projectsList.map((project, index) => (
-            <div
-              data-index={index}
-              key={project.id}
-              className={`flex gap-2 my-12 flex-col items-center md:flex-row md:even:flex-row-reverse`}
-            >
-              <img
-                src={project.thumbnail}
-                alt={`${project.name} design system screenshot`}
-                className="object-cover w-full h-full border rounded-md md:w-1/2"
-              />
-              <div className="flex flex-col justify-center flex-1 p-5 odd:items-end">
-                <h2 className="font-semibold">{project.name}</h2>
-                <p className="text-gray-400">{project.description}</p>
-                <p className="flex items-center gap-2 my-4 font-semibold">
-                  Project Scope:{" "}
-                  {project.journey.scopes.map((scope: string, i: number) => (
-                    <span
-                      key={i}
-                      className="px-4 py-1 text-white rounded-full bg-primary_blue"
-                    >
-                      {scope}
-                    </span>
-                  ))}
-                </p>
-                <p className="flex items-center gap-2 my-4 font-semibold">
-                  Project Status:{" "}
-                  <span className="text-green-600">
-                    {project.journey.status}
-                  </span>
-                </p>
-                {project.liveLink && (
-                  <a
-                    href={project.liveLink}
-                    target="_blank"
-                    className="font-semibold underline text-primary_blue"
-                  >
-                    View project
-                  </a>
-                )}
-                {/* <button className="px-4 py-2 mt-4 text-white bg-black rounded-md w-fit cursor-none">
-                  View the journey
-                </button> */}
-              </div>
-            </div>
+        <div className="grid w-full grid-cols-3 gap-4 mt-12">
+          {projectsList.map((project) => (
+            <ProjectContainer project={project} key={project.id} />
+            // <div
+            //   data-index={index}
+            //   key={project.id}
+            //   className={`relative group ${
+            //     project.colSpan === 3
+            //       ? "col-span-3"
+            //       : project.colSpan === 2
+            //       ? "col-span-2"
+            //       : "col-span-1"
+            //   }`}
+            // >
+            //   <img
+            //     src={project.thumbnail}
+            //     alt={`${project.name} design system screenshot`}
+            //     className="object-cover w-full h-full border rounded-md"
+            //   />
+            //   <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center text-white transition-opacity duration-150 rounded-md opacity-0 group-hover:opacity-100 bg-black/50">
+            //     {project.liveLink && (
+            //       <a
+            //         href={project.liveLink}
+            //         target="_blank"
+            //         className="font-semibold underline"
+            //       >
+            //         View project
+            //       </a>
+            //     )}
+            //     <button className="px-4 py-2 mt-4 text-white bg-black rounded-md w-fit">
+            //       View the journey
+            //     </button>
+            //   </div>
+            // </div>
           ))}
-          {/* <CustomCursor /> */}
         </div>
       </div>
     </CustomWidthWrapper>
   );
 }
-
-// const CustomCursor = () => {
-//   const [position, setPosition] = useState({ x: 0, y: 0 });
-
-//   useEffect(() => {
-//     const handleMouse = (e: MouseEvent) =>
-//       setPosition({ x: e.clientX, y: e.clientY });
-//     window.addEventListener("mousemove", handleMouse);
-//     return () => window.removeEventListener("mousemove", handleMouse);
-//   }, []);
-
-//   return (
-//     <div
-//       className="fixed z-50 hidden w-12 h-12 bg-white rounded-full pointer-events-none mix-blend-difference md:block"
-//       style={{
-//         left: position.x - 6,
-//         top: position.y - 6,
-//         transform: "translate(-50%, -50%)",
-//       }}
-//     />
-//   );
-// };
