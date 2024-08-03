@@ -17,7 +17,7 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
     id: '2',
     name: 'Bodh News Application',
     description: 'News application for people in nepal to get latest news and updates with political biases.',
-    thumbnail: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+    thumbnail: 'https://alkyhora.sirv.com/portfolio/bodh-news.png',
     liveLink: null,
     logo: 'https://alkyhora.sirv.com/portfolio/talewears_logo.png',
     detailLink: '#',

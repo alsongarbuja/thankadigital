@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "react-feather";
 
 interface IProjectContainerProps {
   project: ProjectModel & { colSpan: number };
@@ -17,8 +18,8 @@ export default function ProjectContainer({ project }: IProjectContainerProps) {
         project.colSpan === 3
           ? "col-span-3"
           : project.colSpan === 2
-          ? "col-span-2"
-          : "col-span-1"
+          ? "col-span-3 lg:col-span-2"
+          : "col-span-3 lg:col-span-1"
       }`}
       transition={{
         duration: project.colSpan === 3 ? 0 : 0.5,
@@ -29,21 +30,24 @@ export default function ProjectContainer({ project }: IProjectContainerProps) {
       <img
         src={project.thumbnail}
         alt={`${project.name} design system screenshot`}
-        className="object-cover w-full h-full border rounded-md"
+        className="object-contain w-full h-full border rounded-md"
       />
-      <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center text-white transition-opacity duration-150 rounded-md opacity-0 group-hover:opacity-100 bg-black/50">
-        {project.liveLink && (
+      <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center gap-4 text-white transition-opacity duration-150 rounded-md opacity-0 group-hover:opacity-100 bg-black/80">
+        <p>{project.name}</p>
+        <button className="px-4 py-2 text-white rounded-md bg-primary_blue w-fit">
+          View the journey
+        </button>
+        {project.liveLink ? (
           <a
             href={project.liveLink}
             target="_blank"
-            className="font-semibold underline"
+            className="flex items-center text-base underline"
           >
-            View project
+            View project <ArrowUpRight />
           </a>
+        ) : (
+          <p className="text-base font-medium text-sky-200">Ongoing project</p>
         )}
-        <button className="px-4 py-2 mt-4 text-white bg-black rounded-md w-fit">
-          View the journey
-        </button>
       </div>
     </motion.div>
   );

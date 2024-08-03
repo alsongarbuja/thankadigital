@@ -25,12 +25,14 @@ const HeroSection = () => {
           /> */}
           <h1 className="mt-4 font-medium text-center font-playfair">
             Helping you in{" "}
-            <span className="px-4 pb-2 text-white bg-primary_blue">
+            <span className="px-4 text-white md:pb-2 bg-primary_blue">
               each and every
             </span>{" "}
             <br />
-            <span className="px-4 pb-3 text-white bg-primary_red">step</span> of
-            your great business
+            <span className="px-4 text-white md:pb-3 bg-primary_red">
+              step
+            </span>{" "}
+            of your great business
           </h1>
 
           <h5 className="max-w-2xl font-medium text-center">
@@ -42,7 +44,7 @@ const HeroSection = () => {
           <div className="flex flex-col gap-4 md:flex-row">
             <Link
               href="/work"
-              className="px-6 py-4 text-white rounded-full bg-primary_blue/90"
+              className="px-6 py-4 text-center text-white rounded-full bg-primary_blue/90"
             >
               Works done
             </Link>
