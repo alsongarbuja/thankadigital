@@ -92,8 +92,8 @@ a {
       rgba(0, 0, 0, 0));
   -webkit-mask-image: linear-gradient(to right,
       rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 1) 20%,
-      rgba(0, 0, 0, 1) 65%,
+      rgba(0, 0, 0, 1) 40%,
+      rgba(0, 0, 0, 1) 55%,
       rgba(0, 0, 0, 0));
 }
 

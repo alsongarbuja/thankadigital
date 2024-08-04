@@ -1,7 +1,10 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
+import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "react-feather";
 import { Carousel, CarouselSlide } from "@mantine/carousel";
+import AutoPlay from "embla-carousel-autoplay";
 
 import { projectsList } from "@/utils/projects";
 import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
@@ -9,6 +12,8 @@ import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 import "@mantine/carousel/styles.css";
 
 const WorkSection = () => {
+  const autoplay = useRef(AutoPlay({ delay: 2000 }));
+
   return (
     <section className="py-9">
       <CustomWidthWrapper>
@@ -16,13 +21,17 @@ const WorkSection = () => {
         <h6>Some of our selected projects showcase</h6>
       </CustomWidthWrapper>
 
-      <div className="mt-12 mask">
+      <div className="mt-12">
         <Carousel
           slideSize={{
             lg: "60%",
             md: "60%",
             base: "100%",
           }}
+          plugins={[autoplay.current]}
+          onMouseEnter={autoplay.current.stop}
+          onMouseLeave={autoplay.current.reset}
+          onMouseOut={autoplay.current.reset}
           slideGap="md"
           align="center"
           loop
