@@ -183,6 +183,7 @@ ol {
   width: 35%;
   height: 20%;
   background: radial-gradient(#aaf776, #c1fc9f, #cefac1, #fefaf0);
+  /* background: radial-gradient(#f7ce76, #fccc9f, #facbc1, #fefaf0); */
   filter: blur(1.75rem);
   opacity: .4;
 }
@@ -196,4 +197,11 @@ ol {
 .blob-wide {
   width: 40%;
   height: 30%;
+}
+
+.blob-rounded {
+  width: 20%;
+  height: 55%;
+  border-radius: 50%;
+  background: radial-gradient(#f7ce76, #fccc9f, #facbc1, #fefaf0);
 }
