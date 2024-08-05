@@ -1,5 +1,6 @@
 "use client";
 import Input from "@/components/global/Input";
+import { notifications } from "@mantine/notifications";
 import { useState } from "react";
 
 type ContactDetail = {
@@ -15,10 +16,6 @@ const ContactForm = () => {
     message: "",
   });
   const [isSending, setIsSending] = useState(false);
-  const [sent, setSent] = useState({
-    isSent: false,
-    isSuccess: false,
-  });
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -45,41 +42,32 @@ const ContactForm = () => {
           email: "",
           message: "",
         });
-        setSent({
-          isSent: true,
-          isSuccess: true,
+        notifications.show({
+          title: "Message sent",
+          message:
+            "Thank you for contacting us. We will get back to you as soon as possible.",
+          color: "teal",
         });
       } else {
-        setSent({
-          isSent: true,
-          isSuccess: false,
+        notifications.show({
+          title: "Message not sent",
+          message: "Sorry, something went wrong. Please try again later.",
+          color: "red",
         });
       }
     } catch (error) {
-      setSent((prev) => ({ ...prev, isSent: true, isSuccess: false }));
-      console.log(error);
+      notifications.show({
+        title: "Message not sent",
+        message: "Sorry, something went wrong. Please try again later.",
+        color: "red",
+      });
+      console.error(error);
     }
-    setTimeout(() => {
-      setSent((prev) => ({ ...prev, isSent: false }));
-    }, 5000);
     setIsSending(false);
   };
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col items-end">
-      {sent.isSent && (
-        <div
-          className={`w-full text-center ${
-            sent.isSuccess ? "bg-green-500" : "bg-red-500"
-          } text-white p-2 py-4 rounded-md`}
-        >
-          <p className="font-semibold">
-            {sent.isSuccess
-              ? "Thank you for contacting us. We will get back to you as soon as possible."
-              : "Sorry, something went wrong. Please try again later."}
-          </p>
-        </div>
-      )}
       <Input
         label="Full Name"
         name="fullname"
@@ -90,10 +78,10 @@ const ContactForm = () => {
         error={{}}
       />
       <Input
-        label="Email"
+        label="Email / Phone"
         name="email"
         handleChange={handleChange}
-        placeholder="Please Enter your email"
+        placeholder="Enter email or Phone number"
         value={detail.email}
         crrField="email"
         error={{}}

@@ -60,11 +60,7 @@ export default function RootLayout({
     >
       <body className="font-dm">
         <MantineProvider>
-          <Notifications
-            position="top-right"
-            zIndex={1000}
-            notificationMaxHeight={250}
-          />
+          <Notifications zIndex={1000} notificationMaxHeight={250} />
           {children}
         </MantineProvider>
       </body>
