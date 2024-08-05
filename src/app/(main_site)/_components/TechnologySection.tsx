@@ -14,55 +14,19 @@ const TechnologySection = () => {
         </h6>
       </CustomWidthWrapper>
 
-      <div className="">
-        <Marquee autoFill className="p-3" speed={70}>
-          {technologies[0].map((tech, i) => (
-            <section key={i}>
-              <Image
-                src={tech}
-                alt="Technologies images"
-                width={120}
-                height={100}
-                className="p-4 mx-10 w-fit h-fit"
-              />
-            </section>
-          ))}
-        </Marquee>
-      </div>
-
-      {/* <Marquee
-        autoFill
-        className="p-3"
-        speed={60}
-        direction="right"
-        pauseOnHover
-      >
-        {technologies[1].map((tech, i) => (
-          <section key={i}>
-            <Image
-              src={tech}
-              alt="Technologies images"
-              width={150}
-              height={150}
-              className="p-4 mx-8"
-            />
-          </section>
-        ))}
-      </Marquee>
-
-      <Marquee autoFill className="p-3" speed={50} pauseOnHover>
-        {technologies[2].map((tech, i) => (
+      <Marquee autoFill className="p-3" speed={70}>
+        {technologies.map((tech, i) => (
           <section key={i}>
             <Image
               src={tech}
               alt="Technologies images"
               width={120}
-              height={150}
-              className="p-4 mx-20"
+              height={100}
+              className="p-4 mx-10 w-fit h-fit"
             />
           </section>
         ))}
-      </Marquee> */}
+      </Marquee>
     </section>
   );
 };
