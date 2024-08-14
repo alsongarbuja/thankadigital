@@ -55,18 +55,18 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
     },
     colSpan: 2,
   },
-  {
-    id: '5',
-    name: 'HISSAN Exam management system',
-    description: 'Exam management system for HISSAN Kaski, digitalizing the examination process for schools and colleges.',
-    thumbnail: 'https://alkyhora.sirv.com/portfolio/b.png',
-    liveLink: null,
-    logo: 'https://alkyhora.sirv.com/portfolio/talewears_logo.png',
-    detailLink: '#',
-    journey: {
-      scopes: ["web app"],
-      status: "ongoing",
-    },
-    colSpan: 1,
-  },
+  // {
+  //   id: '5',
+  //   name: 'HISSAN Exam management system',
+  //   description: 'Exam management system for HISSAN Kaski, digitalizing the examination process for schools and colleges.',
+  //   thumbnail: 'https://alkyhora.sirv.com/portfolio/b.png',
+  //   liveLink: null,
+  //   logo: 'https://alkyhora.sirv.com/portfolio/talewears_logo.png',
+  //   detailLink: '#',
+  //   journey: {
+  //     scopes: ["web app"],
+  //     status: "ongoing",
+  //   },
+  //   colSpan: 1,
+  // },
 ];
