@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowUpRight } from "react-feather";
 
 interface IProjectContainerProps {
@@ -34,9 +35,12 @@ export default function ProjectContainer({ project }: IProjectContainerProps) {
       />
       <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center gap-4 text-white transition-opacity duration-150 rounded-md opacity-0 group-hover:opacity-100 bg-black/80">
         <p>{project.name}</p>
-        <button className="px-4 py-2 text-white rounded-md bg-primary_blue w-fit">
+        <Link
+          href={`/work/${project.slug}`}
+          className="px-4 py-2 text-white rounded-md bg-primary_blue w-fit"
+        >
           View the journey
-        </button>
+        </Link>
         {project.liveLink ? (
           <a
             href={project.liveLink}

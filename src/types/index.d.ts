@@ -26,12 +26,22 @@ type TeamModel = {
 type ProjectModel = {
   id: string;
   name: string;
+  slug: string;
   description: string;
   thumbnail: string;
   logo: string;
   liveLink: string | null;
-  detailLink: string;
   journey: dynamicObject;
+
+  details: {
+    summary: string;
+    image?: string;
+    inDepth: {
+      title: string;
+      image?: string;
+      description: string;
+    }[];
+  };
 };
 
 type BlogModel = {
