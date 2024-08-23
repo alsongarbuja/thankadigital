@@ -23,7 +23,7 @@ const ConnectSection = () => {
 
           <div className="flex flex-col justify-between w-full gap-10 md:flex-row md:justify-between">
             <div className="flex flex-col gap-2">
-              <p className="flex gap-2 text-2xl font-bold">
+              <p className="flex items-center gap-2 text-2xl font-bold">
                 <Map className="text-primary_red" /> Location
               </p>
               {footerConnect[0].location?.map((con, i) => (
@@ -34,18 +34,22 @@ const ConnectSection = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="flex gap-2 mb-2 text-2xl font-bold">
-                <Phone className="text-primary_red" /> Phone
+              <p className="flex items-center gap-2 mb-2 text-2xl font-bold">
+                <Phone className="text-primary_red" /> Contact
               </p>
               {footerConnect[1].connect?.map((con, i) => (
-                <Link href={con.link} key={i} className="text-xl">
+                <Link
+                  href={con.link}
+                  key={i}
+                  className="text-xl underline decoration-primary_red underline-offset-3"
+                >
                   {con.contact}
                 </Link>
               ))}
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="flex gap-2 mb-2 text-2xl font-bold">
+              <p className="flex items-center gap-2 mb-2 text-2xl font-bold">
                 <PenTool className="text-primary_red" /> Message Us
               </p>
               <ContactForm />
