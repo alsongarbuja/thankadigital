@@ -45,12 +45,12 @@ export const footerLinks = [
     links: [
       {
         name: "Privacy Policy",
-        link: "#",
+        link: "/policies/privacy-policy",
       },
-      {
-        name: "Terms of Service",
-        link: "#",
-      },
+      // {
+      //   name: "Terms of Service",
+      //   link: "/policies/terms-and-service",
+      // },
     ],
   },
   {
