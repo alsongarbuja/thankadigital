@@ -38,10 +38,17 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
 
     details: {
       summary: 'Bodh news application is a news application for people in nepal to get latest news and updates alongside the political biases that might be present in the news.',
+      images: ['https://alkyhora.sirv.com/portfolio/talewears_logo.png', 'https://alkyhora.sirv.com/portfolio/bodh-news.png', 'https://alkyhora.sirv.com/portfolio/talewears_logo.png'],
       inDepth: [
         {
-          title: "Problem",
-          description: "News these days have become very baised and people are not able to get the real news. This application aims to provide the news with the political biases that might be present in the news."
+          title: "There was no way to find out if the news we were reading was biased or not.",
+          description: `
+            In an era of widespread misinformation and media polarization, it's essential for readers to understand the perspectives that shape the news
+            they consume. By identifying potential biases, the app empowers users to critically assess the information,
+            fostering a more balanced view of current events. This approach encourages media literacy and helps reduce the influence of echo chambers.
+            Ultimately, our goal is to promote a more informed and engaged public. Hence we created a news application that highlights political biases to
+            provide users with a more transparent and informed reading experience.
+          `,
         },
       ],
     },
@@ -85,11 +92,27 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
     colSpan: 2,
 
     details: {
-      summary: 'Real estate platform for buying and selling properties in nepal.',
+      summary: `
+        Ghar Phela is a comprehensive real estate platform in Nepal designed to simplify the process of buying and selling properties.
+        The app features an intuitive interface that allows users to easily browse and list properties, compare prices, and view detailed
+        property information, including location, amenities, and photos. It also offers search filters to help users find properties that
+        meet their specific needs, and direct messaging for secure communication between buyers and sellers. With its focus on transparency,
+        efficiency, and user convenience, Ghar Phela aims to revolutionize the real estate market in Nepal.
+      `,
+      images: [
+        "https://alkyhora.sirv.com/portfolio/gharphela_cover.png",
+        "https://alkyhora.sirv.com/portfolio/talewears_logo.png",
+      ],
       inDepth: [
         {
-          title: "Problem",
-          description: "People in Nepal have to go through a lot of hassle to buy and sell properties. This platform aims to provide a platform where people can buy and sell properties easily."
+          title: "Finding new properties has never been easier",
+          description: `
+            We created Ghar Phela, a real estate platform for buying and selling properties in Nepal, to streamline and
+            simplify the property market. The platform addresses the need for a reliable, user-friendly service that connects
+            buyers and sellers directly, making the process more transparent and efficient. With Ghar Phela, users can easily
+            browse listings, compare prices, and access essential property details. Our goal is to make real estate transactions
+            more accessible and trustworthy in Nepal, catering to the growing demand for a modern, digital approach to property dealings.
+          `,
         },
       ],
     },
