@@ -35,7 +35,7 @@ type ProjectModel = {
 
   details: {
     summary: string;
-    image?: string;
+    images?: string[];
     inDepth: {
       title: string;
       image?: string;
