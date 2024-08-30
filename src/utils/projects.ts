@@ -1,11 +1,9 @@
 export const projectsList: (ProjectModel & { colSpan: number })[] = [
   {
-    id: '1',
     name: 'Exam Samaya',
     slug: 'exam-samaya',
     description: 'E learning platform for students of engineering and medical to prepare for their license examination in nepal.',
     thumbnail: 'https://alkyhora.sirv.com/portfolio/exam_samaya_cover.png',
-    logo: 'https://alkyhora.sirv.com/portfolio/logo.png',
     liveLink: 'https://examsamaya.com/',
     journey: {
       scopes: ["mobile", "web app"],
@@ -23,13 +21,11 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
     },
   },
   {
-    id: '2',
     name: 'Bodh News Application',
     slug: 'bodh-news-application',
     description: 'News application for people in nepal to get latest news and updates with political biases.',
-    thumbnail: 'https://alkyhora.sirv.com/portfolio/bodh-news.png',
+    thumbnail: 'https://alkyhora.sirv.com/portfolio/bodh_news/bodh-news.png',
     liveLink: null,
-    logo: 'https://alkyhora.sirv.com/portfolio/talewears_logo.png',
     journey: {
       scopes: ["mobile", "web app"],
       status: "ongoing",
@@ -38,7 +34,7 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
 
     details: {
       summary: 'Bodh news application is a news application for people in nepal to get latest news and updates alongside the political biases that might be present in the news.',
-      images: ['https://alkyhora.sirv.com/portfolio/talewears_logo.png', 'https://alkyhora.sirv.com/portfolio/bodh-news.png', 'https://alkyhora.sirv.com/portfolio/talewears_logo.png'],
+      images: ['https://alkyhora.sirv.com/portfolio/bodh_news/bodh-news-design-showcase.png', 'https://alkyhora.sirv.com/portfolio/bodh_news/bodh-news-design-showcase-2.png', 'https://alkyhora.sirv.com/portfolio/bodh_news/bodh-news-design-system.png',],
       inDepth: [
         {
           title: "There was no way to find out if the news we were reading was biased or not.",
@@ -54,13 +50,11 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
     },
   },
   {
-    id: '3',
     name: 'Talewears',
     slug: 'talewears',
     description: 'E commerce site for selling anything related to clothing and fashion.',
-    thumbnail: 'https://alkyhora.sirv.com/portfolio/talewears-cover.png',
+    thumbnail: 'https://alkyhora.sirv.com/portfolio/talewears/talewears-cover.png',
     liveLink: null,
-    logo: 'https://alkyhora.sirv.com/portfolio/talewears_logo.png',
     journey: {
       scopes: ["web"],
       status: "ongoing",
@@ -69,6 +63,11 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
 
     details: {
       summary: 'E commerce site for selling anything related to clothing and fashion.',
+      images: [
+        "https://alkyhora.sirv.com/portfolio/talewears/talewears-design-showcase.png",
+        "https://alkyhora.sirv.com/portfolio/talewears/talewears-logo-showcase.png",
+        "https://alkyhora.sirv.com/portfolio/talewears/talewears-design-system.png",
+      ],
       inDepth: [
         {
           title: "Problem",
@@ -78,18 +77,69 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
     },
   },
   {
-    id: '4',
+    name: 'Himalayan heating & cooling inc',
+    description: 'HVAC company based in USA.',
+    thumbnail: 'https://alkyhora.sirv.com/portfolio/himalayan_heating_cooling/himalayan-heating-cooling-design-showcase.png',
+    liveLink: null,
+    journey: {
+      scopes: ["web app", "logo"],
+      status: "ongoing",
+    },
+    colSpan: 2,
+
+    slug: 'himalayan-heating-cooling-inc',
+    details: {
+      summary: 'HVAC company based in USA.',
+      images: [
+        "https://alkyhora.sirv.com/portfolio/himalayan_heating_cooling/himalayan-heating-cooling-design-showcase.png",
+        "https://alkyhora.sirv.com/portfolio/himalayan_heating_cooling/himalayan-heating-cooling-logo-showcase.png",
+        "https://alkyhora.sirv.com/portfolio/himalayan_heating_cooling/himalayan-heating-cooling-design-system.png",
+      ],
+      inDepth: [
+        {
+          title: "Need for website and logo",
+          description: "Himalayan heating and cooling inc is a HVAC company based in USA. They needed a website and logo for their company. We provided them with a website and logo that they loved."
+        }
+      ],
+    }
+  },
+  {
+    name: "Bal Kashi Gurung",
+    slug: "bal-kashi-gurung",
+    description: "Personal portfolio website for Bal Kashi Gurung.",
+    thumbnail: "https://alkyhora.sirv.com/portfolio/balkashi_gurung/balkashi-logo-showcase.png",
+    liveLink: null,
+    colSpan: 1,
+    journey: {
+      scopes: ["web"],
+      status: "ongoing",
+    },
+    details: {
+      summary: "Personal portfolio website for Bal Kashi Gurung.",
+      images: [
+        // "https://alkyhora.sirv.com/portfolio/balkashi_gurung/balkashi-design-showcase.png",
+        "https://alkyhora.sirv.com/portfolio/balkashi_gurung/balkashi-logo-showcase.png",
+        "https://alkyhora.sirv.com/portfolio/balkashi_gurung/balkashi-design-system.png",
+      ],
+      inDepth: [
+        {
+          title: "Problem",
+          description: "Bal Kashi Gurung needed a personal portfolio website to showcase his work and projects. We provided him with a website that he loved."
+        }
+      ],
+    },
+  },
+  {
     name: 'Ghar Phela',
     slug: 'ghar-phela',
     description: 'Real estate platform for buying and selling properties in nepal.',
-    thumbnail: 'https://alkyhora.sirv.com/portfolio/gharphela_cover.png',
+    thumbnail: 'https://alkyhora.sirv.com/portfolio/ghar_phela/gharphela_cover.png',
     liveLink: 'https://gharphela.netlify.app/',
-    logo: 'https://alkyhora.sirv.com/portfolio/gharphela_logo.png',
     journey: {
       scopes: ["web"],
       status: "live",
     },
-    colSpan: 2,
+    colSpan: 3,
 
     details: {
       summary: `
@@ -100,8 +150,9 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
         efficiency, and user convenience, Ghar Phela aims to revolutionize the real estate market in Nepal.
       `,
       images: [
-        "https://alkyhora.sirv.com/portfolio/gharphela_cover.png",
-        "https://alkyhora.sirv.com/portfolio/talewears_logo.png",
+        "https://alkyhora.sirv.com/portfolio/ghar_phela/ghar-phela-design-showcase-1.png",
+        "https://alkyhora.sirv.com/portfolio/ghar_phela/ghar-phela-logo-showcase.png",
+        "https://alkyhora.sirv.com/portfolio/ghar_phela/ghar-phela-design-showcase-2.png",
       ],
       inDepth: [
         {
@@ -117,17 +168,4 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
       ],
     },
   },
-  // {
-  //   id: '5',
-  //   name: 'HISSAN Exam management system',
-  //   description: 'Exam management system for HISSAN Kaski, digitalizing the examination process for schools and colleges.',
-  //   thumbnail: 'https://alkyhora.sirv.com/portfolio/b.png',
-  //   liveLink: null,
-  //   logo: 'https://alkyhora.sirv.com/portfolio/talewears_logo.png',
-  //   journey: {
-  //     scopes: ["web app"],
-  //     status: "ongoing",
-  //   },
-  //   colSpan: 1,
-  // },
 ];
