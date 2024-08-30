@@ -31,7 +31,7 @@ export default function ProjectContainer({ project }: IProjectContainerProps) {
       <img
         src={project.thumbnail}
         alt={`${project.name} design system screenshot`}
-        className="object-contain w-full h-full border rounded-md"
+        className="object-contain w-full h-full border-2 border-dotted rounded-2xl"
       />
       <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center gap-4 text-white transition-opacity duration-150 rounded-md opacity-0 group-hover:opacity-100 bg-black/80">
         <p>{project.name}</p>

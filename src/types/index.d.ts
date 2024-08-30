@@ -24,12 +24,12 @@ type TeamModel = {
 };
 
 type ProjectModel = {
-  id: string;
+  // id: string;
   name: string;
   slug: string;
   description: string;
   thumbnail: string;
-  logo: string;
+  // logo: string;
   liveLink: string | null;
   journey: dynamicObject;
 

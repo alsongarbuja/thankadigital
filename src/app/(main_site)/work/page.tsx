@@ -13,7 +13,7 @@ export default function WorkPage() {
 
         <div className="grid w-full grid-cols-3 gap-4 mt-12">
           {projectsList.map((project) => (
-            <ProjectContainer project={project} key={project.id} />
+            <ProjectContainer project={project} key={project.slug} />
           ))}
         </div>
       </div>

@@ -10,7 +10,7 @@ const ConnectSection = () => {
     <section
       className="py-20 bg-background_gray"
       id="connect-section"
-      style={{ scrollMarginBlockStart: "15em" }}
+      style={{ scrollMarginBlockStart: "3em" }}
     >
       <CustomWidthWrapper>
         <div className="flex flex-col gap-8 lg:flex-row">
