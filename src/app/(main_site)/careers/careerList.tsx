@@ -10,6 +10,7 @@ import {
   Monitor,
 } from "react-feather";
 import { motion } from "framer-motion";
+import { notifications } from "@mantine/notifications";
 
 interface ICareerListProps {
   careerList: CareerModel[];
@@ -24,32 +25,59 @@ const CareerList = ({ careerList }: ICareerListProps) => {
   const phoneRef = useRef<HTMLInputElement>(null);
   const linkRef = useRef<HTMLInputElement>(null);
   const queryRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const attachmentRef = useRef<HTMLInputElement>(null);
 
   const handleApplyModel = (career: CareerModel) => {
     setSelectedCareer(career);
     setIsApplyOpen(true);
   };
 
-  const handleSendMail = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSendMail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       nameRef.current?.value &&
       phoneRef.current?.value &&
       linkRef.current?.value
     ) {
-      window.open(
-        "mailto:thankadigtial@gmail.com?subject=Career Application For " +
-          selectedCareer?.title +
-          " At Thanka Digtial&body=Name: " +
-          nameRef.current?.value +
-          "%0D%0APhone: " +
-          phoneRef.current?.value +
-          "%0D%0APortfolio: " +
-          linkRef.current?.value +
-          "%0D%0AQuery: " +
-          queryRef.current?.value +
-          "%0D%0A"
-      );
+      try {
+        const formData = new FormData();
+        formData.append("fullname", nameRef.current?.value ?? "");
+        formData.append("phone", phoneRef.current?.value ?? "");
+        formData.append("email", emailRef.current?.value ?? "");
+        formData.append("portfolio", linkRef.current?.value ?? "");
+        formData.append("query", queryRef.current?.value ?? "");
+        formData.append("position", selectedCareer?.title ?? "");
+        formData.append("attachment", attachmentRef.current?.files?.[0] ?? "");
+
+        const res = await fetch("/api/career", {
+          method: "POST",
+          body: formData,
+        });
+        const data = await res.json();
+
+        if (data.status === 200) {
+          notifications.show({
+            title: "Message sent",
+            message:
+              "Thank you for showing interest in the position. We will get back to you as soon as possible.",
+            color: "teal",
+          });
+        } else {
+          notifications.show({
+            title: "Message not sent",
+            message: "Sorry, something went wrong. Please try again later.",
+            color: "red",
+          });
+        }
+      } catch (error) {
+        notifications.show({
+          title: "Message not sent",
+          message: "Sorry, something went wrong. Please try again later.",
+          color: "red",
+        });
+        console.error(error);
+      }
     }
   };
 
@@ -131,17 +159,24 @@ const CareerList = ({ careerList }: ICareerListProps) => {
           >
             <h4>Apply For {selectedCareer?.title}</h4>
             <p>{selectedCareer?.description}</p>
-            <p className="mb-4 font-semibold text-primary_red">
-              Note: Please Attach your CV in the mail and any other details you
-              want to add.
-            </p>
-            <form onSubmit={handleSendMail} className="flex flex-col gap-4">
+            <form
+              onSubmit={handleSendMail}
+              className="flex flex-col gap-4"
+              encType="multipart/form-data"
+            >
               <input
                 ref={nameRef}
                 className="p-2 border border-gray-200 rounded-md"
                 required
                 type="text"
                 placeholder="Full name"
+              />
+              <input
+                ref={emailRef}
+                className="p-2 border border-gray-200 rounded-md"
+                required
+                type="email"
+                placeholder="Email"
               />
               <input
                 ref={phoneRef}
@@ -163,9 +198,19 @@ const CareerList = ({ careerList }: ICareerListProps) => {
                 type="text"
                 placeholder="Any queries"
               />
+              <p className="text-sm text-gray-500">
+                *Please attach your resume in PDF format
+              </p>
+              <input
+                ref={attachmentRef}
+                className="p-2 border border-gray-200 rounded-md"
+                required
+                type="file"
+                accept=".pdf"
+                placeholder="Add your resume"
+              />
               <button
                 type="submit"
-                // href={"mailto:thankadigital@gmail.com?subject=Career Application For "+selectedCareer?.title+" At Thanka Digtial&body=Name: " + nameRef.current?.value + "%0D%0APhone: " + phoneRef.current?.value + "%0D%0APortfolio: " + linkRef.current?.value + "%0D%0AQuery: " + queryRef.current?.value + "%0D%0A"}
                 className="p-4 text-center text-white rounded-sm bg-primary_blue"
               >
                 Send Mail
