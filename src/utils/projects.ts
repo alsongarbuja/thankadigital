@@ -89,7 +89,9 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
 
     slug: 'himalayan-heating-cooling-inc',
     details: {
-      summary: 'HVAC company based in USA.',
+      summary: `
+        HVAC(Heating, Ventilation, and Air Conditioning) system is a combination of technologies used to provide thermal comfort and acceptable indoor air quality. <b>Himalayan heating and cooling inc</b>
+        is a HVAC company based in USA. Although based in USA the founders of the company are originally from Nepal. They needed a website and logo in order to promote their company.`,
       images: [
         "https://alkyhora.sirv.com/portfolio/himalayan_heating_cooling/himalayan-heating-cooling-design-showcase.png",
         "https://alkyhora.sirv.com/portfolio/himalayan_heating_cooling/himalayan-heating-cooling-logo-showcase.png",

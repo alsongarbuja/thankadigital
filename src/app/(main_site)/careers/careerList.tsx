@@ -107,7 +107,7 @@ const CareerList = ({ careerList }: ICareerListProps) => {
                 </p>
               </div>
 
-              <div className="flex flex-wrap gap-4 mt-4">
+              <div className="flex flex-wrap items-center justify-center gap-4 mt-4 md:justify-start">
                 <p className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black">
                   <MapPin className="w-4 h-4" /> {career.location}
                 </p>

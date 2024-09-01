@@ -28,7 +28,7 @@ const NavigationHeader = () => {
             href={navLink.path}
             className={`py-1 rounded-md font-medium ${
               pathname === navLink.path &&
-              "underline underline-offset-2 text-primary_red"
+              "bg-primary_red px-2 md:px-0 md:bg-transparent md:underline md:underline-offset-2 md:text-primary_red"
             }`}
           >
             {navLink.name}

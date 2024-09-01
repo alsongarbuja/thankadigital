@@ -52,7 +52,12 @@ export default function WorkJourneyPage({
 
           <div className="flex flex-col gap-4">
             <h2 className="font-playfair">Project Details</h2>
-            <p className="text-justify">{project?.details.summary}</p>
+            <p
+              className="text-justify"
+              dangerouslySetInnerHTML={{
+                __html: project?.details.summary ?? "",
+              }}
+            />
             {project?.details.images && (
               <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {project?.details.images.map((image, idx) => (
