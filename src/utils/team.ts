@@ -1,6 +1,6 @@
 export const coreTeams = [
   {
-    name: "Alson Garbuja",
+    name: "Er. Alson Garbuja",
     role: "CEO",
     image: "alson.jpg",
   },
@@ -10,7 +10,7 @@ export const coreTeams = [
     image: "bipin.jpg",
   },
   {
-    name: "Sunil Paudel",
+    name: "Er. Sunil Paudel",
     role: "COO",
     image: "sunil.jpg",
   },
@@ -20,7 +20,7 @@ export const coreTeams = [
     image: "susant.jpg",
   },
   {
-    name: "Utsan Gurung",
+    name: "Utsab Gurung",
     role: "CTO",
     image: "utsab.jpg",
   },
