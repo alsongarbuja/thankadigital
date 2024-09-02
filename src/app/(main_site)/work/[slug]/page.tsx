@@ -87,7 +87,12 @@ export default function WorkJourneyPage({
                     className="object-cover w-screen border rounded-md h-96"
                   />
                 )}
-                <p className="text-justify">{detail.description}</p>
+                <p
+                  className="text-justify"
+                  dangerouslySetInnerHTML={{
+                    __html: detail.description,
+                  }}
+                />
               </div>
             ))}
           </div>

@@ -24,7 +24,7 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
     name: 'Bodh News Application',
     slug: 'bodh-news-application',
     description: 'News application for people in nepal to get latest news and updates with political biases.',
-    thumbnail: 'https://alkyhora.sirv.com/portfolio/bodh_news/bodh-news.png',
+    thumbnail: 'https://alkyhora.sirv.com/portfolio/bodh_news/bodh_news_cover.gif',
     liveLink: null,
     journey: {
       scopes: ["mobile", "web app"],
@@ -33,17 +33,35 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
     colSpan: 1,
 
     details: {
-      summary: 'Bodh news application is a news application for people in nepal to get latest news and updates alongside the political biases that might be present in the news.',
+      summary: `
+        In Nepal, accessing the latest news is relatively easy due to the large number of publishers disseminating news across various platforms. However, consuming news in a way that is informed by an understanding of the political biases behind each news source is a more challenging task.
+        <br /><br />
+        Currently, there are almost no reliable sources in Nepal that guarantee unbiased news. The vast majority of news outlets have affiliations or inclinations that can color their reporting, making it difficult for readers to differentiate between factual reporting and opinionated content.
+        <br /><br />
+        To address this gap, we decided to create Bodh News, an innovative news application designed to provide readers with a clearer picture of the biases inherent in the news they consume. The goal of Bodh News is to empower readers by highlighting the potential political leanings of each news source, allowing them to make more informed decisions and understand the broader context behind the news stories.
+      `,
       images: ['https://alkyhora.sirv.com/portfolio/bodh_news/bodh-news-design-showcase.png', 'https://alkyhora.sirv.com/portfolio/bodh_news/bodh-news-design-showcase-2.png', 'https://alkyhora.sirv.com/portfolio/bodh_news/bodh-news-design-system.png',],
       inDepth: [
         {
           title: "There was no way to find out if the news we were reading was biased or not.",
           description: `
-            In an era of widespread misinformation and media polarization, it's essential for readers to understand the perspectives that shape the news
-            they consume. By identifying potential biases, the app empowers users to critically assess the information,
-            fostering a more balanced view of current events. This approach encourages media literacy and helps reduce the influence of echo chambers.
-            Ultimately, our goal is to promote a more informed and engaged public. Hence we created a news application that highlights political biases to
-            provide users with a more transparent and informed reading experience.
+            Before bodh news there was no way to find out if news were biased or not in Nepal, but now with bodh news users can read the news from the sources they want with knowledge of biases in the news.
+            They are the masters of their own news consumption. They can choose the news sources based on their political biases and can read the news from the sources they trust.
+          `,
+        },
+
+        {
+          title: "Design System",
+          description: `
+            For the design system of bodh news we used a more minimalistic color scheme with a focus on typography and readability. We also used a lot of white space to make the app feel more open and less cluttered.
+          `,
+        },
+
+        {
+          title: "Core of the system, the algorithm",
+          description: `
+            Currently being developed the core algorithm of the system is what will make bodh news unique. The algorithm will scrape and analyze news from more than 50 news sources in Nepal and rank them based on their political biases.
+            The algorithm will also categorize the news based on their topics and provide users with a better way of consuming news. On top of those deduplication and summarization of news will also be added to the system in near future.
           `,
         },
       ],
@@ -53,7 +71,7 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
     name: 'Talewears',
     slug: 'talewears',
     description: 'E commerce site for selling anything related to clothing and fashion.',
-    thumbnail: 'https://alkyhora.sirv.com/portfolio/talewears/talewears-cover.png',
+    thumbnail: 'https://alkyhora.sirv.com/portfolio/talewears/talewears_cover.png',
     liveLink: null,
     journey: {
       scopes: ["web"],
@@ -62,7 +80,13 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
     colSpan: 2,
 
     details: {
-      summary: 'E commerce site for selling anything related to clothing and fashion.',
+      summary: `
+        Talewears is an e-commerce platform that aims to provide a convenient and user-friendly shopping experience for people in Nepal. The platform offers a wide range of clothing and fashion items, including traditional wear, modern fashion, and accessories, all available for purchase online.
+        <br /><br />
+        With its intuitive interface and secure payment system, Talewears makes it easy for users to browse, select, and order products from the comfort of their homes. The platform also features a rating and review system, allowing customers to share their feedback and experiences with others.
+        <br /><br />
+        Talewears is designed to cater to the diverse needs and preferences of customers in Nepal, offering a curated selection of high-quality products at competitive prices. Whether you're looking for the latest fashion trends or traditional attire, Talewears has something for everyone
+      `,
       images: [
         "https://alkyhora.sirv.com/portfolio/talewears/talewears-design-showcase.png",
         "https://alkyhora.sirv.com/portfolio/talewears/talewears-logo-showcase.png",
@@ -70,8 +94,15 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
       ],
       inDepth: [
         {
-          title: "Problem",
-          description: "People in Nepal have to go through a lot of hassle to buy clothes and fashion items. This platform aims to provide a platform where people can buy and sell clothes and fashion items easily."
+          title: "One place for all fashion needs",
+          description: "One of the main goals of Talewears is to provide a one-stop shop for all fashion needs in Nepal. By enlisting shops from all over Nepal, Talewears aims to provide a wide range of products to its customers."
+        },
+        {
+          title: "Design System",
+          description: `
+            One of the challenges of Talewears is to make the design system flexible enough to accommodate the wide range of products that will be available on the platform while maintaining a consistent look and feel.
+            We decided to go with a minimalistic design with focus more on the products rather than their surroundings. Instead of throughing bunch of random details at the users, they are presented with range of products in minimal and clean way.
+          `,
         },
       ],
     },
@@ -79,7 +110,7 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
   {
     name: 'Himalayan heating & cooling inc',
     description: 'HVAC company based in USA.',
-    thumbnail: 'https://alkyhora.sirv.com/portfolio/himalayan_heating_cooling/himalayan-heating-cooling-design-showcase.png',
+    thumbnail: 'https://alkyhora.sirv.com/portfolio/himalayan_heating_cooling/himalayan_heating_cooling_cover.png',
     liveLink: null,
     journey: {
       scopes: ["web app", "logo"],
@@ -90,7 +121,7 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
     slug: 'himalayan-heating-cooling-inc',
     details: {
       summary: `
-        HVAC(Heating, Ventilation, and Air Conditioning) system is a combination of technologies used to provide thermal comfort and acceptable indoor air quality. <b>Himalayan heating and cooling inc</b>
+        HVAC(Heating, Ventilation, and Air Conditioning) system is a combination of technologies used to provide thermal comfort and acceptable indoor air quality. <b>Himalayan Heating & Cooling Inc</b>
         is a HVAC company based in USA. Although based in USA the founders of the company are originally from Nepal. They needed a website and logo in order to promote their company.`,
       images: [
         "https://alkyhora.sirv.com/portfolio/himalayan_heating_cooling/himalayan-heating-cooling-design-showcase.png",
@@ -100,7 +131,14 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
       inDepth: [
         {
           title: "Need for website and logo",
-          description: "Himalayan heating and cooling inc is a HVAC company based in USA. They needed a website and logo for their company. We provided them with a website and logo that they loved."
+          description: `
+            Our clients needed a website and logo to promote their company but has very little knowledge about how to go about it.
+            They wanted website that could showcase their services and features to their customers and contact information for their clients to reach out to them.
+            <br /><br />
+            They also wanted a logo that could represent their company as a HVAC company but also represented the Himalayan range of Nepal.
+            <br /><br />
+            We went on multiple iterations of logo and website design to come up with final design that they loved.
+          `,
         }
       ],
     }
@@ -109,7 +147,7 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
     name: "Bal Kashi Gurung",
     slug: "bal-kashi-gurung",
     description: "Personal portfolio website for Bal Kashi Gurung.",
-    thumbnail: "https://alkyhora.sirv.com/portfolio/balkashi_gurung/balkashi-logo-showcase.png",
+    thumbnail: "https://alkyhora.sirv.com/portfolio/balkashi_gurung/balkashi_cover.png",
     liveLink: null,
     colSpan: 1,
     journey: {
@@ -117,7 +155,9 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
       status: "ongoing",
     },
     details: {
-      summary: "Personal portfolio website for Bal Kashi Gurung.",
+      summary: `
+        Bal Kashi Gurung is a renowned artist and golf player in Nepal. She needed a personal portfolio website to showcase her works and awards.
+      `,
       images: [
         // "https://alkyhora.sirv.com/portfolio/balkashi_gurung/balkashi-design-showcase.png",
         "https://alkyhora.sirv.com/portfolio/balkashi_gurung/balkashi-logo-showcase.png",
@@ -125,8 +165,12 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
       ],
       inDepth: [
         {
-          title: "Problem",
-          description: "Bal Kashi Gurung needed a personal portfolio website to showcase his work and projects. We provided him with a website that he loved."
+          title: "Minimalisim and elegance",
+          description: `
+            One of the request made from the client was for the website to be minimalistic and elegant. After multiple disucssions and iterations of ideas we decided to go with minimal black and white color scheme with focus on typography and images.
+            <br /><br />
+            We also decided to make the logo a monogram of her initials to make it more elegant and minimalistic. After few iterations we decided to go with <b><i>Cinzel Decorative</i></b> font using her initials for the logo.
+          `,
         }
       ],
     },
@@ -145,7 +189,9 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
 
     details: {
       summary: `
-        Ghar Phela is a comprehensive real estate platform in Nepal designed to simplify the process of buying and selling properties.
+        Ghar Phela is a comprehensive real estate platform designed to simplify the process of buying and selling properties.
+        <b>It is a showcase project created in order to show our skills and flexibility in different genre of projects.</b>
+        <br /> <br />
         The app features an intuitive interface that allows users to easily browse and list properties, compare prices, and view detailed
         property information, including location, amenities, and photos. It also offers search filters to help users find properties that
         meet their specific needs, and direct messaging for secure communication between buyers and sellers. With its focus on transparency,
