@@ -159,7 +159,7 @@ export const projectsList: (ProjectModel & { colSpan: number })[] = [
         Bal Kashi Gurung is a renowned artist and golf player in Nepal. She needed a personal portfolio website to showcase her works and awards.
       `,
       images: [
-        // "https://alkyhora.sirv.com/portfolio/balkashi_gurung/balkashi-design-showcase.png",
+        "https://alkyhora.sirv.com/portfolio/balkashi_gurung/balkashi-design-showcase.png",
         "https://alkyhora.sirv.com/portfolio/balkashi_gurung/balkashi-logo-showcase.png",
         "https://alkyhora.sirv.com/portfolio/balkashi_gurung/balkashi-design-system.png",
       ],
