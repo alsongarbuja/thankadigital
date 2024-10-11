@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-interface ITeamScheme extends mongoose.Document {
+export interface ITeamScheme extends mongoose.Document {
   name: string;
   position: string;
   imageUrl: string;

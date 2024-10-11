@@ -29,7 +29,7 @@ export const register = async (user: { name: string; email: string; password: st
 
 export const login = async (email: string, password: string) => {
   await dbConnect();
-  const user = await userModel.findOne({ email });  
+  const user = await userModel.findOne({ email });
 
   if (!user) {
     return undefined;
@@ -47,7 +47,7 @@ export const login = async (email: string, password: string) => {
   await tokenModel.create({ accessToken: token, user: user._id, expires: moment().add(30, 'days') });
 
   return {
-    user: removePrivateProperty(user) as any,
+    user: removePrivateProperty(user),
     token,
   };
 }

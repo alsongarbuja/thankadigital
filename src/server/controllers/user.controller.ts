@@ -1,16 +1,22 @@
 import mongoose from "mongoose";
 import dbConnect from "..";
-import userModel from "@/server/models/user.model";
+import userModel, { IUserScheme } from "@/server/models/user.model";
 import { removePrivateProperty } from "../helpers/privateProperty";
 import { ApiError } from "@/server/helpers/ApiError";
 
 export const getUsers = async () => {
   await dbConnect();
-  const users = await userModel.find({ });
+  const users = await userModel.find({});
 
   return {
     users: users.map(user => removePrivateProperty(user)),
   };
+}
+
+export const createUser = async (data: IUserScheme) => {
+  await dbConnect();
+  const user = await userModel.create(data);
+  return removePrivateProperty(user);
 }
 
 export const getUserById = async (userId: string, getSchema: boolean = false) => {
@@ -35,7 +41,7 @@ export const getUserByEmail = async (email: string) => {
   return removePrivateProperty(user);
 }
 
-export const updateUserById = async (userId: string, data: any) => {
+export const updateUserById = async (userId: string, data: Partial<IUserScheme>) => {
   const user = await getUserById(userId, true);
   Object.assign(user, data);
   await user.save();
@@ -45,7 +51,7 @@ export const updateUserById = async (userId: string, data: any) => {
 
 export const deleteUserById = async (userId: string) => {
   const user = await getUserById(userId, true);
-  if(user.role === "superadmin") {
+  if (user.role === "superadmin") {
     throw new ApiError("You can't delete superadmin", 403);
   }
   await user.deleteOne();

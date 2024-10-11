@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-interface ICareerScheme extends mongoose.Document {
+export interface ICareerScheme extends mongoose.Document {
   identifier: string;
   title: string;
   description: string;
@@ -20,7 +20,7 @@ const CareerSchema = new mongoose.Schema({
     required: true,
   },
   description: {
-    type: String, 
+    type: String,
     trim: true,
     required: true,
   },

@@ -1,9 +1,9 @@
 type dynamicObject = {
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 type CareerModel = {
-  _id: string;
+  id: string;
   title: string;
   description: string;
   salary: string;
@@ -69,3 +69,8 @@ type ApiResponse = {
   message?: string;
   data?: dynamicObject;
 };
+
+interface IActionState {
+  message: string;
+  isOk: boolean;
+}

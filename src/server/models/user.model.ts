@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
-interface IUserScheme extends mongoose.Document {
+export interface IUserScheme extends mongoose.Document {
   name: string;
   email: string;
   password: string;
@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
   email: {
-    type: String, 
+    type: String,
     trim: true,
     unique: true,
     required: true,
@@ -56,14 +56,12 @@ UserSchema.statics.isEmailTaken = async function (
 UserSchema.methods.isPasswordVerified = async function (
   password: string
 ): Promise<boolean> {
-  const user = this;
-  return await bcrypt.compare(password, user.password);
+  return await bcrypt.compare(password, this.password);
 };
 
 UserSchema.pre("save", async function (next: mongoose.CallbackWithoutResultAndOptionalError) {
-  const user = this;
-  if (user.isModified("password")) {
-    user.password = await bcrypt.hash(user.password, 8);
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 8);
   }
 
   next();

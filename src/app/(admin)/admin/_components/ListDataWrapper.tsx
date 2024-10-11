@@ -1,11 +1,8 @@
 "use client";
 import Link from "next/link";
-import { Button, Flex, Modal, Table, Text } from "@mantine/core";
+import { Table } from "@mantine/core";
 
-import { apiCaller } from "@/helpers/apiCaller";
-import { getFromLocalStorage } from "@/helpers/localstorage";
-import { useDisclosure } from "@mantine/hooks";
-import { useState } from "react";
+import DeleteTd from "./DeleteTd";
 
 interface IListDataWrapperProps<T> {
   title: string;
@@ -14,7 +11,10 @@ interface IListDataWrapperProps<T> {
   cols: string[];
   hasActions: boolean;
   editUrl: string;
-  deleteUrl: string;
+  deleteAction: (
+    prevState: IActionState,
+    paylaod: FormData
+  ) => Promise<IActionState>;
   data: T;
 }
 
@@ -26,22 +26,9 @@ export function ListDataWrapper(props: IListDataWrapperProps<dynamicObject[]>) {
     createUrl,
     hasActions = true,
     editUrl,
-    deleteUrl,
+    deleteAction,
     data,
   } = props;
-  const [opened, { open, close }] = useDisclosure(false);
-  const [deleteId, setDeleteId] = useState<string | null>(null);
-
-  const handleDelete = async (id: string) => {
-    const res = await apiCaller(deleteUrl + id, "DELETE", 200, undefined, {
-      Authorization: `User ${getFromLocalStorage("thanka_email")}`,
-    });
-    if (res.isGood) {
-      window.location.reload();
-    } else {
-      console.log(res);
-    }
-  };
 
   return (
     <>
@@ -67,7 +54,9 @@ export function ListDataWrapper(props: IListDataWrapperProps<dynamicObject[]>) {
           {data.map((item: dynamicObject, index: number) => (
             <Table.Tr key={index}>
               {cols.map((col, index) => (
-                <Table.Td key={index}>{item[col.toLowerCase()]}</Table.Td>
+                <Table.Td key={index}>
+                  {item[col.toLowerCase()] as string}
+                </Table.Td>
               ))}
               {hasActions && (
                 <Table.Td className="flex items-center justify-center gap-4 py-4">
@@ -77,48 +66,16 @@ export function ListDataWrapper(props: IListDataWrapperProps<dynamicObject[]>) {
                   >
                     Edit
                   </Link>
-                  <Button
-                    variant="transparent"
-                    color="red"
-                    onClick={() => {
-                      setDeleteId(item.id as string);
-                      open();
-                    }}
-                  >
-                    Delete
-                  </Button>
+                  <DeleteTd
+                    id={item.id as string}
+                    deleteAction={deleteAction}
+                  />
                 </Table.Td>
               )}
             </Table.Tr>
           ))}
         </Table.Tbody>
       </Table>
-
-      <Modal
-        opened={opened}
-        onClose={close}
-        size="auto"
-        title="Delete"
-        overlayProps={{
-          backgroundOpacity: 0.55,
-          blur: 3,
-        }}
-      >
-        <Text>Are you sure you want to delete this item?</Text>
-
-        <Flex mt="xl" align="center" justify="end">
-          <Button variant="transparent" onClick={close}>
-            Cancel
-          </Button>
-          <Button
-            variant="filled"
-            bg="red"
-            onClick={() => handleDelete(deleteId!)}
-          >
-            Yes Delete
-          </Button>
-        </Flex>
-      </Modal>
     </>
   );
 }

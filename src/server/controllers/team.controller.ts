@@ -1,9 +1,9 @@
 import dbConnect from "..";
 import { ApiError } from "@/server/helpers/ApiError";
-import teamsModel from "../models/teams.model";
+import teamsModel, { ITeamScheme } from "../models/teams.model";
 import { removePrivateProperty } from "../helpers/privateProperty";
 
-export async function createTeam(body: dynamicObject) {
+export async function createTeam(body: ITeamScheme) {
   await dbConnect();
   const team = await teamsModel.create(body);
 
@@ -14,7 +14,7 @@ export async function createTeam(body: dynamicObject) {
   return removePrivateProperty(team);
 }
 
-export async function getTeam(id: string, getSchema: boolean = false) {
+export async function getTeamById(id: string, getSchema: boolean = false) {
   await dbConnect();
   const team = await teamsModel.findById(id);
 
@@ -38,17 +38,17 @@ export async function getTeams(teamType: string = "all") {
   };
 }
 
-export async function updateTeam(id: string, body: dynamicObject) {
+export async function updateTeamById(id: string, body: dynamicObject) {
   await dbConnect();
-  const team = await getTeam(id, true);
+  const team = await getTeamById(id, true);
   Object.assign(team, body);
   await team.save();
   return removePrivateProperty(team);
 }
 
-export async function deleteTeam(id: string) {
+export async function deleteTeamById(id: string) {
   await dbConnect();
-  const team = await getTeam(id, true);
+  const team = await getTeamById(id, true);
   await team.deleteOne();
   return "DELETED";
 }

@@ -9,7 +9,7 @@ if (!MONGODB_URI) {
   );
 }
 
-var cached: mongooseConnection = global.mongoose;
+let cached: mongooseConnection = global.mongoose;
 
 if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };

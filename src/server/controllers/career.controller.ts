@@ -1,9 +1,9 @@
 import dbConnect from "..";
 import { ApiError } from "@/server/helpers/ApiError";
-import careerModel from "@/server/models/career.model";
+import careerModel, { ICareerScheme } from "@/server/models/career.model";
 import { removePrivateProperty } from "../helpers/privateProperty";
 
-export async function createCareer(body: dynamicObject) {
+export async function createCareer(body: ICareerScheme) {
   await dbConnect();
   const career = await careerModel.create(body);
 
@@ -14,7 +14,7 @@ export async function createCareer(body: dynamicObject) {
   return removePrivateProperty(career);
 }
 
-export async function getCareer(id: string, getSchema: boolean = false) {
+export async function getCareerById(id: string, getSchema: boolean = false) {
   await dbConnect();
   const career = await careerModel.findById(id);
 
@@ -38,17 +38,17 @@ export async function getCareers(status: string = "published") {
   };
 }
 
-export async function updateCareer(id: string, body: dynamicObject) {
+export async function updateCareerById(id: string, body: dynamicObject) {
   await dbConnect();
-  const career = await getCareer(id, true);
+  const career = await getCareerById(id, true);
   Object.assign(career, body);
   await career.save();
   return removePrivateProperty(career);
 }
 
-export async function deleteCareer(id: string) {
+export async function deleteCareerById(id: string) {
   await dbConnect();
-  const career = await getCareer(id, true);
+  const career = await getCareerById(id, true);
   await career.deleteOne();
   return "DELETED";
 }
