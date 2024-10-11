@@ -9,7 +9,7 @@ export const authorizeEmail = async (req: NextRequest, roles: string[] = ["super
   }
   const user = await getUserByEmail(authorizedEmail);
 
-  if (!user || !roles.includes(user.role)) {
+  if (!user || !roles.includes(user.role as string)) {
     throw new ApiError("Not authorized to do the action", 401);
   }
 }

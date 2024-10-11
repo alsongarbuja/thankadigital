@@ -5,6 +5,7 @@ import { useDisclosure } from "@mantine/hooks";
 import { notifications } from "@mantine/notifications";
 import { useFormState, useFormStatus } from "react-dom";
 import { Button, Flex, Modal, Text, TextInput } from "@mantine/core";
+import { initialState } from "@/utils/data";
 
 interface IActionTdDeleteProps {
   id: string;
@@ -13,11 +14,6 @@ interface IActionTdDeleteProps {
     paylaod: FormData
   ) => Promise<IActionState>;
 }
-
-const initialState = {
-  message: "",
-  ok: false,
-};
 
 export default function DeleteTd({ deleteAction, id }: IActionTdDeleteProps) {
   const [opened, { open, close }] = useDisclosure(false);
@@ -29,7 +25,7 @@ export default function DeleteTd({ deleteAction, id }: IActionTdDeleteProps) {
   const deleteBtnRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (!pending && deleteState.ok) {
+    if (!pending && deleteState.isOk) {
       notifications.show({
         title: "Deleted successfully",
         message: deleteState.message,
@@ -37,7 +33,7 @@ export default function DeleteTd({ deleteAction, id }: IActionTdDeleteProps) {
         fz: "lg",
       });
     }
-    if (!pending && !deleteState.ok && deleteState.message) {
+    if (!pending && !deleteState.isOk && deleteState.message) {
       notifications.show({
         title: "Error",
         message: deleteState.message,

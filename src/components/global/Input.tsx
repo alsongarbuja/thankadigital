@@ -42,7 +42,7 @@ const Input = (props: InputProps) => {
         } outline-transparent focus:border-b-2 focus:border-primary_blue`}
       />
       {error.hasOwnProperty(name) && (
-        <p className="text-red-500">{error[name]}</p>
+        <p className="text-red-500">{error[name] as string}</p>
       )}
     </div>
   );
