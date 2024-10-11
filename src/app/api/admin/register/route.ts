@@ -13,9 +13,9 @@ export async function POST(req: NextRequest) {
       user: res.user,
       token: res.token,
     });
-  } catch (error: any) {
-    return NextResponse.json(error.message, {
-      status: error.status || 500,
+  } catch (error: unknown) {
+    return NextResponse.json((error as Error).message, {
+      status: (error as dynamicObject).status as number || 500,
     });
   }
 }
