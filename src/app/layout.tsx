@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { DM_Sans, Playfair_Display } from "next/font/google";
+import NextTopLoader from "nextjs-toploader";
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
@@ -59,6 +60,13 @@ export default function RootLayout({
       className={`${playfair_display.variable} ${dm.variable} bg-white text-neutral_black`}
     >
       <body className="font-dm">
+        <NextTopLoader
+          color="#E8343E"
+          height={3}
+          easing="ease"
+          showSpinner
+          speed={600}
+        />
         <MantineProvider>
           <Notifications zIndex={1000} notificationMaxHeight={250} />
           {children}

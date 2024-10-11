@@ -10,6 +10,7 @@ export const addCareerAction = async (prevState: IActionState, formData: FormDat
   try {
     await createCareer(data as unknown as ICareerScheme);
     revalidatePath("/admin/careers");
+    revalidatePath("/careers");
   } catch (error) {
     return { message: (error as Error).message, isOk: false };
   }
@@ -23,6 +24,7 @@ export const updateCareerAction = async (prevState: IActionState, formData: Form
   try {
     await updateCareerById(careerId, data);
     revalidatePath("/admin/careers");
+    revalidatePath("/careers");
   } catch (error) {
     return { message: (error as Error).message, isOk: false };
   }
@@ -37,6 +39,7 @@ export const deleteCareerAction = async (prevState: IActionState, formData: Form
   try {
     await deleteCareerById(data.id as string);
     revalidatePath("/admin/careers");
+    revalidatePath("/careers");
   } catch (error) {
     return { message: (error as Error).message, isOk: false };
   }

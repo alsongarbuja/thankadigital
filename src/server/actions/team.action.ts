@@ -10,6 +10,7 @@ export const addTeamAction = async (prevState: IActionState, formData: FormData)
   try {
     await createTeam(data as unknown as ITeamScheme);
     revalidatePath("/admin/teams");
+    revalidatePath("/about");
   } catch (error) {
     return { message: (error as Error).message, isOk: false };
   }
@@ -23,6 +24,7 @@ export const updateTeamAction = async (prevState: IActionState, formData: FormDa
   try {
     await updateTeamById(teamId, data);
     revalidatePath("/admin/teams");
+    revalidatePath("/about");
   } catch (error) {
     return { message: (error as Error).message, isOk: false };
   }
@@ -37,6 +39,7 @@ export const deleteTeamAction = async (prevState: IActionState, formData: FormDa
   try {
     await deleteTeamById(data.id as string);
     revalidatePath("/admin/teams");
+    revalidatePath("/about");
   } catch (error) {
     return { message: (error as Error).message, isOk: false };
   }

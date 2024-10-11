@@ -13,7 +13,7 @@ export const useWindowResize = ({ size }: { size: number }) => {
     window.addEventListener('resize', handleWindowResize)
 
     return () => window.removeEventListener('resize', handleWindowResize)
-  }, [])
+  }, [size])
 
   return { isNavbarOpen, setIsNavbarOpen };
 }

@@ -6,9 +6,9 @@ const HeroJourneySection = () => {
   return (
     <section className="relative w-screen my-12">
       <motion.svg
-        width="1830"
-        height="199"
-        viewBox="0 0 1830 199"
+        width="2000"
+        height="300"
+        viewBox="0 0 1830 200"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         initial={{ opacity: 0 }}
@@ -35,9 +35,10 @@ const HeroJourneySection = () => {
           viewport={{ once: true }}
         >
           <Image
-            src="/images/hero-section-images/hero-section-img1.png"
-            alt="image"
-            width={200}
+            // src="/images/hero-section-images/hero-section-img1.png"
+            src="/images/landing/standing.png"
+            alt="illustration of a woman standing infront of a computer"
+            width={250}
             height={180}
             className="object-contain w-full h-full"
           />
@@ -48,10 +49,11 @@ const HeroJourneySection = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 1, duration: 0.5 }}
           viewport={{ once: true }}
+          className="hidden md:block"
         >
           <Image
-            src="/images/hero-section-images/hero-section-img2.png"
-            alt="image"
+            src="/images/landing/walking.png"
+            alt="illustration of a woman walking towards a computer"
             width={220}
             height={120}
             className="object-contain w-full h-full"
@@ -63,10 +65,11 @@ const HeroJourneySection = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.5 }}
           viewport={{ once: true }}
+          className="hidden md:block"
         >
           <Image
-            src="/images/hero-section-images/hero-section-img3.png"
-            alt="image"
+            src="/images/landing/running.png"
+            alt="illustration of a woman running away from a computer"
             width={180}
             height={150}
             className="object-contain w-full h-full"
@@ -78,10 +81,11 @@ const HeroJourneySection = () => {
           whileInView={{ opacity: 1 }}
           transition={{ delay: 2, duration: 0.5 }}
           viewport={{ once: true }}
+          className="hidden md:block"
         >
           <Image
-            src="/images/hero-section-images/hero-section-img4.png"
-            alt="image"
+            src="/images/landing/cycling.png"
+            alt="illustration of a woman cycling at a park"
             width={180}
             height={170}
             className="object-contain w-full h-full"

@@ -108,7 +108,7 @@ export default function WebDevCourseRegisterPage() {
         JSON.stringify(data)
       );
     }
-  }, [currentField]);
+  }, [currentField, data]);
 
   return (
     <>
