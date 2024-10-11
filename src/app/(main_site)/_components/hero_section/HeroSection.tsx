@@ -1,10 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
+import { Coffee } from "iconsax-react";
 
-import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
-import HeroJourneySection from "./HeroJourneySection";
-import { Coffee } from "react-feather";
 import Particles from "./Particles";
+import HeroJourneySection from "./HeroJourneySection";
+import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 
 const HeroSection = () => {
   return (

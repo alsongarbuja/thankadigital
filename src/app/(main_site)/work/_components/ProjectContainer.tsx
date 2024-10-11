@@ -1,7 +1,8 @@
 "use client";
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight } from "react-feather";
+import { motion } from "framer-motion";
+import { ArrowRight } from "iconsax-react";
+import Image from "next/image";
 
 interface IProjectContainerProps {
   project: ProjectModel & { colSpan: number };
@@ -28,9 +29,11 @@ export default function ProjectContainer({ project }: IProjectContainerProps) {
       }}
       viewport={{ once: true }}
     >
-      <img
+      <Image
         src={project.thumbnail}
         alt={`${project.name} design system screenshot`}
+        width={project.colSpan === 3 ? 900 : 0}
+        height={project.colSpan === 3 ? 600 : 0}
         className="object-cover w-full h-full border-2 border-dotted rounded-2xl"
       />
       <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center gap-4 text-white transition-opacity duration-150 rounded-md opacity-0 group-hover:opacity-100 bg-black/80">
@@ -47,7 +50,7 @@ export default function ProjectContainer({ project }: IProjectContainerProps) {
             target="_blank"
             className="flex items-center text-base underline"
           >
-            View project <ArrowUpRight />
+            View project <ArrowRight className="-rotate-45" />
           </a>
         ) : (
           <p className="text-base font-medium text-sky-200">Ongoing project</p>

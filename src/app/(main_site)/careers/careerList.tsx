@@ -1,16 +1,16 @@
 "use client";
 
-import { useRef, useState } from "react";
-import {
-  ArrowUpRight,
-  Clock,
-  DollarSign,
-  Info,
-  MapPin,
-  Monitor,
-} from "react-feather";
 import { motion } from "framer-motion";
+import { useRef, useState } from "react";
 import { notifications } from "@mantine/notifications";
+import {
+  ArrowRight,
+  DollarCircle,
+  InfoCircle,
+  Location,
+  Clock,
+  Monitor,
+} from "iconsax-react";
 
 interface ICareerListProps {
   careerList: CareerModel[];
@@ -92,7 +92,7 @@ const CareerList = ({ careerList }: ICareerListProps) => {
               transition={{ duration: 0.75 }}
               viewport={{ once: true }}
               className="pb-4 border-b border-gray-200"
-              key={career._id}
+              key={career.id}
             >
               <div className="flex flex-col items-center justify-between md:flex-row">
                 <div>
@@ -103,20 +103,20 @@ const CareerList = ({ careerList }: ICareerListProps) => {
                   onClick={() => handleApplyModel(career)}
                   className="flex items-center text-xl font-medium underline cursor-pointer underline-offset-4"
                 >
-                  Apply <ArrowUpRight />
+                  Apply <ArrowRight className="-rotate-45" />
                 </p>
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-4 mt-4 md:justify-start">
                 <p className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black">
-                  <MapPin className="w-4 h-4" /> {career.location}
+                  <Location className="w-4 h-4" /> {career.location}
                 </p>
                 <p className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black">
-                  <Info className="w-4 h-4" /> {career.type}
+                  <InfoCircle className="w-4 h-4" /> {career.type}
                 </p>
                 {career.salary !== "" && (
                   <p className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black">
-                    <DollarSign className="w-4 h-4" /> {career.salary}
+                    <DollarCircle className="w-4 h-4" /> {career.salary}
                   </p>
                 )}
                 {career.time !== "" && (

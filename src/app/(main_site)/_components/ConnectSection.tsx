@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { Map, PenTool, Phone } from "react-feather";
+import { Call, Map, Message } from "iconsax-react";
 
 import { footerConnect } from "@/utils/footer";
-import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 import ContactForm from "./connect_section/ContactForm";
+import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 
 const ConnectSection = () => {
   return (
@@ -35,7 +35,7 @@ const ConnectSection = () => {
 
             <div className="flex flex-col gap-2">
               <p className="flex items-center gap-2 mb-2 text-2xl font-bold">
-                <Phone className="text-primary_red" /> Contact
+                <Call className="text-primary_red" /> Contact
               </p>
               {footerConnect[1].connect?.map((con, i) => (
                 <Link
@@ -50,7 +50,7 @@ const ConnectSection = () => {
 
             <div className="flex flex-col gap-2">
               <p className="flex items-center gap-2 mb-2 text-2xl font-bold">
-                <PenTool className="text-primary_red" /> Message Us
+                <Message className="text-primary_red" /> Message Us
               </p>
               <ContactForm />
             </div>

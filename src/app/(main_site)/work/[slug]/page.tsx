@@ -1,9 +1,10 @@
-import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
-import { cn } from "@/utils/classess";
-import { projectsList } from "@/utils/projects";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "react-feather";
+
+import { cn } from "@/utils/cn";
+import { projectsList } from "@/utils/projects";
+import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
+import { ArrowRight } from "iconsax-react";
 
 export default function WorkJourneyPage({
   params,
@@ -40,7 +41,7 @@ export default function WorkJourneyPage({
                 target="_blank"
                 className="flex items-center gap-2 underline text-primary_blue decoration-primary_red"
               >
-                View project <ArrowUpRight />
+                View project <ArrowRight className="-rotate-45" />
               </a>
             ) : (
               <p className="flex items-center gap-2 px-4 py-2 text-base text-white rounded-full bg-primary_blue">

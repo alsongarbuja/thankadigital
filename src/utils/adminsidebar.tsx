@@ -1,25 +1,25 @@
-import { Briefcase, FileText, Grid, Users } from "react-feather";
+import { Briefcase, Category2, Profile2User, UserSquare } from "iconsax-react";
 
 export const sidebarLinks = [
   {
     id: 0,
     name: "Dashboard",
     path: "/admin/dashboard",
-    icon: <Grid />,
+    icon: <Category2 />,
     permissions: ["superadmin", "admin", "content-writer"],
   },
   {
     id: 1,
     name: "Users",
     path: "/admin/users",
-    icon: <Users />,
+    icon: <Profile2User />,
     permissions: ["superadmin", "admin"],
   },
   {
     id: 2,
-    name: "Teams",
+    name: "Members",
     path: "/admin/teams",
-    icon: <Users />,
+    icon: <UserSquare />,
     permissions: ["superadmin", "admin"],
   },
   // {

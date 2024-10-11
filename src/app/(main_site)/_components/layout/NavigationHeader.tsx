@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
-import { Menu, X } from "react-feather";
 import { usePathname } from "next/navigation";
 
 import { navLinks } from "@/utils/navLinks";
 import { useWindowResize } from "@/hooks/useWindowResize";
+import { CloseCircle, HambergerMenu } from "iconsax-react";
 
 const NavigationHeader = () => {
   const { isNavbarOpen, setIsNavbarOpen } = useWindowResize({ size: 768 });
@@ -12,7 +12,9 @@ const NavigationHeader = () => {
 
   return (
     <>
-      <Menu
+      <HambergerMenu
+        size={32}
+        variant="Broken"
         className="cursor-pointer md:hidden"
         onClick={() => setIsNavbarOpen((prev) => !prev)}
       />
@@ -35,7 +37,8 @@ const NavigationHeader = () => {
           </Link>
         ))}
 
-        <X
+        <CloseCircle
+          size={32}
           className={`fixed text-white cursor-pointer ${
             isNavbarOpen ? "top-5" : "-top-full"
           } right-5 md:hidden`}

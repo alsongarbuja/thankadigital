@@ -2,14 +2,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "react-feather";
-import { Carousel, CarouselSlide } from "@mantine/carousel";
 import AutoPlay from "embla-carousel-autoplay";
+import { Carousel, CarouselSlide } from "@mantine/carousel";
 
 import { projectsList } from "@/utils/projects";
 import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 
 import "@mantine/carousel/styles.css";
+import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
 
 const WorkSection = () => {
   const autoplay = useRef(AutoPlay({ delay: 2000 }));
@@ -37,14 +37,16 @@ const WorkSection = () => {
           loop
           containScroll="trimSnaps"
           nextControlIcon={
-            <ChevronRight
-              className="w-12 h-12 text-black"
+            <ArrowRight2
+              size={42}
+              className="text-black"
               aria-label="chevron button to slide previous project"
             />
           }
           previousControlIcon={
-            <ChevronLeft
-              className="w-12 h-12 text-black"
+            <ArrowLeft2
+              size={42}
+              className="text-black "
               aria-label="chevron button to slide next project"
             />
           }
