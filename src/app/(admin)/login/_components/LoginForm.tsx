@@ -1,14 +1,16 @@
 "use client";
 
+import { signIn } from "next-auth/react";
+import type { Session } from "next-auth";
 import { PropsWithChildren } from "react";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Loader } from "react-feather";
-import { signIn } from "next-auth/react";
+
 import { addToLocalStorage } from "@/helpers/localstorage";
+import { Refresh2 } from "iconsax-react";
 
 interface LoginFormProps {
-  session: any;
+  session: Session | null;
 }
 
 const LoginForm = ({
@@ -36,22 +38,20 @@ const LoginForm = ({
   };
 
   useEffect(() => {
-    // @ts-ignore
-    if (session?.value !== "null") {
-      addToLocalStorage(
-        "thanka_email",
-        JSON.parse(session?.value)?.user?.email
-      );
-      if (search.get("callbackUrl")) {
-        router.push(search.get("callbackUrl") as string);
-      } else {
-        router.push("/admin/dashboard");
+    if (session) {
+      if (session?.user) {
+        addToLocalStorage("thanka_email", session?.user?.email as string);
+        if (search.get("callbackUrl")) {
+          router.push(search.get("callbackUrl") as string);
+        } else {
+          router.push("/admin/dashboard");
+        }
       }
     }
     if (search.get("error") && search.get("error") === "CredentialsSignin") {
-      setError("Incorrect Email or passowrd");
+      setError("Incorrect Email or password");
     }
-  }, []);
+  }, [session, router, search]);
 
   return (
     <form className="flex flex-col gap-4 w-96" onSubmit={submitLogin}>
@@ -67,7 +67,7 @@ const LoginForm = ({
       >
         {isSubmitting ? (
           <>
-            Logging in... <Loader className="animate-spin" />
+            Logging in... <Refresh2 className="animate-spin" />
           </>
         ) : (
           "Login"
