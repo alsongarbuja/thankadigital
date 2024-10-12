@@ -1,7 +1,9 @@
-import { coreTeams } from "@/utils/team";
+import { getTeams } from "@/server/controllers/team.controller";
 import Image from "next/image";
 
-const CoreMembers = () => {
+const CoreMembers = async () => {
+  const coreTeams = await getTeams("Core");
+
   return (
     <section className="my-14">
       <div className="mb-8">
@@ -14,13 +16,13 @@ const CoreMembers = () => {
       </div>
 
       <div className="flex flex-wrap items-center gap-x-10 gap-y-24 justify-evenly">
-        {coreTeams.map((member, index) => (
+        {(coreTeams.teams as TeamModel[]).map((member, index) => (
           <div
             key={index}
             className="flex flex-col items-center justify-center gap-4"
           >
             <Image
-              src={`/images/team/${member.image}`}
+              src={member.imageUrl}
               alt={`photo of ${member.name}`}
               width={350}
               height={350}
@@ -29,7 +31,7 @@ const CoreMembers = () => {
             <p className="mt-2 text-xl font-bold text-center text-secondary">
               {member.name}
             </p>
-            <p className="text-xl font-bold text-center">{member.role}</p>
+            <p className="text-xl font-bold text-center">{member.position}</p>
           </div>
         ))}
       </div>
