@@ -1,6 +1,14 @@
-import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
+import { Metadata } from "next";
+
 import { projectsList } from "@/utils/projects";
 import ProjectContainer from "./_components/ProjectContainer";
+import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "See projects we have done. We have worked with clients from various industries.",
+};
 
 export default function WorkPage() {
   return (

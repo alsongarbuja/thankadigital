@@ -4,6 +4,7 @@ import { Coffee } from "iconsax-react";
 import Particles from "./Particles";
 import HeroJourneySection from "./HeroJourneySection";
 import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
+import { cn } from "@/utils/cn";
 
 const HeroSection = () => {
   return (
@@ -40,7 +41,7 @@ const HeroSection = () => {
             business
           </h5>
 
-          <div className="flex flex-col gap-4 md:flex-row">
+          <div className="flex flex-col items-center gap-4 md:flex-row">
             <Link
               href="/work"
               className="px-6 py-4 text-center text-white rounded-full bg-primary_blue/90"
@@ -49,7 +50,11 @@ const HeroSection = () => {
             </Link>
             <Link
               href="#connect-section"
-              className="flex items-center justify-center gap-2 px-6 py-4 text-white rounded-full bg-neutral_black"
+              className={cn(
+                "animate-bg-shine border-[1px] rounded-lg shadow bg-[length:200%_100%] tracking-wide",
+                "bg-[linear-gradient(110deg,#09090B,45%,#27272A,55%,#09090B)] text-zinc-200 border-zinc-800",
+                "flex items-center justify-center gap-2 px-6 py-4 rounded-full"
+              )}
             >
               <Coffee /> Connect with us
             </Link>

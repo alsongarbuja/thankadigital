@@ -1,6 +1,14 @@
-import { getCareers } from "@/server/controllers/career.controller";
+import { Metadata } from "next";
+
 import CareerList from "./careerList";
+import { getCareers } from "@/server/controllers/career.controller";
 import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
+
+export const metadata: Metadata = {
+  title: "Careers",
+  description:
+    "We are always looking for passionate people to join our team. Look at the current openings and apply now.",
+};
 
 export default async function CareerPage() {
   const careerList: dynamicObject = await getCareers();

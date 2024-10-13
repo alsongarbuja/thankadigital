@@ -1,5 +1,12 @@
-import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
+import { Metadata } from "next";
+
 import BlogList from "./_components/BlogList";
+import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
+
+export const metadata: Metadata = {
+  title: "Blogs",
+  description: "Read interesting blogs related to tech industry",
+};
 
 export default function BlogPage() {
   return (

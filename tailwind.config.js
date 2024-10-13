@@ -31,6 +31,19 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         parallax: 'url("/images/footer.png")',
       },
+      animation: {
+        "bg-shine": "bg-shine 2.1s linear infinite",
+      },
+      keyframes: {
+        "bg-shine": {
+          from: {
+            backgroundPosition: "0 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
+        },
+      },
     },
   },
   plugins: [],
