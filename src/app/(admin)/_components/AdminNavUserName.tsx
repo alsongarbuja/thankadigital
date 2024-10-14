@@ -6,6 +6,7 @@ import {
 } from "@/helpers/localstorage";
 import { LogoutCurve } from "iconsax-react";
 import { signOut } from "next-auth/react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const AdminNavUserName = () => {
@@ -25,8 +26,14 @@ const AdminNavUserName = () => {
   };
 
   return (
-    <div className="flex items-center gap-4">
-      <p>{username}</p>
+    <div className="flex items-center justify-between gap-4 px-4 py-2">
+      <Image
+        src={`https://api.dicebear.com/9.x/initials/png?seed=${username}`}
+        alt="profile initials"
+        width={40}
+        height={40}
+        className="rounded-full"
+      />
       <button
         className="py-4 text-primary_red"
         aria-label="logout button"
