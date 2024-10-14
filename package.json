@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-react": "^9.3.0",
     "@mantine/carousel": "^7.11.0",
     "@mantine/core": "^7.11.0",
     "@mantine/form": "^7.11.1",
@@ -17,6 +18,7 @@
     "@mantine/notifications": "^7.11.0",
     "autoprefixer": "10.4.14",
     "bcrypt": "^5.1.1",
+    "ckeditor5": "^43.2.0",
     "clsx": "^2.1.1",
     "embla-carousel-autoplay": "^8.1.8",
     "framer-motion": "^11.2.12",
@@ -30,6 +32,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-fast-marquee": "^1.6.4",
+    "react-html-parser": "^2.0.2",
     "resend": "^4.0.0",
     "sharp": "^0.33.1",
     "tailwind-merge": "^2.4.0",
@@ -43,6 +46,7 @@
     "@types/node": "^20",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.1",
+    "@types/react-html-parser": "^2.0.6",
     "eslint": "^8",
     "eslint-config-next": "14.2.13",
     "postcss": "8.4.24",

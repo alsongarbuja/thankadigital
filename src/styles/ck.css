@@ -1,0 +1,36 @@
+.ck-content ul,
+ol {
+  padding-left: 1.5rem !important;
+}
+
+.ck-content table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.ck-content table th {
+  font-weight: 700;
+}
+
+.ck-content table td,
+.ck-content table th {
+  padding: .75rem;
+  vertical-align: top;
+  border: 1px solid #dee2e6;
+}
+
+.ck-content blockquote {
+  margin: 0 0 1rem;
+  padding-left: 1rem;
+  font-style: italic;
+  font-weight: 500;
+  border-left: 5px solid #dee2e6;
+}
+
+.ck-content a {
+  color: #3E97FF;
+  text-decoration: underline;
+}

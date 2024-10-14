@@ -3,6 +3,8 @@ import { Metadata } from "next";
 import { projectsList } from "@/utils/projects";
 import ProjectContainer from "./_components/ProjectContainer";
 import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
+import { getProjects } from "@/server/controllers/project.controller";
+import { IProjectScheme } from "@/server/models/project.model";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -10,7 +12,9 @@ export const metadata: Metadata = {
     "See projects we have done. We have worked with clients from various industries.",
 };
 
-export default function WorkPage() {
+export default async function WorkPage() {
+  const projects = await getProjects();
+
   return (
     <CustomWidthWrapper className="py-12">
       <div className="bg-white min-h-[60vh]">
@@ -20,9 +24,15 @@ export default function WorkPage() {
         </p>
 
         <div className="grid w-full grid-cols-3 gap-4 mt-12">
-          {projectsList.map((project) => (
-            <ProjectContainer project={project} key={project.slug} />
-          ))}
+          {(projects.projects as unknown as IProjectScheme[]).map(
+            (project, index) => (
+              <ProjectContainer
+                project={project}
+                key={project.slug}
+                index={index}
+              />
+            )
+          )}
         </div>
       </div>
     </CustomWidthWrapper>

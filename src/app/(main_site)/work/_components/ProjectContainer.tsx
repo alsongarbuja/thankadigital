@@ -3,12 +3,17 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "iconsax-react";
 import Image from "next/image";
+import { IProjectScheme } from "@/server/models/project.model";
 
 interface IProjectContainerProps {
-  project: ProjectModel & { colSpan: number };
+  project: IProjectScheme;
+  index: number;
 }
 
-export default function ProjectContainer({ project }: IProjectContainerProps) {
+export default function ProjectContainer({
+  project,
+  index,
+}: IProjectContainerProps) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }}
@@ -17,23 +22,23 @@ export default function ProjectContainer({ project }: IProjectContainerProps) {
         scale: 1,
       }}
       className={`relative group ${
-        project.colSpan === 3
+        index % 5 === 0
           ? "col-span-3"
-          : project.colSpan === 2
+          : isTwoSpan(index)
           ? "col-span-3 lg:col-span-2"
           : "col-span-3 lg:col-span-1"
       }`}
       transition={{
-        duration: project.colSpan === 3 ? 0 : 0.5,
-        delay: project.colSpan === 3 ? 0 : 0.5,
+        duration: index % 5 === 0 ? 0 : 0.5,
+        delay: index % 5 === 0 ? 0 : 0.5,
       }}
       viewport={{ once: true }}
     >
       <Image
         src={project.thumbnail}
         alt={`${project.name} design system screenshot`}
-        width={project.colSpan === 3 ? 900 : 0}
-        height={project.colSpan === 3 ? 600 : 0}
+        width={900}
+        height={600}
         className="object-cover w-full h-full border-2 border-dotted rounded-2xl"
       />
       <div className="absolute top-0 bottom-0 left-0 right-0 flex flex-col items-center justify-center gap-4 text-white transition-opacity duration-150 rounded-md opacity-0 group-hover:opacity-100 bg-black/80">
@@ -58,4 +63,9 @@ export default function ProjectContainer({ project }: IProjectContainerProps) {
       </div>
     </motion.div>
   );
+}
+
+function isTwoSpan(index: number) {
+  const twoSpanNumbers = [1, 4, 6, 9, 11, 14, 16, 19, 21, 24];
+  return twoSpanNumbers.includes(index);
 }
