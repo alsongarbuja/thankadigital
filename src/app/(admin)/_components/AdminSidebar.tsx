@@ -7,7 +7,7 @@ import { authOptions } from "@/utils/auth";
 import { sidebarLinks } from "@/utils/adminsidebar";
 import AdminSidebarListTile from "./AdminSidebarListTile";
 import Image from "next/image";
-import { ArrowLeft2, ArrowLeft3 } from "iconsax-react";
+import { ArrowLeft2 } from "iconsax-react";
 import AdminNavUserName from "./AdminNavUserName";
 
 const AdminSidebar = async () => {

@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 
-import { projectsList } from "@/utils/projects";
 import ProjectContainer from "./_components/ProjectContainer";
 import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 import { getProjects } from "@/server/controllers/project.controller";
