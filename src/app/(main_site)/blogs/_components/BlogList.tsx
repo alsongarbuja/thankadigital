@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import BlogCard from "./BlogCard";
 import { Skeleton } from "@mantine/core";
+import moment from "moment";
 
 const BlogList = () => {
   const [blogList, setBlogList] = useState<BlogModel[]>([]);
@@ -11,13 +12,29 @@ const BlogList = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       setFetching(true);
-      const res = await fetch(
-        "https://dev.to/api/articles?username=thankadigital"
-      );
-      const blogs = await res.json();
-      // console.log(blogs);
+      const allBlogs = await Promise.all(
+        ["alsongarbuja", "utsab043", "sunilpdl", "bipinad"].map((username) =>
+          fetch(`https://dev.to/api/articles?username=${username}`).then(
+            (res) => res.json()
+          )
+        )
+      )
+        .then((data: BlogModel[]) => data)
+        .catch((err) => {
+          console.error(err);
+        });
 
-      setBlogList(blogs);
+      if (!allBlogs) return;
+      // const res = await fetch(
+      //   "https://dev.to/api/articles?username=alsongarbuja"
+      // );
+      // const blogs = await res.json();
+
+      setBlogList(
+        allBlogs
+          .flat()
+          .sort((a, b) => moment(b.created_at).diff(moment(a.created_at)))
+      );
     };
 
     fetchBlogs().finally(() => setFetching(false));

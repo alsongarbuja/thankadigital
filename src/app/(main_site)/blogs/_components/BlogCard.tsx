@@ -1,3 +1,4 @@
+import { TransmitSquare } from "iconsax-react";
 import moment from "moment";
 import Link from "next/link";
 
@@ -9,12 +10,20 @@ const BlogCard = (blog: BlogCardProps) => {
   return (
     <Link
       href={`${blog.url}`}
-      className={`${blog.index === 0 ? "col-span-2" : "col-span-1"}`}
+      className={`${
+        blog.index % 3 === 0
+          ? "col-span-2"
+          : blog.index % 4 === 0
+          ? "col-span-3"
+          : "col-span-1"
+      }`}
     >
       <div
-        className={`min-h-[500px] w-full bg-cover bg-center bg-no-repeat relative rounded-md`}
+        className={`min-h-[500px] w-full bg-cover bg-no-repeat relative rounded-md bg-center`}
         style={{
-          backgroundImage: `url(${blog.cover_image})`,
+          backgroundImage: `url(${
+            blog.cover_image ?? `/images/blogs/dev-to-placeholder.jpg`
+          })`,
         }}
       >
         <div className="absolute w-full h-full rounded-md bg-black/40"></div>
@@ -41,9 +50,12 @@ const BlogCard = (blog: BlogCardProps) => {
             <span className="text-base font-medium">
               ({moment(blog.created_at).fromNow()})
             </span>
-            <span className="text-base">
-              {blog.reading_time_minutes} min read
-            </span>
+            <div className="flex items-center justify-between">
+              <span className="text-base">
+                {blog.reading_time_minutes} min read
+              </span>
+              <TransmitSquare className="rotate-45" />
+            </div>
           </div>
         </div>
       </div>
