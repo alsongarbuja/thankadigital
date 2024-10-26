@@ -41,7 +41,7 @@ const BlogList = () => {
   }, []);
 
   return (
-    <section className="grid grid-cols-1 gap-8 mt-4 sm:grid-cols-2 lg:grid-cols-3">
+    <section className="flex flex-col gap-4 mt-4 md:grid sm:grid-cols-2 lg:grid-cols-3">
       {fetching ? (
         <Skeleton className="col-span-3" height="200px" width="100%" />
       ) : (
