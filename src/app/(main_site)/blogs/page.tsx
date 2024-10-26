@@ -12,8 +12,8 @@ export default function BlogPage() {
   return (
     <CustomWidthWrapper className="py-12">
       <div className="flex flex-col gap-4 mb-12 min-h-[60vh]">
-        <h2>Blogs</h2>
-        <p className="font-medium text-gray-600">
+        <h1>Blogs</h1>
+        <p className="-mt-4 text-gray-600">
           Read interesting blogs about tech industry
         </p>
 

@@ -20,7 +20,7 @@ export default async function CareerPage() {
       <CustomWidthWrapper className="relative py-12">
         <div className="min-h-[60vh]">
           <h1>Career opportunities</h1>
-          <p className="pb-12 font-medium text-gray-600 border-b border-gray-200">
+          <p className="pb-12 text-gray-600 border-b border-gray-200">
             We are always looking for passionate people to join our team. Feel
             free to contact us even if you don&apos;t see an opening.
           </p>

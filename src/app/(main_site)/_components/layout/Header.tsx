@@ -17,7 +17,6 @@ const Header = () => {
               width={40}
               height={40}
             />
-            {/* <span className="text-xl font-playfair">Thanka Digital</span> */}
           </Link>
           <NavigationHeader />
         </nav>

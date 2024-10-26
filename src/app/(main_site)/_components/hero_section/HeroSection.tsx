@@ -15,15 +15,7 @@ const HeroSection = () => {
       <div className="absolute bottom-0 -right-12 blob blob-wide"></div>
       <CustomWidthWrapper>
         <div className="relative flex flex-col items-center justify-center gap-8 py-3 md:pb-24 hero-section">
-          {/* <Image
-            src="/images/hero.png"
-            width={800}
-            height={500}
-            priority
-            className="w-full h-full ml-8"
-            alt={"Helping you in each step of your business"}
-          /> */}
-          <h1 className="mt-4 font-medium text-center font-playfair">
+          <h1 className="mt-4 text-center">
             Helping you in{" "}
             <span className="px-4 text-white md:pb-2 bg-primary_blue">
               each and every
@@ -35,11 +27,11 @@ const HeroSection = () => {
             of your great business
           </h1>
 
-          <h5 className="max-w-2xl font-medium text-center">
+          <p className="max-w-2xl font-medium text-center">
             We are a team of experts who are here to help you in each step of
             your business. We provide services that will help you grow your
             business
-          </h5>
+          </p>
 
           <div className="flex flex-col items-center gap-4 md:flex-row">
             <Link

@@ -23,26 +23,20 @@ export default function MainLayout({
           <div className="flex flex-col gap-5 py-16 md:flex-row md:justify-between">
             <div className="flex flex-row flex-wrap gap-12">
               {footerLinks.map((footer, i) => (
-                <section className="flex flex-col gap-2 text-xl" key={i}>
-                  <p className="my-1 text-lg font-semibold">
-                    {footer.menuTitle}
-                  </p>
+                <section className="flex flex-col gap-2" key={i}>
+                  <h5 className="my-1">{footer.menuTitle}</h5>
                   {footer.links.map((link, i) => (
-                    <Link
-                      href={link.link}
-                      key={i}
-                      className="text-lg font-medium group w-fit"
-                    >
+                    <Link href={link.link} key={i} className="group w-fit">
                       {link.name}
-                      <hr className="h-0.5 bg-black w-0 group-hover:w-full transition-[width] duration-300" />
+                      <hr className="h-0.5 bg-primary_red w-0 group-hover:w-full transition-[width] duration-300" />
                     </Link>
                   ))}
                 </section>
               ))}
             </div>
 
-            <section className="flex flex-col gap-2 text-xl">
-              <p className="text-lg font-semibold">Socials</p>
+            <section className="flex flex-col gap-2">
+              <h5>Socials</h5>
               <div className="flex gap-4">
                 {footerContacts.map((con, i) => (
                   <section className="p-2 bg-white rounded-full" key={i}>
@@ -56,10 +50,10 @@ export default function MainLayout({
           </div>
 
           <div className="flex justify-between mb-12">
-            <p className="text-2xl font-semibold">&copy; {year}</p>
+            <h4>&copy; {year}</h4>
             <Link
               href="#top"
-              className="text-2xl font-semibold underline rounded-md"
+              className="text-2xl font-semibold underline rounded-md decoration-primary_red"
             >
               Go to top
             </Link>

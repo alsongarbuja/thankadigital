@@ -28,13 +28,13 @@ const ServiceCard = ({ serviceCardData }: IServiceCardProps) => {
         serviceCardData.colSpan === 1
           ? "col-span-1"
           : "col-span-1 lg:col-span-2"
-      } 
-      rounded-md 
+      }
+      rounded-md
       `}
     >
       <div className="flex flex-col-reverse items-center sm:flex-row gap-7">
         <div>
-          <p className="text-2xl font-bold">{serviceCardData.title}</p>
+          <h4>{serviceCardData.title}</h4>
           <p>{serviceCardData.description}</p>
         </div>
         {serviceCardData.image && (

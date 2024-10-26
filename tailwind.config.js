@@ -10,8 +10,6 @@ module.exports = {
       colors: {
         primary_red: "#E8343E",
         primary_blue: "#333D79",
-        primary: "#E8343E",
-        secondary: "#333D79",
         neutral_white: "#FFFFFF",
         neutral_black: "#212529",
         background_lightblue: "#E9EBF6",
@@ -20,10 +18,11 @@ module.exports = {
         filter_btn: "#3F3D56",
       },
       fontFamily: {
-        dm: ["var(--font-dm-sans)", "sans-serif"],
+        // dm: ["var(--font-dm-sans)", "sans-serif"],
         playfair: ["var(--font-playfair)", "serif"],
-        josefin: ["var(--font-josefin-sans)", "sans-serif"],
-        lato: ["var(--font-lato)", "sans"],
+        nunito: ["var(--font-nunito)", "sans-serif"],
+        // poppins: ["var(--font-poppins)", "sans-serif"],
+        // "noto-sans": ["var(--font-noto-sans)", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

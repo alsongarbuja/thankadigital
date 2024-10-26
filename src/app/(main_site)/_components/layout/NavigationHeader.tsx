@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { navLinks } from "@/utils/navLinks";
 import { useWindowResize } from "@/hooks/useWindowResize";
 import { CloseCircle, HambergerMenu } from "iconsax-react";
+import { cn } from "@/utils/cn";
 
 const NavigationHeader = () => {
   const { isNavbarOpen, setIsNavbarOpen } = useWindowResize({ size: 768 });
@@ -28,10 +29,11 @@ const NavigationHeader = () => {
           <Link
             key={navLink.id}
             href={navLink.path}
-            className={`py-1 rounded-md font-medium ${
+            className={cn(
+              "py-1 rounded-md font-medium",
               pathname === navLink.path &&
-              "bg-primary_red px-2 md:px-0 md:bg-transparent md:underline md:underline-offset-2 md:text-primary_red"
-            }`}
+                "bg-primary_red px-2 md:px-0 md:bg-transparent md:underline md:underline-offset-2 md:text-primary_red"
+            )}
           >
             {navLink.name}
           </Link>

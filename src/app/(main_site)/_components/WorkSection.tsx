@@ -17,8 +17,8 @@ const WorkSection = () => {
   return (
     <section className="py-9">
       <CustomWidthWrapper>
-        <h3 className="text-secondary">Projects</h3>
-        <h6>Some of our selected projects showcase</h6>
+        <h3 className="text-primary_blue">Projects</h3>
+        <p className="font-semibold">Some of our selected projects showcase</p>
       </CustomWidthWrapper>
 
       <div className="mt-12">

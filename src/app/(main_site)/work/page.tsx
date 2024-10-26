@@ -17,8 +17,8 @@ export default async function WorkPage() {
   return (
     <CustomWidthWrapper className="py-12">
       <div className="bg-white min-h-[60vh]">
-        <h3 className="uppercase">Our Works</h3>
-        <p className="font-semibold text-gray-400">
+        <h1>Our Works</h1>
+        <p className="text-gray-400">
           See the journey of works we have done for our clients
         </p>
 

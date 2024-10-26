@@ -15,33 +15,31 @@ const ConnectSection = () => {
       <CustomWidthWrapper>
         <div className="flex flex-col gap-8 lg:flex-row">
           <div className="flex flex-col gap-3">
-            <h3 className="font-semibold text-secondary">Connect with us</h3>
-            <h6 className="font-medium">
+            <h3 className="text-primary_blue">Connect with us</h3>
+            <p className="font-medium">
               Found us interesting? Let&apos;s have a talk
-            </h6>
+            </p>
           </div>
 
           <div className="flex flex-col justify-between w-full gap-10 md:flex-row md:justify-between">
             <div className="flex flex-col gap-2">
-              <p className="flex items-center gap-2 text-2xl font-bold">
+              <h3 className="flex items-center gap-2">
                 <Map className="text-primary_red" /> Location
-              </p>
+              </h3>
               {footerConnect[0].location?.map((con, i) => (
-                <p key={i} className="text-xl">
-                  {con.location}
-                </p>
+                <p key={i}>{con.location}</p>
               ))}
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="flex items-center gap-2 mb-2 text-2xl font-bold">
+              <h3 className="flex items-center gap-2 mb-2">
                 <Call className="text-primary_red" /> Contact
-              </p>
+              </h3>
               {footerConnect[1].connect?.map((con, i) => (
                 <Link
                   href={con.link}
                   key={i}
-                  className="text-xl underline decoration-primary_red underline-offset-3"
+                  className="underline decoration-primary_red underline-offset-4"
                 >
                   {con.contact}
                 </Link>
@@ -49,9 +47,9 @@ const ConnectSection = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <p className="flex items-center gap-2 mb-2 text-2xl font-bold">
+              <h3 className="flex items-center gap-2 mb-2">
                 <Message className="text-primary_red" /> Message Us
-              </p>
+              </h3>
               <ContactForm />
             </div>
           </div>

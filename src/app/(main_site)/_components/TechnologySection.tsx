@@ -9,9 +9,9 @@ const TechnologySection = () => {
     <section className="pt-8 pb-4 text-white bg-blue-950">
       <CustomWidthWrapper>
         <h3>Technologies</h3>
-        <h6 className="font-medium">
+        <p className="font-medium">
           Using modern technologies to build great products
-        </h6>
+        </p>
       </CustomWidthWrapper>
 
       <Marquee autoFill className="p-3" speed={70}>

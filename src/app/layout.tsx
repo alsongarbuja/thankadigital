@@ -2,23 +2,47 @@ import type { Metadata } from "next";
 import NextTopLoader from "nextjs-toploader";
 import { MantineProvider } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
-import { DM_Sans, Playfair_Display } from "next/font/google";
+import {
+  // DM_Sans,
+  Playfair_Display,
+  // Noto_Sans,
+  Nunito,
+  // Poppins,
+} from "next/font/google";
 
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
 import "./globals.css";
 
-const dm = DM_Sans({
+// const dm = DM_Sans({
+//   subsets: ["latin"],
+//   weight: ["400", "500", "700"],
+//   variable: "--font-dm-sans",
+// });
+
+const nunito = Nunito({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-dm-sans",
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  variable: "--font-nunito",
 });
 
 const playfair_display = Playfair_Display({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "700", "900"],
   variable: "--font-playfair",
 });
+
+// const noto_sans = Noto_Sans({
+//   subsets: ["latin"],
+//   weight: ["400", "500", "700"],
+//   variable: "--font-noto-sans",
+// });
+
+// const poppins = Poppins({
+//   subsets: ["latin"],
+//   weight: ["400", "500", "700"],
+//   variable: "--font-poppins",
+// });
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://thankadigital.com"),
@@ -57,9 +81,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair_display.variable} ${dm.variable} bg-white text-neutral_black`}
+      className={`${playfair_display.variable} ${nunito.variable} bg-white text-neutral_black`}
     >
-      <body className="font-dm">
+      <body className="font-nunito">
         <NextTopLoader
           color="#E8343E"
           height={3}

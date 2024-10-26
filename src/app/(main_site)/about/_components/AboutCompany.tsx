@@ -4,7 +4,7 @@ const AboutCompany = () => {
   return (
     <>
       <div className="hidden grid-cols-7 lg:grid">
-        <div className="col-span-7 px-10 text-white bg-secondary lg:col-span-4 py-14 rounded-t-xl rounded-bl-xl">
+        <div className="col-span-7 px-10 text-white bg-primary_blue lg:col-span-4 py-14 rounded-t-xl rounded-bl-xl">
           <h2>
             Thanka Digital aims to provide amazing products for our clients
           </h2>
@@ -31,9 +31,9 @@ const AboutCompany = () => {
           />
         </div>
 
-        <div className="relative flex items-center col-span-7 px-10 bg-secondary lg:col-span-4 lg:tracking-wide text-[#C9C8F5] py-14 rounded-b-xl">
-          <h2 className="my-1">
-            We are team of dedicated engineers and designers with years of
+        <div className="relative flex items-center col-span-7 px-10 bg-primary_blue lg:col-span-4 lg:tracking-wide text-[#C9C8F5] py-14 rounded-b-xl">
+          <h2 className="my-4">
+            We are team of dedicated engineers, designers with years of
             experience.
           </h2>
 
@@ -59,7 +59,7 @@ const AboutCompany = () => {
       </div>
 
       {/* for md and small */}
-      <div className="lg:hidden bg-secondary rounded-xl">
+      <div className="lg:hidden bg-primary_blue rounded-xl">
         <h3 className="px-6 tracking-wider text-center text-white py-14">
           Thanka Digital aims to provide amazing products for our clients
         </h3>

@@ -29,7 +29,7 @@ const BlogCard = (blog: BlogCardProps) => {
           <div className="absolute w-full h-full rounded-md bg-black/40"></div>
 
           <div
-            className="absolute px-4 py-2 bg-white bottom-4 left-4 right-4 rounded-2xl"
+            className="absolute p-4 bg-white rounded-md bottom-4 left-4 right-4"
             // style={{
             //   clipPath:
             //     blog.index === 0
@@ -38,7 +38,7 @@ const BlogCard = (blog: BlogCardProps) => {
             // }}
           >
             <div className="flex flex-col gap-2">
-              <h3 className="flex items-center gap-3 mt-3 text-xl font-semibold md:text-2xl lg:mt-4">
+              <h3 className="flex items-center gap-3">
                 {blog.title}
                 {blog.tag_list.length > 0 && blog.index === 0 ? (
                   <div className="px-4 py-1 text-base text-white bg-black w-fit md:text-xl rounded-2xl">
@@ -47,11 +47,11 @@ const BlogCard = (blog: BlogCardProps) => {
                 ) : null}
               </h3>
               <p>{blog.description}</p>
-              <span className="text-base font-medium">
+              <span className="text-sm font-medium">
                 ({moment(blog.created_at).fromNow()})
               </span>
               <div className="flex items-center justify-between">
-                <span className="text-base">
+                <span className="text-sm">
                   {blog.reading_time_minutes} min read
                 </span>
                 <TransmitSquare className="rotate-45" />
