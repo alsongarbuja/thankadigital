@@ -1,5 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  safeList: [
+    "grid-cols-2",
+    "col-span-2",
+    "col-span-1",
+    "md:grid-cols-2",
+    "md:col-span-2",
+  ],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
