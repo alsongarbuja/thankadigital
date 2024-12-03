@@ -9,7 +9,12 @@ export default async function AdminProjects() {
     <ListDataWrapper
       hasActions
       title="Projects"
-      cols={["NAME", "LIVE", "GITHUB", "STATUS"]}
+      cols={[
+        { label: "NAME", key: "name" },
+        { label: "LIVE", key: "liveLink" },
+        { label: "GITHUB", key: "githubLink" },
+        { label: "STATUS", key: "status" },
+      ]}
       createText="Add Projects"
       createUrl="/admin/projects/create"
       data={JSON.parse(JSON.stringify(projects.projects))}

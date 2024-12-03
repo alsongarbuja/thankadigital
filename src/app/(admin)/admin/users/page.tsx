@@ -9,7 +9,11 @@ export default async function AdminUsers() {
     <ListDataWrapper
       hasActions
       title="Users"
-      cols={["NAME", "EMAIL", "ROLE"]}
+      cols={[
+        { label: "NAME", key: "name" },
+        { label: "EMAIL", key: "email" },
+        { label: "ROLE", key: "role" },
+      ]}
       createText="Add User"
       createUrl="/admin/users/create"
       data={JSON.parse(JSON.stringify(users.users))}

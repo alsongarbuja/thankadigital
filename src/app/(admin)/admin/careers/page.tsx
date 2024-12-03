@@ -9,7 +9,12 @@ export default async function CareerPage() {
     <ListDataWrapper
       hasActions
       title="Careers"
-      cols={["TITLE", "SALARY", "LOCATION", "TYPE"]}
+      cols={[
+        { label: "TITLE", key: "title" },
+        { label: "SALARY", key: "salary" },
+        { label: "LOCATION", key: "location" },
+        { label: "TYPE", key: "type" },
+      ]}
       createText="Add Career"
       createUrl="/admin/careers/create"
       data={JSON.parse(JSON.stringify(careers.careers))}

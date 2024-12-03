@@ -9,7 +9,11 @@ export default async function TeamPage() {
     <ListDataWrapper
       hasActions
       title="Memebers"
-      cols={["NAME", "POSITION", "TEAM"]}
+      cols={[
+        { label: "NAME", key: "name" },
+        { label: "POSITION", key: "position" },
+        { label: "TEAM", key: "team" },
+      ]}
       createText="Add Team"
       createUrl="/admin/teams/create"
       data={JSON.parse(JSON.stringify(teams.teams))}

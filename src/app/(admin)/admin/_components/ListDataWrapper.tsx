@@ -8,7 +8,7 @@ interface IListDataWrapperProps<T> {
   title: string;
   createUrl: string;
   createText: string;
-  cols: string[];
+  cols: { label: string; key: string }[];
   hasActions: boolean;
   editUrl: string;
   deleteAction: (
@@ -45,7 +45,7 @@ export function ListDataWrapper(props: IListDataWrapperProps<dynamicObject[]>) {
         <Table.Thead>
           <Table.Tr>
             {cols.map((col, index) => (
-              <Table.Th key={index}>{col}</Table.Th>
+              <Table.Th key={index}>{col.label}</Table.Th>
             ))}
             {hasActions && <th>ACTIONS</th>}
           </Table.Tr>
@@ -55,7 +55,7 @@ export function ListDataWrapper(props: IListDataWrapperProps<dynamicObject[]>) {
             <Table.Tr key={index}>
               {cols.map((col, index) => (
                 <Table.Td key={index}>
-                  {item[col.toLowerCase()] as string}
+                  {(item[col.key] as string) ?? "-"}
                 </Table.Td>
               ))}
               {hasActions && (

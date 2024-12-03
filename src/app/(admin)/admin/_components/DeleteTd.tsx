@@ -53,7 +53,7 @@ export default function DeleteTd({ deleteAction, id }: IActionTdDeleteProps) {
   return (
     <>
       <form action={handleDeleteAction}>
-        <TextInput id="id" hidden name="id" value={id} />
+        <TextInput id="id" hidden name="id" value={id} onChange={() => {}} />
         <Button
           disabled={pending}
           variant="transparent"
