@@ -19,7 +19,9 @@ export const ckEditorCorrector = (data: string) => {
     return `<img src="${src.replace(")", "")}" alt="${alt.split("![")[1]}" class="object-cover w-full h-auto rounded-md" />`;
   });
 
-  return replacedDataWithImage;
+  const removePTagWrappingGrid = replacedDataWithImage.replace(/<p><div/g, "<div").replace(/<\/div><\/p>/g, "</div>");
+
+  return removePTagWrappingGrid;
 }
 
 export const ckEditorCorrectorReverse = (data: string) => {
@@ -42,5 +44,7 @@ export const ckEditorCorrectorReverse = (data: string) => {
     return `![${alt}](${src})`;
   });
 
-  return replacedDataWithImage;
+  const addedPTagToWrapGrid = `<p>${replacedDataWithImage}</p>`;
+
+  return addedPTagToWrapGrid;
 }
