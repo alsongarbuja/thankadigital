@@ -5,13 +5,14 @@ import { useRef } from "react";
 import AutoPlay from "embla-carousel-autoplay";
 import { Carousel, CarouselSlide } from "@mantine/carousel";
 
-import { projectsList } from "@/utils/projects";
+// import { projectsList } from "@/utils/projects";
 import CustomWidthWrapper from "@/components/wrappers/CustomWidthWrapper";
 
 import "@mantine/carousel/styles.css";
 import { ArrowLeft2, ArrowRight2 } from "iconsax-react";
+import { IProjectScheme } from "@/server/models/project.model";
 
-const WorkSection = () => {
+const WorkSection = ({ projects }: { projects: IProjectScheme[] }) => {
   const autoplay = useRef(AutoPlay({ delay: 2000 }));
 
   return (
@@ -51,11 +52,11 @@ const WorkSection = () => {
             />
           }
         >
-          {projectsList.map((project, i) => (
+          {projects.map((project, i) => (
             <CarouselSlide key={i}>
               <section className="-skew-x-[10deg] min-h-[80vh] max-h-[80vh] border relative">
                 <Image
-                  alt="project-image"
+                  alt={`${project.name} cover image`}
                   src={project.thumbnail}
                   height={600}
                   width={700}
@@ -67,7 +68,7 @@ const WorkSection = () => {
                       {project.name}
                     </p>
                     <p className="w-1/2 text-lg font-semibold text-center text-white">
-                      {project.description}
+                      {project.summary}
                     </p>
                     <div className="flex gap-6">
                       {/* <Link href={"#"}>View details</Link> */}
