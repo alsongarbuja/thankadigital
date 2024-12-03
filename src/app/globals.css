@@ -17,8 +17,8 @@
   --font-size-xxxl: clamp(3.05rem, 3.54vw + 2.17rem, 5rem);
 
   /* --font-noto-sans: 'Noto Sans', sans-serif; */
-  --font-nunito: 'Nunito', sans-serif;
-  --font-playfair: 'Playfair Display', serif;
+  --font-nunito: "Nunito", sans-serif;
+  --font-playfair: "Playfair Display", serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -90,16 +90,20 @@ a {
 .mask {
   width: 100%;
   height: auto;
-  mask-image: linear-gradient(to right,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 1) 40%,
-      rgba(0, 0, 0, 1) 90%,
-      rgba(0, 0, 0, 0));
-  -webkit-mask-image: linear-gradient(to right,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 1) 40%,
-      rgba(0, 0, 0, 1) 55%,
-      rgba(0, 0, 0, 0));
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 1) 90%,
+    rgba(0, 0, 0, 0)
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 40%,
+    rgba(0, 0, 0, 1) 55%,
+    rgba(0, 0, 0, 0)
+  );
 }
 
 .about-images {
@@ -131,7 +135,7 @@ a {
 }
 
 .blog-table td {
-  padding: .75em;
+  padding: 0.75em;
 }
 
 ul {
@@ -140,6 +144,15 @@ ul {
 
 ol {
   list-style: decimal;
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2;
+  }
 }
 
 @media (min-width: 760px) {
@@ -190,7 +203,7 @@ ol {
   background: radial-gradient(#aaf776, #c1fc9f, #cefac1, #fefaf0);
   /* background: radial-gradient(#f7ce76, #fccc9f, #facbc1, #fefaf0); */
   filter: blur(1.75rem);
-  opacity: .4;
+  opacity: 0.4;
 }
 
 .blob-long {
