@@ -24,7 +24,7 @@ const AdminSidebarListTile = ({
             : "hover:bg-primary_red/20"
         }`}
       >
-        {link.icon}
+        <span className="min-w-12">{link.icon}</span>
         {link.name}
       </li>
     </Link>

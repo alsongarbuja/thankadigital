@@ -44,7 +44,5 @@ export const ckEditorCorrectorReverse = (data: string) => {
     return `![${alt}](${src})`;
   });
 
-  const addedPTagToWrapGrid = `<p>${replacedDataWithImage}</p>`;
-
-  return addedPTagToWrapGrid;
+  return replacedDataWithImage;
 }
