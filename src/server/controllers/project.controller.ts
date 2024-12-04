@@ -5,7 +5,8 @@ import { removePrivateProperty } from "../helpers/privateProperty";
 
 export async function createProject(body: IProjectScheme) {
   await dbConnect();
-  const project = await projectModel.create(body);
+  const tags = (body.tags as unknown as string).split(",");
+  const project = await projectModel.create({ ...body, tags: (tags.length > 0 && tags[0] !== "") ? tags : [] });
 
   if (!project) {
     throw new ApiError("Project could not be created", 500);
@@ -52,7 +53,8 @@ export async function getProjectBySlug(slug: string) {
 export async function updateProjectById(id: string, body: dynamicObject) {
   await dbConnect();
   const project = await getProjectById(id, true);
-  Object.assign(project, body);
+  const tags = (body.tags as string).split(",");
+  Object.assign(project, { ...body, tags: (tags.length > 0 && tags[0] !== "") ? tags : [] });
   await project.save();
   return removePrivateProperty(project);
 }

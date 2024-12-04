@@ -44,6 +44,8 @@ export default function ProjectForm({
     newPayload.append("slug", formData.get("slug") as string);
     newPayload.append("summary", formData.get("summary") as string);
     newPayload.append("thumbnail", formData.get("thumbnail") as string);
+    newPayload.append("tags", formData.get("tags") as string);
+
     if (formData.get("liveLink")) {
       newPayload.append("liveLink", formData.get("liveLink") as string);
     }
@@ -134,6 +136,13 @@ export default function ProjectForm({
         size="lg"
         name="githubLink"
         defaultValue={data?.githubLink || ""}
+      />
+      <TextInput
+        label="Tags"
+        placeholder="Add tags with comma separated"
+        size="lg"
+        name="tags"
+        defaultValue={data?.tags.join(",")}
       />
       <CkEditor
         ref={ckRef}

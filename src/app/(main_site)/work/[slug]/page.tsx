@@ -30,6 +30,11 @@ export default async function WorkJourneyPage({
               {project?.name}
             </h1>
             <p className="text-lg text-white">{project?.summary}</p>
+            {project?.tags.length > 0 && (
+              <p className="font-medium text-footer_thanka">
+                {project?.tags.map((tag) => `#${tag}`).join("  ")}
+              </p>
+            )}
           </CustomWidthWrapper>
         </div>
       </div>
