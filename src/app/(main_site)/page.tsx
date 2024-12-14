@@ -13,7 +13,7 @@ export default async function Home() {
       <HeroSection />
       <ServiceSection />
       <WorkSection
-        projects={projects.projects as unknown as IProjectScheme[]}
+        projects={projects.projects.slice(0, 4) as unknown as IProjectScheme[]}
       />
       <TechnologySection />
     </>
