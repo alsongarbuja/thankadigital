@@ -7,6 +7,7 @@ import {
   Playfair_Display,
   // Noto_Sans,
   Nunito,
+  Afacad,
   // Poppins,
 } from "next/font/google";
 
@@ -24,6 +25,12 @@ const nunito = Nunito({
   subsets: ["latin"],
   weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-nunito",
+});
+
+const afacad = Afacad({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-afacad",
 });
 
 const playfair_display = Playfair_Display({
@@ -81,7 +88,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${playfair_display.variable} ${nunito.variable} bg-white text-neutral_black`}
+      className={`${playfair_display.variable} ${afacad.variable} ${nunito.variable} bg-white text-neutral_black`}
     >
       <body className="font-nunito">
         <NextTopLoader

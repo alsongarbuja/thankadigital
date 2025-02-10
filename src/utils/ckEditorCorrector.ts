@@ -2,10 +2,10 @@
 export const ckEditorCorrector = (data: string) => {
   const imgRegex = /!\[.*?\]\(.*?\)/g;
 
-  const gridOpeningRegex = /\(grid\)/g;
-  const divEndingRegex = /\(grid-col-end\)/g;
+  const gridOpeningRegex = /\(g\)/g;
+  const divEndingRegex = /\(gce\)/g;
 
-  const colOpeningRegex = /\(col\)\(\d\)/g;
+  const colOpeningRegex = /\(c\)\(\d\)/g;
 
   const replacedDataWithGridOpening = data.replace(gridOpeningRegex, "<div class='grid grid-cols-1 gap-4 md:grid-cols-2'>");
   const replacedDataWithColOpening = replacedDataWithGridOpening.replace(colOpeningRegex, (match) => {
@@ -19,9 +19,9 @@ export const ckEditorCorrector = (data: string) => {
     return `<img src="${src.replace(")", "")}" alt="${alt.split("![")[1]}" class="object-cover w-full h-auto rounded-md" />`;
   });
 
-  const removePTagWrappingGrid = replacedDataWithImage.replace(/<p><div/g, "<div").replace(/<\/div><\/p>/g, "</div>");
+  const removePTagWrappingGrid = replacedDataWithImage.replace(/<p><div/g, "<div");
 
-  return removePTagWrappingGrid;
+  return fixUnnecessaryPTags(removePTagWrappingGrid);
 }
 
 export const ckEditorCorrectorReverse = (data: string) => {
@@ -31,12 +31,12 @@ export const ckEditorCorrectorReverse = (data: string) => {
   const endingRegex = /<\/div>/g;
   const colOpeningRegex = /<div class="md:col-span-\d col-span-1">/g;
 
-  const replacedDataWithGridOpening = data.replace(gridOpeningRegex, "(grid)");
+  const replacedDataWithGridOpening = data.replace(gridOpeningRegex, "(g)");
   const replacedDataWithColOpening = replacedDataWithGridOpening.replace(colOpeningRegex, (match) => {
     const spanCol = match.split("md:col-span-")[1].split(" ")[0];
-    return `(col)(${spanCol})`;
+    return `(c)(${spanCol})`;
   });
-  const replacedDataWithEnding = replacedDataWithColOpening.replace(endingRegex, "(grid-col-end)");
+  const replacedDataWithEnding = replacedDataWithColOpening.replace(endingRegex, "(gce)");
 
   const replacedDataWithImage = replacedDataWithEnding.replaceAll(imgRegex, (match) => {
     const src = match.split("src=\"")[1].split("\"")[0];
@@ -45,4 +45,23 @@ export const ckEditorCorrectorReverse = (data: string) => {
   });
 
   return replacedDataWithImage;
+}
+
+const fixUnnecessaryPTags = (htmlData: string) => {
+  let openPCount = 0;
+
+  return htmlData.replace(/<\/?p>/g, (match) => {
+    if (match === "<p>") {
+      openPCount++; // Increase count for an opening <p>
+      return match;
+    } else if (match === "</p>") {
+      if (openPCount > 0) {
+        openPCount--; // Match found, decrease count
+        return match;
+      } else {
+        return ""; // Remove unmatched </p>
+      }
+    }
+    return match;
+  });
 }

@@ -1,0 +1,13 @@
+.project-detail p {
+  font-family: var(--font-afacad);
+  font-size: clamp(1rem, -0.875rem + 2.5vw, 1.5rem);
+}
+
+.project-detail h2 {
+  font-size: clamp(2rem, -1.125rem + 10vw, 4.5rem);
+}
+
+.project-detail a {
+  text-decoration: underline;
+  color: #E8343E;
+}
