@@ -112,7 +112,7 @@ export default function CareerForm({
         allowDeselect={false}
         name="type"
         defaultValue={data?.type ?? "Full Time"}
-        data={["Full Time", "Part Time", "Internship"]}
+        data={["Full Time", "Part Time", "Internship", "Contract Based"]}
       />
       <Select
         label="Status"

@@ -6,7 +6,7 @@ export interface ICareerScheme extends mongoose.Document {
   description: string;
   salary: string;
   location: 'Remote' | 'On-site' | 'Hybrid';
-  type: 'Full Time' | 'Part Time';
+  type: 'Full Time' | 'Part Time' | 'Internship' | 'Contract Based';
   experience: string;
   skills: string[];
   time: string;
@@ -35,7 +35,7 @@ const CareerSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ["Full Time", "Part Time"],
+    enum: ["Full Time", "Part Time", "Internship", "Contract Based"],
     required: true,
   },
   time: {

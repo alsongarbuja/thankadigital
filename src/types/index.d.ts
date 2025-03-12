@@ -8,7 +8,7 @@ type CareerModel = {
   description: string;
   salary: string;
   location: 'Remote' | 'On-site' | 'Hybrid';
-  type: 'Full Time' | 'Part Time';
+  type: 'Full Time' | 'Part Time' | 'Internship' | 'Contract Based';
   experience: string;
   skills: string[];
   time: string;

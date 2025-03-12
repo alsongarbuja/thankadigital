@@ -108,24 +108,39 @@ const CareerList = ({ careerList }: ICareerListProps) => {
               </div>
 
               <div className="flex flex-wrap items-center justify-center gap-4 mt-4 md:justify-start">
-                <p className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black">
+                <p
+                  title="Location of Position"
+                  className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black"
+                >
                   <Location className="w-4 h-4" /> {career.location}
                 </p>
-                <p className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black">
+                <p
+                  title="Type of Position"
+                  className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black"
+                >
                   <InfoCircle className="w-4 h-4" /> {career.type}
                 </p>
-                {career.salary !== "" && (
-                  <p className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black">
+                {career.salary !== "-" && (
+                  <p
+                    title="Salary"
+                    className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black"
+                  >
                     <DollarCircle className="w-4 h-4" /> {career.salary}
                   </p>
                 )}
                 {career.time !== "" && (
-                  <p className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black">
+                  <p
+                    title="Time"
+                    className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black"
+                  >
                     <Clock className="w-4 h-4" /> {career.time}
                   </p>
                 )}
                 {career.experience !== "" && (
-                  <p className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black">
+                  <p
+                    title="Experience level"
+                    className="flex items-center gap-2 px-4 py-1 text-sm border rounded-full border-neutral_black"
+                  >
                     <Monitor className="w-4 h-4" /> {career.experience}
                   </p>
                 )}
