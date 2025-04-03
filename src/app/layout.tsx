@@ -71,6 +71,11 @@ export const metadata: Metadata = {
     title: "Thanka Digital",
     images: ["/images/seo/link-preview.png"],
   },
+  verification: {
+    other: {
+      "facebook-domain-vetification": ["vakjbcwdr6u9xsa6tu2rmx4xmw6uur"],
+    },
+  },
 };
 
 export default function RootLayout({
