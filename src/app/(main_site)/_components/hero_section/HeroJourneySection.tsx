@@ -38,9 +38,9 @@ const HeroJourneySection = () => {
             // src="/images/hero-section-images/hero-section-img1.png"
             src="/images/landing/standing.png"
             alt="illustration of a woman standing infront of a computer"
-            width={250}
-            height={180}
-            className="object-contain w-full h-full"
+            width={200}
+            height={200}
+            className="object-contain w-full md:w-[22vw] h-full"
           />
         </motion.figure>
 
@@ -54,9 +54,9 @@ const HeroJourneySection = () => {
           <Image
             src="/images/landing/walking.png"
             alt="illustration of a woman walking towards a computer"
-            width={220}
-            height={120}
-            className="object-contain w-full h-full"
+            width={200}
+            height={200}
+            className="object-contain w-[22vw] h-full"
           />
         </motion.figure>
 
@@ -70,9 +70,9 @@ const HeroJourneySection = () => {
           <Image
             src="/images/landing/running.png"
             alt="illustration of a woman running away from a computer"
-            width={180}
-            height={150}
-            className="object-contain w-full h-full"
+            width={200}
+            height={200}
+            className="object-contain w-[22vw] h-full"
           />
         </motion.figure>
 
@@ -86,9 +86,9 @@ const HeroJourneySection = () => {
           <Image
             src="/images/landing/cycling.png"
             alt="illustration of a woman cycling at a park"
-            width={180}
-            height={170}
-            className="object-contain w-full h-full"
+            width={200}
+            height={200}
+            className="object-contain w-[22vw] h-full"
           />
         </motion.figure>
       </div>
