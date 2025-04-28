@@ -11,7 +11,7 @@ const Header = () => {
         <nav className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
             <Image
-              src="/thanka_digital_logo.svg"
+              src="/thanka_logo.svg"
               alt="Thanka Digital logo"
               className="w-10 h-10 md:w-14 md:h-12"
               priority
